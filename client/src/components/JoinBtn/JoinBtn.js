@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'semantic-ui-react'
 
 const JoinButton = () => (
-  <Button>Join</Button>
+  <Button color="blue">Join</Button>
 )
 
 export default JoinButton
