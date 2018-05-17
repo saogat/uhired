@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./pages/Home";
-// import Resource from "./pages/Resource";
-// import Job from "./pages/Job";
+import ResourcePage from "./pages/Resources";
+import PortfolioPage from "./pages/Portfolio";
+import JobPage from "./pages/Jobs";
 // import Nav from "./components/Nav";
 
 const App = () => (
@@ -10,7 +11,13 @@ const App = () => (
     <div>
       {/* <Nav /> */}
       <Switch>
-        <Route exact path="/" component={HomePage} />  </Switch>
+        <Route exact path="/" component={HomePage} /> 
+        <Route exact path="/Jobs" component={JobPage} /> 
+        <Route exact path="/Resources" component={ResourcePage} /> 
+        <Route exact path="/Portfolio" component={PortfolioPage} /> 
+        
+        
+         </Switch>
     
     
     </div>
