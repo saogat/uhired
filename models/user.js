@@ -13,7 +13,15 @@ const userSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  resource: {
+  type: Schema.Types.ObjectId,
+    ref: "Resource"
+  },
+  job: {
+    type: Schema.Types.ObjectId,
+      ref: "Job"
+    }
 });
 
 const User = mongoose.model("User", userSchema);

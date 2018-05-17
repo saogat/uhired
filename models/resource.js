@@ -9,7 +9,15 @@ const resourceSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+    },
+    note: {
+      type: Schema.Types.ObjectId,
+      ref: "Note"
+      }
 });
 
 const Resource = mongoose.model("Resource", resourceSchema);
