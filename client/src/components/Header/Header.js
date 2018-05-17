@@ -1,7 +1,7 @@
 import React from 'react'
 import { Header } from 'semantic-ui-react'
 
-const Header = () => (
+const MainHeader = () => (
   <div>
     <Header as='h1'>First Header</Header>
     <Header as='h2'>Second Header</Header>
@@ -12,4 +12,4 @@ const Header = () => (
   </div>
 )
 
-export default Header
+export default MainHeader
