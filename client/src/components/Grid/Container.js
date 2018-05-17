@@ -1,12 +1,19 @@
 import React from 'react'
 import { Container } from 'semantic-ui-react'
+import MainBreadCrumb from "../BreadCrumb/BreadCrumb.js";
+import JoinButton from "../JoinBtn/JoinBtn.js";
+import LoginBtn from "../LoginBtn/LoginBtn.js";
 import "./Container.css";
 
 const MainContainer = () => (
-  <Container>
-   
+  <Container className= "ui inverted vertical masthead center aligned segment massive">
+     <MainBreadCrumb className= "ui left aligned"></MainBreadCrumb>
+
     <h1>Welcome to UHired</h1>
     <h2>A site for entry-level developers</h2>
+
+       <JoinButton></JoinButton>
+      <LoginBtn></LoginBtn>
    
   </Container>
 )
