@@ -543,8 +543,7 @@ expand-brackets@^2.1.4:
     regex-not "^1.0.0"
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
-
-express@^4.15.4:
+express@^4.16.3:
   version "4.16.3"
   resolved "https://registry.yarnpkg.com/express/-/express-4.16.3.tgz#6af8a502350db3246ecc4becf6b5a34d22f7ed53"
   dependencies:
@@ -811,9 +810,9 @@ http-errors@1.6.3, http-errors@~1.6.2, http-errors@~1.6.3:
     setprototypeof "1.1.0"
     statuses ">= 1.4.0 < 2"
 
-iconv-lite@0.4.19:
-  version "0.4.19"
-  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.19.tgz#f7468f60135f5e5dad3399c0a81be9a1603a082b"
+i@^0.3.6:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/i/-/i-0.3.6.tgz#d96c92732076f072711b6b10fd7d4f65ad8ee23d"
 
 iconv-lite@0.4.23, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
   version "0.4.23"
@@ -1033,6 +1032,10 @@ isomorphic-fetch@^2.1.1:
   dependencies:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
+
+jquery@x.*:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
 
 js-tokens@^3.0.0:
   version "3.0.2"
@@ -1671,6 +1674,13 @@ safe-regex@^1.1.0:
 sax@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
+
+
+semantic-ui-css@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/semantic-ui-css/-/semantic-ui-css-2.3.1.tgz#a5485c640c98cce29d8ddde3eff3434566a068e0"
+  dependencies:
+    jquery x.*
 
 semantic-ui-react@^0.80.0:
   version "0.80.0"

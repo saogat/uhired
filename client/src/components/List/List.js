@@ -1,12 +1,12 @@
-import React from "react";
-import "./List.css";
+import React from 'react'
+import { List } from 'semantic-ui-react'
 
-export const List = ({ children }) => {
-  return (
-    <div className="list-overflow-container">
-      <ul className="list-group">
-        {children}
-      </ul>
-    </div>
-  );
-};
+const MainList = () => (
+  <List>
+    <List.Item>Apples</List.Item>
+    <List.Item>Pears</List.Item>
+    <List.Item>Oranges</List.Item>
+  </List>
+)
+
+export default MainList

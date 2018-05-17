@@ -21,8 +21,11 @@
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
-    "express": "^4.15.4",
+    "express": "^4.16.3",
+    "i": "^0.3.6",
     "mongoose": "^5.0.11",
+    "semantic-ui-css": "^2.3.1",
     "semantic-ui-react": "^0.80.0"
-  }
+  },
+  "repository": "git@github.com:saogat/uhired.git"
 }
