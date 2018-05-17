@@ -1,50 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Menu } from 'semantic-ui-react'
 
-export default class MainMenu extends Component {
-  state = {}
+const items = [
+  { key: 'home', active: true, name: 'Home' },
+  { key: 'resources', active: true, name: 'Resources' },
+  { key: 'jobs', name: 'Jobs' },
+  { key: 'portfolio', name: 'Portfolio' },
+]
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+const MainMenu = () => (
+  <Menu items={items} />
+)
 
-  render() {
-    const { activeItem } = this.state
-
-    return (
-      <MainMenu>
-        <Menu.Item
-          name='home'
-          active={activeItem === 'home'}
-          onClick={this.handleItemClick}
-        >
-          Home
-        </Menu.Item>
-
-        <Menu.Item
-          name='jobs'
-          active={activeItem === 'jobs'}
-          onClick={this.handleItemClick}
-        >
-          Jobs
-        </Menu.Item>
-
-        <Menu.Item
-          name='resources'
-          active={activeItem === 'resources'}
-          onClick={this.handleItemClick}
-        >
-          Resources
-        </Menu.Item>
-
-        <Menu.Item
-          name='portfolio'
-          active={activeItem === 'portfolio'}
-          onClick={this.handleItemClick}
-        >
-          Portfolio
-        </Menu.Item>
-      </MainMenu>
-    )
-  }
-}
-
+export default MainMenu
 
