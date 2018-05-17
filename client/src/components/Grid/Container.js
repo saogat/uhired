@@ -6,8 +6,8 @@ import LoginBtn from "../LoginBtn/LoginBtn.js";
 import "./Container.css";
 
 const MainContainer = () => (
-  <Container className= "ui inverted vertical masthead center aligned segment massive">
-     <MainBreadCrumb className= "ui left aligned"></MainBreadCrumb>
+  <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
+     <div><MainBreadCrumb></MainBreadCrumb></div>
 
     <h1>Welcome to UHired</h1>
     <h2>A site for entry-level developers</h2>

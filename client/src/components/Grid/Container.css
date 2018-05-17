@@ -1,5 +1,5 @@
-.containerStyle {
-    background-color: black;
-    color: white;
-    height: 3000px;
+Container {
+width: 100%;
+margin: 0px;
+height: 2000px;  
 }
