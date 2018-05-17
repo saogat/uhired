@@ -3,7 +3,7 @@ import { Grid, Sticky, Table, Visibility } from 'semantic-ui-react'
 
 import Wireframe from '../Wireframe'
 
-export default class Visibility extends Component {
+export default class MainVisibility extends Component {
   state = {
     calculations: {
       direction: 'none',

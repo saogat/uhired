@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 
-class Sidebar extends Component {
+class MainSidebar extends Component {
   state = { visible: false }
 
   toggleVisibility = () => this.setState({ visible: !this.state.visible })
@@ -38,4 +38,4 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar
+export default MainSidebar

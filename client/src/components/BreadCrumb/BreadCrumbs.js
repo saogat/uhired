@@ -1,7 +1,7 @@
 import React from 'react'
 import { Breadcrumb } from 'semantic-ui-react'
 
-const BreadCrumbs = () => (
+const MainBreadCrumbs = () => (
   <div class="ui breadcrumb">
   <a class="section">Home</a>
   <div class="divider">|</div>
@@ -13,4 +13,4 @@ const BreadCrumbs = () => (
 </div>
 );
 
-export default BreadCrumbs;
+export default MainBreadCrumbs;

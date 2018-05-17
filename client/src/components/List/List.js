@@ -1,7 +1,7 @@
 import React from 'react'
 import { List } from 'semantic-ui-react'
 
-const List = () => (
+const MainList = () => (
   <List>
     <List.Item>Apples</List.Item>
     <List.Item>Pears</List.Item>
@@ -9,4 +9,4 @@ const List = () => (
   </List>
 )
 
-export default List
+export default MainList

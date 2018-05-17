@@ -1,10 +1,15 @@
 import React from "react";
-import Menu from "./components/Menu";
+import MainMenu from "./components/Menu";
+import MainContainer from "./components/Grid/Container.js";
 
 const App = () => (
-  <div>
-    <Menu />
-  </div>
+  <MainContainer>
+  <MainMenu>
+ </MainMenu>
+  Uhired
+</MainContainer>
 );
+
+
 
 export default App;
