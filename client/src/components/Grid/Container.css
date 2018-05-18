@@ -1,5 +1,19 @@
 Container {
-width: 100%;
-margin: 0px;
-height: 2000px;  
+    height: 100%;
 }
+
+.landpage-image{
+ background-image: "../Image/uhired.jpg";
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 60%;
+}
+
+h2 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+
