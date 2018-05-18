@@ -9,4 +9,10 @@ export default {
       console.log(result);
       return result;
   },
+  join: function(user) {
+    console.log(user);
+    var result = axios.post("/api/users", user);
+    console.log(result);
+    return result;
+}
 };

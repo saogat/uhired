@@ -47,9 +47,9 @@ handleFormSubmit = event => {
   if (this.state.firstName && this.state.lastName && this.state.email && this.state.password) {
     API.join({
       firstName: this.state.firstName,
-      lastNmae: this.state.lastName,
+      lastName: this.state.lastName,
       email: this.state.email,
-      password: this.state.password,
+      password: this.state.password
     })
       .then(res => this.loadPortfolio())
       .catch(err => console.log(err));
@@ -76,7 +76,7 @@ render() {
           placeholder='First Name'  
           value={this.state.firstName}
           onChange={this.handleInputChange}
-          name="First Name"/>
+          name="firstName"/>
       </Form.Field>
       <Form.Field>
         <label>Last Name</label>
@@ -84,7 +84,7 @@ render() {
           placeholder='Last Name'  
           value={this.state.lastName}
           onChange={this.handleInputChange}
-          name="Last Name"/>
+          name="lastName"/>
       </Form.Field>
       <Form.Field>
       <label>Email</label>
@@ -92,7 +92,7 @@ render() {
           placeholder='Email'  
           value={this.state.email}
           onChange={this.handleInputChange}
-          name="Email"/>
+          name="email"/>
       </Form.Field>
       <Form.Field>
       <label>Password</label>

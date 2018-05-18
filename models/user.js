@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  
-  firsName: {
+  firstName: {
     type: String,
     required: true
   },
@@ -23,14 +22,14 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  resource: {
+  resource: [{
   type: Schema.Types.ObjectId,
     ref: "Resource"
-  },
-  job: {
+  }],
+  job: [{
     type: Schema.Types.ObjectId,
       ref: "Job"
-    }
+    }]
 });
 
 const User = mongoose.model("User", userSchema);
