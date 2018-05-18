@@ -53,21 +53,12 @@ class LoginForm extends Component {
       </Form.Field>
       <Form.Field>
       <label>Password</label>
-      <input 
-          type='password' 
-          placeholder='Password' 
-          value={this.state.password}
-          onChange={this.handleInputChange}
-          name="password"/>
-      </Form.Field>
-      <Button 
-        type='submit'
-        disabled={!(this.state.email && this.state.password)}
-        onClick={this.handleFormSubmit}>
-        Login</Button>
-    </Form>
-      </div>
-    )};
+      <input placeholder='Password' />
+    </Form.Field>
+    <Button type='submit'>Submit</Button>
+  </Form>
+  </div>
+)
   }
 
 export default LoginForm
