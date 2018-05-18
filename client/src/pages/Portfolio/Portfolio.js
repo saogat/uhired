@@ -8,8 +8,7 @@ class PortfolioPage extends Component {
   render() {
     return (
       <div>
-      <PortfolioContainer>   
-      </PortfolioContainer>
+      <PortfolioContainer /> 
       </div>
  
     )};

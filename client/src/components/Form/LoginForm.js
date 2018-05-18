@@ -19,7 +19,8 @@ class LoginForm extends Component {
     });
   };
 
-  loadPortfolio = () => {
+  loadPortfolio = res => {
+    console.log(res);
     API.getPorfolio()
       .then(res =>
         this.setState({ portfolio: res.data })
@@ -29,12 +30,13 @@ class LoginForm extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log("Sumbit clicked");
     if (this.state.email && this.state.password) {
       API.login({
         email: this.state.email,
         password: this.state.password,
       })
-        .then(res => this.loadPortfolio())
+        .then(res => this.loadPortfolio(res))
         .catch(err => console.log(err));
     }
   };
@@ -43,30 +45,29 @@ class LoginForm extends Component {
     return (
       <div>
       <Form>
-    <Form.Field
-      value={this.state.email}
-      onChange={this.handleInputChange}
-      name="email">
+      <Form.Field>
       <label>Email</label>
-      <input placeholder='Email' />
-    </Form.Field>
-    <Form.Field
-       value={this.state.password}
-       onChange={this.handleInputChange}
-       name="password">
+      <input 
+          placeholder='Email'  
+          value={this.state.email}
+          onChange={this.handleInputChange}
+          name="email"/>
+      </Form.Field>
+      <Form.Field>
       <label>Password</label>
-      <input placeholder='Password' />
-      <input type = 'password'/>
-    </Form.Field>
-    <Form.Field>
-      <Checkbox label='I agree to the Terms and Conditions' />
-    </Form.Field>
-    <Button 
+      <input 
+          type='password' 
+          placeholder='Password' 
+          value={this.state.password}
+          onChange={this.handleInputChange}
+          name="password"/>
+      </Form.Field>
+      <Button 
         type='submit'
         disabled={!(this.state.email && this.state.password)}
         onClick={this.handleFormSubmit}>
         Login</Button>
-  </Form>
+    </Form>
       </div>
     )};
   }
