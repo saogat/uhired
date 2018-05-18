@@ -2,8 +2,10 @@ import React from 'react'
 import { Button } from 'semantic-ui-react'
 
 
-const JoinButton = () => (
-  <Button className = "huge inverted blue">Join</Button>
+const JoinButton = props => (
+  <Button className = "huge inverted blue"
+    onClick={props.join}
+  >Join</Button>
 )
 
 export default JoinButton

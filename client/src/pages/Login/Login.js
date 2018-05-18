@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react'
 import LoginContainer from "../../components/Grid/LoginContainer.js";
+import LoginForm from "../../components/Form/LoginForm.js"
 import API from "../../utils/API";
+import { Button, Checkbox, Form } from 'semantic-ui-react';
 
 
-
-class LoginForm extends Component {
+class LoginPage extends Component {
 
   state = {
     email: "",
@@ -42,6 +42,7 @@ class LoginForm extends Component {
   render() {
     return (
       <div>
+      <LoginContainer />
       <Form>
     <Form.Field
       value={this.state.email}
@@ -71,6 +72,4 @@ class LoginForm extends Component {
     )};
   }
 
-export default LoginForm
-
-
+  export default LoginPage
