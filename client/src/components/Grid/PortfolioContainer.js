@@ -8,8 +8,6 @@ const PortfolioContainer = () => (
      <div><MainBreadCrumb></MainBreadCrumb></div>
 
     <h1>Portfolio</h1>
-  
-
    
   </Container>
 )
