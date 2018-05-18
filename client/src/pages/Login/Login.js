@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react'
 import LoginContainer from "../../components/Grid/LoginContainer.js";
+import LoginForm from "../../components/Form/LoginForm.js"
 import API from "../../utils/API";
+import { Button, Checkbox, Form } from 'semantic-ui-react';
 
 
-
-class LoginForm extends Component {
+class LoginPage extends Component {
 
   state = {
     email: "",
@@ -19,8 +19,7 @@ class LoginForm extends Component {
     });
   };
 
-  loadPortfolio = res => {
-    console.log(res);
+  loadPortfolio = () => {
     API.getPorfolio()
       .then(res =>
         this.setState({ portfolio: res.data })
@@ -30,13 +29,12 @@ class LoginForm extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log("Sumbit clicked");
     if (this.state.email && this.state.password) {
       API.login({
         email: this.state.email,
         password: this.state.password,
       })
-        .then(res => this.loadPortfolio(res))
+        .then(res => this.loadPortfolio())
         .catch(err => console.log(err));
     }
   };
@@ -44,25 +42,34 @@ class LoginForm extends Component {
   render() {
     return (
       <div>
+      <LoginContainer />
       <Form>
-      <Form.Field>
+    <Form.Field
+      value={this.state.email}
+      onChange={this.handleInputChange}
+      name="email">
       <label>Email</label>
-      <input 
-          placeholder='Email'  
-          value={this.state.email}
-          onChange={this.handleInputChange}
-          name="email"/>
-      </Form.Field>
-      <Form.Field>
+      <input placeholder='Email' />
+    </Form.Field>
+    <Form.Field
+       value={this.state.password}
+       onChange={this.handleInputChange}
+       name="password">
       <label>Password</label>
       <input placeholder='Password' />
+      <input type = 'password'/>
     </Form.Field>
-    <Button type='submit'>Submit</Button>
+    <Form.Field>
+      <Checkbox label='I agree to the Terms and Conditions' />
+    </Form.Field>
+    <Button 
+        type='submit'
+        disabled={!(this.state.email && this.state.password)}
+        onClick={this.handleFormSubmit}>
+        Login</Button>
   </Form>
-  </div>
-)
+      </div>
+    )};
   }
 
-export default LoginForm
-
-
+  export default LoginPage

@@ -11,7 +11,6 @@ class HomePage extends Component {
       <div>
       <MainContainer>   
       </MainContainer>
-      <ModalLogin></ModalLogin>
       </div>
  
     )};

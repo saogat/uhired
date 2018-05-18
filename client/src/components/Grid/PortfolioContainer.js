@@ -10,8 +10,6 @@ const PortfolioContainer = () => (
      </Container>
      <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
     <h1>Portfolio</h1>
-  
-
    
   </Container>
   </div>

@@ -6,20 +6,20 @@ import LoginBtn from "../LoginBtn/LoginBtn.js";
 import MainImage from "../Image/Image.js";
 import "./Container.css";
 import ModalLogin from "../../components/Modal/LoginModal.js";
+import ModalJoin from "../../components/Modal/JoinModal.js";
 
 const MainContainer = () => (
 
 <div>
-<Container className= "ui fluid inverted vertical masthead padded left aligned segment massive">
+<Container className= "ui fluid inverted vertical masthead padded left aligned segment massive navcontainer">
     <MainBreadCrumb></MainBreadCrumb>
     </Container>
      <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
     <h1>Welcome to UHired</h1>
     <h2>A site for entry-level developers to search for jobs and share resources</h2>
     <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
-       <JoinButton></JoinButton>
-       {/* <LoginBtn onClick={() => this.setState({showModalLogin: true})}> "ModalLogin"></LoginBtn> */}
-       <ModalLogin trigger={<LoginBtn/>}></ModalLogin>
+    <ModalJoin />
+       <ModalLogin />
        </Container>
        <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
       <MainImage></MainImage>
