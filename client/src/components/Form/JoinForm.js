@@ -61,9 +61,6 @@ handleFormSubmit = event => {
      password: ""
   });
 };
-  
-
-
 
 render() {
   // Notice how each input has a `value`, `name`, and `onChange` prop
@@ -73,49 +70,45 @@ render() {
         Join UHired
         </p>
         <Form>
-        <Form.Field
+        <Form.Field>
+        <label>First Name</label>
+         <input 
+          placeholder='First Name'  
           value={this.state.firstName}
-          firstName="firstName"
           onChange={this.handleInputChange}
-          type="text">
-          <label>First Name </label>
-          <input placeholder="First Name" />
-          </Form.Field>
-           <Form.Field
+          name="First Name"/>
+      </Form.Field>
+      <Form.Field>
+        <label>Last Name</label>
+      <input 
+          placeholder='Last Name'  
           value={this.state.lastName}
-          lasttName="lastName"
           onChange={this.handleInputChange}
-          type="text">
-          <label>First Name </label>
-          <input placeholder="Last Name" />
-          </Form.Field>
-           <Form.Field
+          name="Last Name"/>
+      </Form.Field>
+      <Form.Field>
+      <label>Email</label>
+      <input 
+          placeholder='Email'  
           value={this.state.email}
-          email="email"
           onChange={this.handleInputChange}
-          type="text"
-          placeholder="Last Name">
-          <label>email </label>
-          <input placeholder="Email" />
-          </Form.Field>
-          <Form.Field
+          name="Email"/>
+      </Form.Field>
+      <Form.Field>
+      <label>Password</label>
+      <input 
+          type='password' 
+          placeholder='Password' 
           value={this.state.password}
-          name="password"
           onChange={this.handleInputChange}
-          type="password"
-          placeholder="Password">
-          <label>password </label>
-          <input placeholder="password" />
-           </Form.Field>
-           <Form.Field>
-      <Checkbox label='I agree to the Terms and Conditions' />
-    </Form.Field>
-    <Button 
+          name="password"/>
+      </Form.Field>
+      <Button 
         type='submit'
         disabled={!(this.state.firstName && this.state.lastName && this.state.email && this.state.password)}
         onClick={this.handleFormSubmit}>
-        Join</Button>
-  </Form>
+        Login</Button>
+    </Form>
       </div>
     )};
   }
