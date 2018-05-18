@@ -14,12 +14,8 @@ const App = () => (
         <Route exact path="/" component={HomePage} /> 
         <Route exact path="/Jobs" component={JobPage} /> 
         <Route exact path="/Resources" component={ResourcePage} /> 
-        <Route exact path="/Portfolio" component={PortfolioPage} /> 
-        
-        
-         </Switch>
-    
-    
+        <Route exact path="/Portfolio" component={PortfolioPage} />      
+      </Switch>
     </div>
   </Router>
 );

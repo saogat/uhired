@@ -3,8 +3,6 @@ import { Button, Checkbox, Form } from 'semantic-ui-react'
 import LoginContainer from "../../components/Grid/LoginContainer.js";
 import API from "../../utils/API";
 
-
-
 class LoginForm extends Component {
 
   state = {
