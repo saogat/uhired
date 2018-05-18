@@ -1,8 +1,11 @@
 import React from 'react'
-import { Breadcrumb } from 'semantic-ui-react'
+import { BreadCrumb } from 'semantic-ui-react'
+import { Image } from 'semantic-ui-react'
+
 
 const MainBreadCrumb = () => (
-  <div className="ui breadcrumb huge left aligned">
+  <div style = {{marginLeft: "30px"}} className="ui breadcrumb fixed huge left aligned navlist">
+   <Image src='/uhiredlogo2.png' wrapped size='tiny' />
   <a className="active section" href="/">Home</a>
   <div className="divider">|</div>
   <a className="section" href="/Resources">Resources</a>

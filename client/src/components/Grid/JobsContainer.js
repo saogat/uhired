@@ -4,14 +4,18 @@ import MainBreadCrumb from "../BreadCrumb/BreadCrumb.js";
 import "./Container.css";
 
 const JobsContainer = () => (
+  <div>
+  <Container className= "ui fluid fixed inverted vertical masthead left aligned segment massive">
+     <MainBreadCrumb></MainBreadCrumb>
+     </Container>
   <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
-     <div><MainBreadCrumb></MainBreadCrumb></div>
-
     <h1>Jobs</h1>
   
 
    
   </Container>
+  </div>
+
 )
 
 export default JobsContainer
