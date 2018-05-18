@@ -3,15 +3,15 @@ import { Container } from 'semantic-ui-react'
 import MainBreadCrumb from "../BreadCrumb/BreadCrumb.js";
 import "./Container.css";
 
-const JobsContainer = () => (
-  <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
+const UserContainer = () => (
+  <UserContainer className= "ui fluid inverted vertical masthead center aligned segment massive">
      <div><MainBreadCrumb></MainBreadCrumb></div>
 
-    <h1>Jobs</h1>
+    <h1>User</h1>
   
 
    
-  </Container>
+  </UserContainer>
 )
 
-export default JobsContainer
+export default UserContainer
