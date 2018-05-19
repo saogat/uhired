@@ -9,7 +9,7 @@ const ResourceContainer = () => (
      <div><MainBreadCrumb></MainBreadCrumb></div>
      </Container>
   <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
-    <h1>Resources</h1>
+    <h1 >Resources</h1>
    
   </Container>
   </div>

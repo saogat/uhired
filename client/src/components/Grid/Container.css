@@ -1,14 +1,15 @@
-.a {
-    padding-left: 30px;
+.navcontainer {
+    background-color: transparent;
 }
 
-.landpage-image{
+
+/* .landpage-image{
  background-image: "../Image/uhired.jpg";
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   height: 60%;
-}
+} */
 
 h2 {
     padding-top: 30px;

@@ -11,7 +11,7 @@ import ModalJoin from "../../components/Modal/JoinModal.js";
 const MainContainer = () => (
 
 <div>
-<Container className= "ui fluid inverted vertical masthead padded left aligned segment massive navcontainer">
+<Container className= "ui fluid inverted vertical masthead padded left aligned segment massive">
     <MainBreadCrumb></MainBreadCrumb>
     </Container>
      <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
