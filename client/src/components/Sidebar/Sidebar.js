@@ -10,9 +10,9 @@ class MainSidebar extends Component {
     const { visible } = this.state
     return (
       <div>
-        <Button onClick={this.toggleVisibility} className="ui blue">View Resource List</Button>
+        <Button style={{marginTop: "20px"}} className="blue massive" onClick={this.toggleVisibility}>Skills</Button>
         <Sidebar.Pushable as={Segment}>
-          <Sidebar as={Menu} animation='overlay' width='thin' visible={visible} icon='labeled' vertical inverted>
+          <Sidebar as={Menu} animation='push' width='wide' visible={visible} vertical inverted>
             <Menu.Item name='home'>
               HTML
             </Menu.Item>
@@ -20,16 +20,13 @@ class MainSidebar extends Component {
               Javascript
             </Menu.Item>
             <Menu.Item name='camera'>
-             React
-            </Menu.Item> 
-            <Menu.Item name='mongo'>
-             Mongo DB
+              React
             </Menu.Item>
           </Sidebar>
           <Sidebar.Pusher>
-            <Segment Basic>
-              <Header as='h3'>Content</Header>
-              <Image src='#' />
+            <Segment basic>
+              <Header as='h3'>Click the Skills Button to start your Search</Header>
+             Happy Hunting!
             </Segment>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
@@ -37,5 +34,4 @@ class MainSidebar extends Component {
     )
   }
 }
-
 export default MainSidebar

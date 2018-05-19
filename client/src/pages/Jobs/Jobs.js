@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import JobContainer from "../../components/Grid/JobsContainer.js";
+import JobGrid from "../../components/Grid/JobGrid.js";
+import { Grid } from 'semantic-ui-react'
 
 
 class JobPage extends Component {
@@ -8,8 +10,9 @@ class JobPage extends Component {
   render() {
     return (
       <div>
-      <JobContainer>   
-      </JobContainer>
+      <JobContainer />   
+      <JobGrid />
+      
       </div>
  
     )};
