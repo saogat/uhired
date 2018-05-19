@@ -10,26 +10,26 @@ class MainSidebar extends Component {
     const { visible } = this.state
     return (
       <div>
-        <Button onClick={this.toggleVisibility}>Toggle Visibility</Button>
+        <Button onClick={this.toggleVisibility} className="ui blue">View Resource List</Button>
         <Sidebar.Pushable as={Segment}>
           <Sidebar as={Menu} animation='overlay' width='thin' visible={visible} icon='labeled' vertical inverted>
             <Menu.Item name='home'>
-              <Icon name='home' />
-              Home
+              HTML
             </Menu.Item>
             <Menu.Item name='gamepad'>
-              <Icon name='gamepad' />
-              Games
+              Javascript
             </Menu.Item>
             <Menu.Item name='camera'>
-              <Icon name='camera' />
-              Channels
+             React
+            </Menu.Item> 
+            <Menu.Item name='mongo'>
+             Mongo DB
             </Menu.Item>
           </Sidebar>
           <Sidebar.Pusher>
-            <Segment basic>
-              <Header as='h3'>Application Content</Header>
-              <Image src='/assets/images/wireframe/paragraph.png' />
+            <Segment Basic>
+              <Header as='h3'>Content</Header>
+              <Image src='#' />
             </Segment>
           </Sidebar.Pusher>
         </Sidebar.Pushable>

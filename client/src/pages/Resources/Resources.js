@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ResourceContainer from "../../components/Grid/ResourceContainer.js";
 import { Grid } from 'semantic-ui-react'
+import {  } from 'semantic-ui-react'
+import MainSidebar from "../../components/Sidebar/Sidebar.js";
 
 
 
@@ -20,8 +22,9 @@ state = {
           return ( <Grid.Row>{eachListItem}</Grid.Row>)
         })}
         </Grid.Column>
-
-
+        <div>
+        <MainSidebar />
+        </div>
       </div>
  
     )};
