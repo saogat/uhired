@@ -18,12 +18,22 @@ class LoginForm extends Component {
   };
 
   loadPortfolio = res => {
+    console.log
     console.log(res);
-    API.getPorfolio()
-      .then(res =>
-        this.setState({ portfolio: res.data })
-      )
-      .catch(err => console.log(err));
+    if(res.status === 200)
+    {
+      window.sessionStorage.setItem("user", JSON.stringify(res.data.token));
+    } 
+    else if (res.status === 401){
+      alert("Wrong login/password, please try again")
+    }
+    else {alert(res)}
+
+    // API.getPorfolio()
+    //   .then(res =>
+    //     this.setState({ portfolio: res.data })
+    //   )
+    //   .catch(err => console.log(err));
   };
 
   handleFormSubmit = event => {
@@ -35,7 +45,7 @@ class LoginForm extends Component {
         password: this.state.password,
       })
         .then(res => this.loadPortfolio(res))
-        .catch(err => console.log(err));
+        .catch(err => alert(err))
     }
   };
 
@@ -53,12 +63,21 @@ class LoginForm extends Component {
       </Form.Field>
       <Form.Field>
       <label>Password</label>
-      <input placeholder='Password' />
-    </Form.Field>
-    <Button type='submit'>Submit</Button>
-  </Form>
-  </div>
-)
+      <input 
+          type='password' 
+          placeholder='Password' 
+          value={this.state.password}
+          onChange={this.handleInputChange}
+          name="password"/>
+      </Form.Field>
+      <Button 
+        type='submit'
+        disabled={!(this.state.email && this.state.password)}
+        onClick={this.handleFormSubmit}>
+        Login</Button>
+    </Form>
+      </div>
+    )};
   }
 
 export default LoginForm
