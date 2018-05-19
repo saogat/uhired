@@ -9,9 +9,10 @@ function generateGUID() {
 }
 
 function generateAndReturnToken(req, opts) {
-  console.log("Generating token");
   var GUID   = generateGUID(); // write/use a better GUID generator in practice
   var token  = generateToken(req, GUID, opts);
+  console.log("Generating token");
+  console.log(token);
   return token;
 }
 
@@ -35,13 +36,13 @@ function generateToken(req, GUID, opts) {
 // Defining methods for the loginController
 module.exports = {
   login: function(req, res) {
-
-    res.json(generateAndReturnToken(req, res));
-
-    // db.User
-    // .findById(req.params.id)
-    // .then(dbModel => res.json(generateAndReturnToken(req, res)))
-    // .catch(err => res.status(422).json(err));
+    db.User
+    .findOne({email: req.body.email, password: req.body.password})
+    .then(dbModel => 
+      { console.log(dbModel); 
+        if(dbModel) res.status(200).json({user: dbModel, token: generateAndReturnToken(req, res)})
+        else res.status(401).json("Wrong login")})
+    .catch(err => res.status(422).json(err));
   }
 
 };
