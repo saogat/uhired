@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid } from 'semantic-ui-react'
 import { Container } from 'semantic-ui-react'
+import { Checkbox } from 'semantic-ui-react'
 import MainSidebar from "../../components/Sidebar/Sidebar.js";
 
 const JobGrid= () => (
@@ -20,20 +21,20 @@ const JobGrid= () => (
     <Grid.Row>
     <Grid.Column width={4} />
       <Grid.Column width={2}>
-        Save
+        <Checkbox />
       </Grid.Column>
       <Grid.Column width={2}>
-        Link
+        Job Title-Clickable Link
       </Grid.Column>
       <Grid.Column width={2}>
-        Remove
+      <Checkbox />
       </Grid.Column>
       <Grid.Column width={2}>
         Link
       </Grid.Column>
     </Grid.Row>
   </Grid>
-  <Container className= "ui vertical masthead center aligned segment massive">
+  <Container style = {{marginTop: "30px", border: "2px solid"}} className= "ui vertical masthead center aligned segment massive">
     <h3> Users </h3>
   </Container>
 
