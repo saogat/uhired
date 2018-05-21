@@ -18,7 +18,7 @@ const MainContainer = () => (
     <h1>Welcome to UHired</h1>
     <h2>A site for entry-level developers to search for jobs and share resources</h2>
     <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
-    <ModalJoin />
+        <ModalJoin />
        <ModalLogin />
        </Container>
        <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
