@@ -14,7 +14,7 @@ const resourceSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
     },
-    note: {
+  note: {
       type: Schema.Types.ObjectId,
       ref: "Note"
       }
