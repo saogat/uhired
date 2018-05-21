@@ -18,10 +18,10 @@ const jobSchema = new Schema({
     type: String,
     required: false
   },
-  note: {
+  note: [{
     type: Schema.Types.ObjectId,
     ref: "Note"
-    },
+    }],
   date: {
     type: Date,
     default: Date.now

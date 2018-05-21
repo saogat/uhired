@@ -10,6 +10,8 @@ class JobPage extends Component {
     return (
       <div>
       <JobContainer />   
+      <h1 style={{textAlign: "center"}}>Jobs</h1>
+        <hr />
 
       <p style={{fontSize: "20px", marginLeft: "30px", marginTop: "30px"}}>Select one or more skills to search.</p>
       <Form>
@@ -69,51 +71,44 @@ class JobPage extends Component {
 
   const JobsTable = () => (
  
-    <Table celled style={{width: "80%", align: "center", margin: "auto"}}>
+    <Table celled style={{width: "90%", align: "center", margin: "auto"}}>
     <Table.Header>
       <Table.Row>
-       <Table.HeaderCell width={2}>Actions</Table.HeaderCell>
+       <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
         <Table.HeaderCell width={6}>Job Results</Table.HeaderCell>
-        <Table.HeaderCell width={6}>Portfolio Jobs</Table.HeaderCell>
+        <Table.HeaderCell width={1}>Remove</Table.HeaderCell>
+        <Table.HeaderCell width={6}>Notes</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
     <Table.Body>
       <Table.Row>
-        <Table.Cell><Button className="blue">Add to Portfolio</Button>
+        <Table.Cell><Button className="blue">Add to Portfolio</Button><Button className="blue">Add Note</Button>
         </Table.Cell>
         <Table.Cell>Job 1</Table.Cell>
+        <Table.Cell><Button icon="remove" style={{color: "blue"}}/></Table.Cell>
         <Table.Cell>Job 1</Table.Cell>
       </Table.Row>
       <Table.Row>
-      <Table.Cell><Button className="blue">Add to Portfolio</Button>
+      <Table.Cell><Button className="blue">Add to Portfolio</Button><Button className="blue">Add Note</Button>
         </Table.Cell>
         <Table.Cell>Job 2</Table.Cell>
+        <Table.Cell><Button icon="remove" style={{color: "blue"}}/></Table.Cell>
         <Table.Cell>......</Table.Cell>
       </Table.Row>
       <Table.Row>
-      <Table.Cell><Button className="blue">Add to Portfolio</Button>
+      <Table.Cell><Button className="blue">Add to Portfolio</Button><Button className="blue">Add Note</Button>
         </Table.Cell>
         <Table.Cell>Job 3</Table.Cell>
+        <Table.Cell><Button icon="remove" style={{color: "blue"}}/></Table.Cell>
         <Table.Cell>....</Table.Cell>
       </Table.Row>
     </Table.Body>
 
     <Table.Footer>
       <Table.Row>
-        <Table.HeaderCell colSpan='3'>
-          <Menu floated='right' pagination>
-            <Menu.Item as='a' icon>
-              <Icon name='chevron left' />
-            </Menu.Item>
-            <Menu.Item as='a'>1</Menu.Item>
-            <Menu.Item as='a'>2</Menu.Item>
-            <Menu.Item as='a'>3</Menu.Item>
-            <Menu.Item as='a'>4</Menu.Item>
-            <Menu.Item as='a' icon>
-              <Icon name='chevron right' />
-            </Menu.Item>
-          </Menu>
+        <Table.HeaderCell colSpan='4'>
+    
         </Table.HeaderCell>
       </Table.Row>
     </Table.Footer>

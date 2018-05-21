@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ResourceContainer from "../../components/Grid/ResourceContainer.js";
 import { Sidebar, Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
-
+import AddResourceModal from "../../components/Modal/AddResource.js";
 
 
 
@@ -11,11 +11,14 @@ state = {
   fullResourceNAmesList: ""
 }
 
+
   render() {
     return (
       <div>
       <ResourceContainer>   
       </ResourceContainer>
+      <h1 style={{textAlign: "center"}}>Resources</h1>
+      <hr />
       <p style={{fontSize: "20px", marginLeft: "30px", marginTop: "30px"}}>Select one or more skills to search.</p>
       <Form>
     <ResourceSelection />
@@ -57,51 +60,44 @@ state = {
 
   const ResourcesTable = () => (
  
-    <Table celled style={{width: "80%", align: "center", margin: "auto"}}>
+    <Table celled style={{width: "90%", align: "center", margin: "auto"}}>
     <Table.Header>
       <Table.Row>
-       <Table.HeaderCell width={2}>Actions</Table.HeaderCell>
+       <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
         <Table.HeaderCell width={6}>Resource Search Results</Table.HeaderCell>
-        <Table.HeaderCell width={6}>Portfolio Resources</Table.HeaderCell>
+        <Table.HeaderCell width={1}>Remove</Table.HeaderCell>
+        <Table.HeaderCell width={6}>Notes</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
     <Table.Body>
       <Table.Row>
-        <Table.Cell><Button className="blue">Add to Portfolio</Button>
+        <Table.Cell><Button className="blue">Add to Portfolio</Button><Button className="blue">Add Note</Button>
         </Table.Cell>
         <Table.Cell>Learning HTML</Table.Cell>
-        <Table.Cell>Learning HTML</Table.Cell>
+        <Table.Cell><Button icon="remove" style={{color: "blue", align: "center"}}  /></Table.Cell>
+        <Table.Cell>Great article</Table.Cell>
       </Table.Row>
       <Table.Row>
-      <Table.Cell><Button className="blue">Add to Portfolio</Button>
+      <Table.Cell><Button className="blue">Add to Portfolio</Button><Button className="blue">Add Note</Button>
         </Table.Cell>
         <Table.Cell>Semantic UI for Beginners</Table.Cell>
+        <Table.Cell><Button icon="remove" style={{color: "blue"}}/></Table.Cell>
         <Table.Cell>......</Table.Cell>
       </Table.Row>
       <Table.Row>
-      <Table.Cell><Button className="blue">Add to Portfolio</Button>
+      <Table.Cell><Button className="blue">Add to Portfolio</Button><Button className="blue">Add Note</Button>
         </Table.Cell>
         <Table.Cell>React Tutorial</Table.Cell>
+        <Table.Cell><Button icon="remove" style={{color: "blue"}}/></Table.Cell>
         <Table.Cell>....</Table.Cell>
       </Table.Row>
     </Table.Body>
 
     <Table.Footer>
       <Table.Row>
-        <Table.HeaderCell colSpan='3'>
-          <Menu floated='right' pagination>
-            <Menu.Item as='a' icon>
-              <Icon name='chevron left' />
-            </Menu.Item>
-            <Menu.Item as='a'>1</Menu.Item>
-            <Menu.Item as='a'>2</Menu.Item>
-            <Menu.Item as='a'>3</Menu.Item>
-            <Menu.Item as='a'>4</Menu.Item>
-            <Menu.Item as='a' icon>
-              <Icon name='chevron right' />
-            </Menu.Item>
-          </Menu>
+        <Table.HeaderCell colSpan='4'>
+          <AddResourceModal />
         </Table.HeaderCell>
       </Table.Row>
     </Table.Footer>
