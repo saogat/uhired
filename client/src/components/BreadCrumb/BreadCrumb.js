@@ -8,9 +8,11 @@ const MainBreadCrumb = () => (
    <Image href="/" src='https://assets.bettyblocks.com/symbid_production/ed493a7981174a428bb45ba91bf614bb/1266/handshake_copy.png' wrapped size='mini' />
   <a style = {{marginLeft: "15px"}} className="active section" href="/">Home</a>
   <div className="divider">|</div>
+  <a className="section" href="/About">About</a>
+  <div className="divider">|</div>
   <a className="section" href="/Resources">Resources</a>
   <div className="divider">|</div>
-  <a className="active section" href="/Jobs">Jobs</a>
+  <a className="section" href="/Jobs">Jobs</a>
   <div className="divider">|</div>
   <a className="section" href="/Portfolio">Portfolio</a>
 </div>

@@ -10,7 +10,7 @@ class MainSidebar extends Component {
     const { visible } = this.state
     return (
       <div>
-        <Button style={{marginTop: "20px"}} className="blue massive" onClick={this.toggleVisibility}>Search by Skill</Button>
+        <Button style={{marginTop: "20px"}} className="blue large" onClick={this.toggleVisibility}>Search by Skill</Button>
         <Sidebar.Pushable as={Segment}>
           <Sidebar as={Menu} animation='push' width='wide' visible={visible} vertical inverted>
             <Menu.Item name='home'>
