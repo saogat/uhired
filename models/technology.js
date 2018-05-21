@@ -2,22 +2,22 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const technologySchema = new Schema({
-  url: {
-    name: String,
+  name: {
+    type: String,
     required: true
   },
   description: {
     type: String,
     required: false
   },
-  resource: {
+  resource: [{
     type: Schema.Types.ObjectId,
     ref: "Resource"
-  },
-  job: {
+  }],
+  job: [{
     type: Schema.Types.ObjectId,
     ref: "Job"
-    }
+    }]
 });
 
 const Technology = mongoose.model("Technology", technologySchema);

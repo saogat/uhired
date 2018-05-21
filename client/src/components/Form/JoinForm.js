@@ -9,8 +9,13 @@ class JoinForm extends Component {
     firstName: "",
     lastName: "",
     email: "",
-    password: ""
+    password: "",
+    modalOpen: false 
   };
+
+  handleOpen = () => this.setState({ modalOpen: true })
+
+  handleClose = () => this.setState({ modalOpen: false })
 
 handleInputChange = event => {
   // Getting the value and name of the input which triggered the change
@@ -24,8 +29,12 @@ handleInputChange = event => {
 
 loadPortfolio = () => {
   API.getPorfolio()
-    .then(res =>
-      this.setState({ portfolio: res.data })
+    .then(res => {
+      console.log("In load portfolio");
+      // this.setState({ portfolio: res.data })
+    // this.props.onSuccess();
+    this.handleCLose();
+    }
     )
     .catch(err => console.log(err));
 };
@@ -37,12 +46,9 @@ handleFormSubmit = event => {
     alert("Fill out your first and last name please!");
   } else if (this.state.password.length < 6) {
     alert(
-      `Choose a more secure password ${this.state.firstName} ${this.state
-        .lastName}`
+      `Choose a more secure password ${this.state.firstName} ${this.state.lastName}`
     );
-  } else {
-    alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
-  }
+  };
 
   if (this.state.firstName && this.state.lastName && this.state.email && this.state.password) {
     API.join({

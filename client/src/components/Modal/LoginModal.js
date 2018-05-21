@@ -1,17 +1,53 @@
-import React from 'react'
-import { Button, Header, Image, Modal, Form } from 'semantic-ui-react'
-import LoginBtn from "../../components/LoginBtn/LoginBtn.js";
+import React, { Component } from 'react';
+import { Button, Header, Image, Modal } from 'semantic-ui-react';
 import LoginForm from "../../components/Form/LoginForm.js";
 
-const ModalLogin = () => (
-    <Modal className="mini" trigger={<Button className = "huge inverted blue">Log In</Button>}>
-    <Modal.Header>
-      <Image wrapped size='tiny' src='https://st2.depositphotos.com/3265223/11274/v/950/depositphotos_112741124-stock-illustration-handshake-line-icon-deal-partnership.jpg' />
-          Log In</Modal.Header>
-      <Modal.Content >
-        <LoginForm />
-      </Modal.Content>
-    </Modal>
-)
+class ModalLogin extends Component {
+   
+    state = { modalOpen: false }
+  
+    handleOpen = () => this.setState({ modalOpen: true })
+    handleClose = () => this.setState({ modalOpen: false })
+  
+    render() {
+      return (
+    //     <Modal 
+    //         className="mini" 
+    //         open={this.state.modalOpen}
+    //         onClose={this.handleClose}
+    //         basic size='small'
+    //         trigger={<Button className = "huge inverted blue">Login</Button>}>
+    //     <Modal.Header>
+    //       <Image wrapped size='tiny' src='https://st2.depositphotos.com/3265223/11274/v/950/depositphotos_112741124-stock-illustration-handshake-line-icon-deal-partnership.jpg' />
+    //           Log In</Modal.Header>
+    //       <Modal.Content >
+    //       <LoginForm close={this.handleClose}/>
+    //       </Modal.Content>
+    //     </Modal>)
+    //   }
+    // }
+
+        <Modal
+          className="mini" 
+          trigger={<Button onClick={this.handleOpen} className = "huge inverted blue">Login</Button>}
+          open={this.state.modalOpen}
+          onClose={this.handleClose}
+          basic
+          size='small'
+        >
+         <Modal.Header>
+          <Image wrapped size='tiny' src='https://st2.depositphotos.com/3265223/11274/v/950/depositphotos_112741124-stock-illustration-handshake-line-icon-deal-partnership.jpg' />
+           Log In
+           </Modal.Header>
+          {/* <Header icon='browser' content='Cookies policy' /> */}
+          <Modal.Content>
+          <LoginForm close={this.handleClose}/>
+          </Modal.Content>
+        </Modal>
+      )
+    }
+  }
 
 export default ModalLogin
+
+
