@@ -25,8 +25,6 @@ class LoginForm extends Component {
     if(res.status === 200)
     {
       window.sessionStorage.setItem("user", JSON.stringify(res.data.token));
-      // this.setState({ modalOpen: false });
-      // this.setState({ portfolio: res.user.portfolio });
       this.props.close();
     } 
     else {alert(res)}
