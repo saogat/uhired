@@ -5,7 +5,7 @@ import API from "../../utils/API";
 
 class JoinForm extends Component {
   // Setting the component's initial state
-  state = {
+state = {
     firstName: "",
     lastName: "",
     email: "",
@@ -13,9 +13,8 @@ class JoinForm extends Component {
     modalOpen: false 
   };
 
-  handleOpen = () => this.setState({ modalOpen: true })
-
-  handleClose = () => this.setState({ modalOpen: false })
+handleOpen = () => this.setState({ modalOpen: true });
+handleClose = () => this.setState({ modalOpen: false });
 
 handleInputChange = event => {
   // Getting the value and name of the input which triggered the change
@@ -28,15 +27,7 @@ handleInputChange = event => {
 };
 
 loadPortfolio = () => {
-  API.getPorfolio()
-    .then(res => {
-      console.log("In load portfolio");
-      // this.setState({ portfolio: res.data })
-    // this.props.onSuccess();
-    this.handleCLose();
-    }
-    )
-    .catch(err => console.log(err));
+  this.props.close();
 };
 
 handleFormSubmit = event => {

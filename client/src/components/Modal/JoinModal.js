@@ -9,7 +9,10 @@ class ModalJoin extends Component {
   state = { modalOpen: false }
 
   handleOpen = () => this.setState({ modalOpen: true })
-  handleClose = () => this.setState({ modalOpen: false })
+  handleClose = () => {
+    this.setState({ modalOpen: false });
+    this.props.openPortfolio();
+}
 
   render() {
     return (
