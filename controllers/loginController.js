@@ -36,8 +36,10 @@ function generateToken(req, GUID, opts) {
 // Defining methods for the loginController
 module.exports = {
   login: function(req, res) {
+    console.log("in login controller");
     db.User
     .findOne({email: req.body.email, password: req.body.password})
+    // .populate("portfolio")
     .then(dbModel => 
       { console.log(dbModel); 
         if(dbModel) res.status(200).json({user: dbModel, token: generateAndReturnToken(req, res)})

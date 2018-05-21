@@ -7,7 +7,9 @@ class LoginForm extends Component {
 
   state = {
     email: "",
-    password: ""
+    password: "",
+    portfolio: {},
+    modalOpen: false 
   };
 
   handleInputChange = event => {
@@ -23,17 +25,9 @@ class LoginForm extends Component {
     if(res.status === 200)
     {
       window.sessionStorage.setItem("user", JSON.stringify(res.data.token));
+      this.props.close();
     } 
-    else if (res.status === 401){
-      alert("Wrong login/password, please try again")
-    }
     else {alert(res)}
-
-    // API.getPorfolio()
-    //   .then(res =>
-    //     this.setState({ portfolio: res.data })
-    //   )
-    //   .catch(err => console.log(err));
   };
 
   handleFormSubmit = event => {
@@ -74,8 +68,9 @@ class LoginForm extends Component {
         type='submit'
         disabled={!(this.state.email && this.state.password)}
         onClick={this.handleFormSubmit}>
-        Login</Button>
-    </Form>
+        Login
+      </Button>
+      </Form>
       </div>
     )};
   }
