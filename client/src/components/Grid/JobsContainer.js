@@ -9,12 +9,6 @@ const JobsContainer = () => (
   <Container className= "ui fluid fixed inverted vertical masthead left aligned segment massive">
      <MainBreadCrumb></MainBreadCrumb>
      </Container>
-  <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
-    <h1>Jobs</h1>
-  
-
-   
-  </Container>
   </div>
 
 )
