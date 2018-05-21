@@ -15,10 +15,13 @@ const resourceSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
     },
-  note: {
+  description: {
+      type: String
+  },
+  note: [{
       type: Schema.Types.ObjectId,
       ref: "Note"
-      },
+      }],
   done: {
     type: Boolean,
     default: false
