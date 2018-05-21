@@ -135,7 +135,7 @@ const resourceSeed = [
 
 db.Resource
   .remove({})
-  .then(() => db.Resource.collection.insertMany(ResourceSeed))
+  .then(() => db.Resource.collection.insertMany(resourceSeed))
   .then(data => {
     console.log(data.insertedIds.length + " records inserted!");
     process.exit(0);
