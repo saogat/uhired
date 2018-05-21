@@ -10,6 +10,7 @@ const resourceSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  //owner is the creator of the resource
   owner: {
     type: Schema.Types.ObjectId,
     ref: "User"
@@ -17,7 +18,11 @@ const resourceSchema = new Schema({
   note: {
       type: Schema.Types.ObjectId,
       ref: "Note"
-      }
+      },
+  done: {
+    type: Boolean,
+    default: false
+  }
 });
 
 const Resource = mongoose.model("Resource", resourceSchema);
