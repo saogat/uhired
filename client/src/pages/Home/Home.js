@@ -39,7 +39,7 @@ class HomePage extends Component {
                     <h1>Welcome to UHired</h1>
                     <h2>A site for entry-level developers to search for jobs and share resources</h2>
                       <ModalLogin openPortfolio={this.handleLogin}/>
-                      <ModalJoin openPortfolio={this.handleJoin}/>
+                      <ModalJoin openPortfolio={this.handleLogin}/>
                 </Container>
              </div>   
             )}
