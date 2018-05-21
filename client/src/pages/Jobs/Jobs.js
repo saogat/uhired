@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import JobContainer from "../../components/Grid/JobsContainer.js";
-import { Select, Sidebar, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid, Container, Input } from 'semantic-ui-react'
+import { Dropdown, Select, Table, Sidebar, Form, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid, Container, Input } from 'semantic-ui-react'
 
 
 class JobPage extends Component {
@@ -11,14 +11,22 @@ class JobPage extends Component {
       <div>
       <JobContainer />   
       <JobSidebar />
-      <Container style = {{marginTop: "30px", border: "2px solid"}} className= "ui vertical masthead aligned segment">
-     <h3 style={{marginLeft: "20px", textDecoration: "underline"}}> Users </h3>
+      <hr/>
+      <p style={{marginLeft: "30px"}}>Select one or more skills to search</p>
+      <Form>
+    <ResourceSelection />
+    <Button style = {{marginLeft: "20px", marginTop: "20px"}} className = "large blue" type='submit'>Search</Button>
+    </Form>
+    <JobsTable />
+
+    {/* <Container style = {{ border: "2px solid"}}>
+    <h3 style={{marginLeft: "20px", textDecoration: "underline"}}> Users </h3>
      <Input style = {{marginLeft: "20px"}} icon='users' iconPosition='left' placeholder='Search users...' />
      <Button style = {{marginLeft: "20px"}} className = "ui large blue">Search</Button>
-     <hr/>
-   <InputtoShare />
-    </Container>
-      
+    <InputtoShare />
+    </Container> */}
+
+    
       </div>
  
     )};
@@ -61,7 +69,7 @@ class JobPage extends Component {
               <Segment basic>
                <Grid>
        <Grid.Row>
-        <Grid.Column width={6}>
+        <Grid.Column width={6} divided>
         <h3 style={{textDecoration: "underline"}}>Jobs</h3>
         </Grid.Column>
         <Grid.Column width={6}>
@@ -91,15 +99,93 @@ class JobPage extends Component {
     }
   }
 
-  const options = [
+  const optionsa = [
     { key: 'resources', text: 'Resources', value: 'Resources' },
-    { key: 'jobs', text: 'Jobs', value: 'jobss' },
+    { key: 'jobs', text: 'Jobs', value: 'jobs' },
   ]
   
   const InputtoShare= () => (
     <Input style = {{marginLeft: "20px"}}  type='text' placeholder='Search...' action>
       <input />
-      <Select   compact options={options} defaultValue='Resources' />
+      <Select   compact options={optionsa} defaultValue='Resources' />
       <Button style = {{marginLeft: "20px"}} className = "large blue" type='submit'>Share</Button>
     </Input>
   )
+
+  const options = [
+    { key: 'angular', text: 'Angular', value: 'angular' },
+    { key: 'css', text: 'CSS', value: 'css' },
+    { key: 'design', text: 'Graphic Design', value: 'design' },
+    { key: 'ember', text: 'Ember', value: 'ember' },
+    { key: 'html', text: 'HTML', value: 'html' },
+    { key: 'ia', text: 'Information Architecture', value: 'ia' },
+    { key: 'javascript', text: 'Javascript', value: 'javascript' },
+    { key: 'mech', text: 'Mechanical Engineering', value: 'mech' },
+    { key: 'meteor', text: 'Meteor', value: 'meteor' },
+    { key: 'node', text: 'NodeJS', value: 'node' },
+    { key: 'plumbing', text: 'Plumbing', value: 'plumbing' },
+    { key: 'python', text: 'Python', value: 'python' },
+    { key: 'rails', text: 'Rails', value: 'rails' },
+    { key: 'react', text: 'React', value: 'react' },
+    { key: 'repair', text: 'Kitchen Repair', value: 'repair' },
+    { key: 'ruby', text: 'Ruby', value: 'ruby' },
+    { key: 'ui', text: 'UI Design', value: 'ui' },
+    { key: 'ux', text: 'User Experience', value: 'ux' },
+  ]
+  
+  const ResourceSelection = () => (
+    <Dropdown style={{marginLeft: "30px", marginBottom: "30px"}}placeholder='Skills' multiple selection options={options} />
+  )
+
+  const JobsTable = () => (
+ 
+    <Table celled style={{width: "80%", align: "center", margin: "auto"}}>
+    <Table.Header>
+      <Table.Row>
+       <Table.HeaderCell width={2}>Actions</Table.HeaderCell>
+        <Table.HeaderCell width={6}>Job Results</Table.HeaderCell>
+        <Table.HeaderCell width={6}>Portfolio Jobs</Table.HeaderCell>
+      </Table.Row>
+    </Table.Header>
+
+    <Table.Body>
+      <Table.Row>
+        <Table.Cell><Button className="blue">Add to Portfolio</Button>
+        </Table.Cell>
+        <Table.Cell>Job 1</Table.Cell>
+        <Table.Cell>Job 1</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+      <Table.Cell><Button className="blue">Add to Portfolio</Button>
+        </Table.Cell>
+        <Table.Cell>Job 2</Table.Cell>
+        <Table.Cell>......</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+      <Table.Cell><Button className="blue">Add to Portfolio</Button>
+        </Table.Cell>
+        <Table.Cell>Job 3</Table.Cell>
+        <Table.Cell>....</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+
+    <Table.Footer>
+      <Table.Row>
+        <Table.HeaderCell colSpan='3'>
+          <Menu floated='right' pagination>
+            <Menu.Item as='a' icon>
+              <Icon name='chevron left' />
+            </Menu.Item>
+            <Menu.Item as='a'>1</Menu.Item>
+            <Menu.Item as='a'>2</Menu.Item>
+            <Menu.Item as='a'>3</Menu.Item>
+            <Menu.Item as='a'>4</Menu.Item>
+            <Menu.Item as='a' icon>
+              <Icon name='chevron right' />
+            </Menu.Item>
+          </Menu>
+        </Table.HeaderCell>
+      </Table.Row>
+    </Table.Footer>
+  </Table>
+)

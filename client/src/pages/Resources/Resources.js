@@ -41,7 +41,7 @@ state = {
       const { visible } = this.state
       return (
         <div>
-          <Button style={{marginTop: "20px"}} className="blue massive" onClick={this.toggleVisibility}>Toggle Skill Search</Button>
+          <Button style={{marginTop: "20px"}} className="blue huge" onClick={this.toggleVisibility}>Toggle Skill Search</Button>
           <Sidebar.Pushable as={Segment}>
             <Sidebar as={Menu} animation='push' width='wide' visible={visible} vertical inverted>
               <Menu.Item name='home'>
