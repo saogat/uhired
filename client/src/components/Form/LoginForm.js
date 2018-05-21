@@ -12,6 +12,9 @@ class LoginForm extends Component {
     modalOpen: false 
   };
 
+  handleOpen = () => this.setState({ modalOpen: true });
+  handleClose = () => this.setState({ modalOpen: false });  
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -31,6 +34,7 @@ class LoginForm extends Component {
   };
 
   handleFormSubmit = event => {
+     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
     console.log("Sumbit clicked");
     if (this.state.email && this.state.password) {
