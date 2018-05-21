@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Card, Grid, Form, TextArea, Button, Icon, Image, Label, Menu, Table, Checkbox} from 'semantic-ui-react'
 import MainBreadCrumb from "../../components/BreadCrumb/BreadCrumb.js";
+import AccomplishmentModal from "../../components/Modal/AccomplishmentModal.js";
 
 
 
@@ -16,6 +17,8 @@ class PortfolioPage extends Component {
          <UserCard />
       <PortfolioJobs /> 
       <PortfolioResources />
+      <div>
+      <AccomplishmentModal /></div>
       <Accomplishments />
   </div>
  
@@ -120,7 +123,7 @@ const PortfolioResources = () => (
       <Table.Cell>React Article</Table.Cell>
       <Table.Cell>Fantastic Info</Table.Cell>
       <Table.Cell><Checkbox /></Table.Cell>
-      <Table.Cell> <Button icon='users' /></Table.Cell>
+      <Table.Cell> <Button icon="users" /></Table.Cell>
     </Table.Row>
     <Table.Row>
       <Table.Cell><Button className="blue">Remove</Button>
@@ -129,7 +132,7 @@ const PortfolioResources = () => (
       <Table.Cell>Javascript Tutorial</Table.Cell>
       <Table.Cell>Well done!</Table.Cell>
       <Table.Cell><Checkbox /></Table.Cell>
-      <Table.Cell> <Button icon='users' /></Table.Cell>
+      <Table.Cell> <Button icon="users" /></Table.Cell>
     </Table.Row>
   </Table.Body>
 
@@ -163,7 +166,7 @@ const Accomplishments = () => (
   <Table.Header>
     <Table.Row>
     <Table.HeaderCell width={5}>Skills</Table.HeaderCell>
-     <Table.HeaderCell width={5}>Project</Table.HeaderCell>
+     <Table.HeaderCell width={5}>Richard's Accomplishments</Table.HeaderCell>
       <Table.HeaderCell width={5}>Link</Table.HeaderCell>   
     </Table.Row>
   </Table.Header>
