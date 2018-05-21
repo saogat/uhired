@@ -12,11 +12,11 @@ class PortfolioPage extends Component {
       <div>
          <Container className= "ui fluid inverted vertical masthead left aligned segment massive">
        <MainBreadCrumb></MainBreadCrumb>
-      
        </Container>
          <UserCard />
       <PortfolioJobs /> 
       <PortfolioResources />
+      <Accomplishments />
   </div>
  
     )};
@@ -76,13 +76,6 @@ class PortfolioPage extends Component {
         <Table.Cell>Job 2</Table.Cell>
         <Table.Cell>Great prospect</Table.Cell>
       </Table.Row>
-      <Table.Row>
-        <Table.Cell><Button className="blue">Remove</Button>
-        <Button className="blue">Add Note</Button>
-        </Table.Cell>
-        <Table.Cell>Job 3</Table.Cell>
-        <Table.Cell>Interview next week</Table.Cell>
-      </Table.Row>
     </Table.Body>
 
     <Table.Footer>
@@ -112,9 +105,10 @@ const PortfolioResources = () => (
   <Table.Header>
     <Table.Row>
      <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
-      <Table.HeaderCell width={6}>Richard's Resources</Table.HeaderCell>
-      <Table.HeaderCell width={6}>Notes</Table.HeaderCell>
-      <Table.HeaderCell width={1}>Completed</Table.HeaderCell>
+      <Table.HeaderCell width={5}>Richard's Resources</Table.HeaderCell>
+      <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
+      <Table.HeaderCell width={1}><Icon name="checkmark box"/></Table.HeaderCell>
+      <Table.HeaderCell width={1}>Share</Table.HeaderCell>
     </Table.Row>
   </Table.Header>
 
@@ -126,6 +120,7 @@ const PortfolioResources = () => (
       <Table.Cell>React Article</Table.Cell>
       <Table.Cell>Fantastic Info</Table.Cell>
       <Table.Cell><Checkbox /></Table.Cell>
+      <Table.Cell> <Button icon='users' /></Table.Cell>
     </Table.Row>
     <Table.Row>
       <Table.Cell><Button className="blue">Remove</Button>
@@ -134,20 +129,13 @@ const PortfolioResources = () => (
       <Table.Cell>Javascript Tutorial</Table.Cell>
       <Table.Cell>Well done!</Table.Cell>
       <Table.Cell><Checkbox /></Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell><Button className="blue">Remove</Button>
-      <Button className="blue">Add Note</Button>
-      </Table.Cell>
-      <Table.Cell>Semantic UI for Beginners</Table.Cell>
-      <Table.Cell>Great tutorial</Table.Cell>
-      <Table.Cell><Checkbox /></Table.Cell>
+      <Table.Cell> <Button icon='users' /></Table.Cell>
     </Table.Row>
   </Table.Body>
 
   <Table.Footer>
     <Table.Row>
-      <Table.HeaderCell colSpan='4'>
+      <Table.HeaderCell colSpan='5'>
         <Menu floated='right' pagination>
           <Menu.Item as='a' icon>
             <Icon name='chevron left' />
@@ -168,5 +156,57 @@ const PortfolioResources = () => (
 
 
  
-  
+const Accomplishments = () => (
+
+ 
+  <Table celled style={{width: "80%", align: "center", marginLeft: "250px", marginTop: "30px"}}>
+  <Table.Header>
+    <Table.Row>
+    <Table.HeaderCell width={5}>Skills</Table.HeaderCell>
+     <Table.HeaderCell width={5}>Project</Table.HeaderCell>
+      <Table.HeaderCell width={5}>Link</Table.HeaderCell>   
+    </Table.Row>
+  </Table.Header>
+
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell>React, Semantic UI</Table.Cell>
+      <Table.Cell>React App</Table.Cell>
+      <Table.Cell>Link</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>Javascript</Table.Cell>
+      <Table.Cell>Trivia App</Table.Cell>
+      <Table.Cell>Link</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>SQL</Table.Cell>
+      <Table.Cell>Database App</Table.Cell>
+      <Table.Cell>Link</Table.Cell>
+      
+    </Table.Row>
+  </Table.Body>
+
+  <Table.Footer>
+    <Table.Row>
+      <Table.HeaderCell colSpan='3'>
+        <Menu floated='right' pagination>
+          <Menu.Item as='a' icon>
+            <Icon name='chevron left' />
+          </Menu.Item>
+          <Menu.Item as='a'>1</Menu.Item>
+          <Menu.Item as='a'>2</Menu.Item>
+          <Menu.Item as='a'>3</Menu.Item>
+          <Menu.Item as='a'>4</Menu.Item>
+          <Menu.Item as='a' icon>
+            <Icon name='chevron right' />
+          </Menu.Item>
+        </Menu>
+      </Table.HeaderCell>
+    </Table.Row>
+  </Table.Footer>
+</Table>
+)
+
+
  

@@ -33,6 +33,7 @@ class HomePage extends Component {
               {/* <ModalJoin /> */}
               <ModalLogin openPortfolio={this.handleLogin}/>
               <ModalJoin openPortfolio={this.handleJoin}/>
+              </Container>
           <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
           {this.state.portfolio ? (
             <div>
@@ -58,7 +59,7 @@ class HomePage extends Component {
               // <h3>No Results to Display</h3>
             )}
             {/* <MainImage /> */}
-          </Container>
+       \
         </Container>
       </div>
     )};

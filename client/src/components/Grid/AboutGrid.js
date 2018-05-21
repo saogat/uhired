@@ -9,7 +9,7 @@ const AboutGrid = () => (
     <MainBreadCrumb></MainBreadCrumb>
     </Container>
     <Container className= "ui fluid vertical masthead center aligned segment massive">
-    <h2 style={{color: "blue"}}>Meet the Team</h2>
+    <h2 style={{fontFamily: "cursive"}}>Meet the Team</h2>
     </Container>
     <Container className="ui fluid vertical masthead center aligned segment massive">
   <Grid className= "centered" columns={6} divided>
