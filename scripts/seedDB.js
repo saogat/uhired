@@ -11,7 +11,15 @@ mongoose.connect(
   }
 );
 
-const resourceSeed = [
+const resources = [
+   ['HTML', 
+  {
+    url: "hhttps://learn.shayhowe.com/html-css/positioning-content/",
+    description:
+         "HTML and CSS",
+    date: new Date(Date.now())
+  }],
+['CSS',
   {
     url: "https://css-tricks.com/",
     description:
@@ -25,15 +33,16 @@ const resourceSeed = [
     date: new Date(Date.now())
   },
   {
+    url: "hhttps://learn.shayhowe.com/html-css/positioning-content/",
+    description:
+         "HTML and CSS",
+    date: new Date(Date.now())
+  }],
+  ['JavaScript',
+  {
     url: "https://www.udemy.com/understand-javascript/",
     description:
          "Udemy course on advanced JavaScript",
-    date: new Date(Date.now())
-  },
-  {
-    url: "https://try.github.io/levels/1/challenges/1",
-    description:
-         "github tutorial",
     date: new Date(Date.now())
   },
   {
@@ -49,35 +58,46 @@ const resourceSeed = [
     date: new Date(Date.now())
   },
   {
+    url: "https://hackernoon.com/javascript-es6-arrow-functions-and-lexical-this-f2a3e2a5e8c4",
+    description:
+         "JES6-Arrow Functions",
+    date: new Date(Date.now())
+  }],
+  ['Git',
+  {
+    url: "https://try.github.io/levels/1/challenges/1",
+    description:
+         "github tutorial",
+    date: new Date(Date.now())
+  }],
+  ['React.JS',
+  {
     url: "https://reactjs.org/",
     description:
          "REACT documentation",
     date: new Date(Date.now())
-  },
-  {
-    url: "hhttps://learn.shayhowe.com/html-css/positioning-content/",
-    description:
-         "HTML and CSS",
-    date: new Date(Date.now())
-  },
+  }],
+  ['Node.JS', 
   {
     url: "https://www.npmjs.com/browse/depended",
     description:
          "npm documentation",
     date: new Date(Date.now())
-  },
-  {
-    url: "https://hackernoon.com/javascript-es6-arrow-functions-and-lexical-this-f2a3e2a5e8c4",
-    description:
-         "JES6-Arrow Functions",
-    date: new Date(Date.now())
-  },
+  }],
+   ['Career',
   {
     url: "https://www.themuse.com/advice/the-job-search-trick-that-every-career-changer-needs-to-know-and-use-now",
     description:
          "career change info",
     date: new Date(Date.now())
   },
+  {
+    url: "https://hackernoon.com/getting-hired-in-2018-the-keys-to-building-an-attractive-online-portfolio-a1cf2ca834eb",
+    description:
+         "building attractive portfolio online",
+    date: new Date(Date.now())
+  }],
+  ['MySql',
   {
     url: "https://atech.blog/viaduct/mysql-indexes-primer",
     description:
@@ -89,40 +109,50 @@ const resourceSeed = [
     description:
          "SQL joins",
     date: new Date(Date.now())
-  },
+  }],
+  ['Express',
   {
     url: "https://expressjs.com/en/guide/routing.html#route-parameters",
     description:
          "Expressjs routing",
     date: new Date(Date.now())
-  },
-  {
-    url: "https://hackernoon.com/getting-hired-in-2018-the-keys-to-building-an-attractive-online-portfolio-a1cf2ca834eb",
-    description:
-         "building attractive portfolio online",
-    date: new Date(Date.now())
-  },
-  {
-      url: "https://hackernoon.com/getting-hired-in-2018-the-keys-to-building-an-attractive-online-portfolio-a1cf2ca834eb",
-      description:
-           "mongodb cheat sheet",
-      date: new Date(Date.now())
-    },
+  }],
+  ['Developer',
   {
     url: "https://medium.freecodecamp.org/how-to-read-your-way-to-becoming-a-better-developer-b6432fa5bc0c",
     description:
          "reading documentation",
     date: new Date(Date.now())
-  }
-];
+  }]];
 
-db.Resource
-  .remove({})
-  .then(() => db.Resource.collection.insertMany(resourceSeed))
-  .then(data => {
-    process.exit(0);
+  // console.log(resources);
+
+  db.Resource.remove({});
+  db.Technology.remove({});
+  resources.forEach(each => {
+    const [tech, ...resourcesArray] = each;
+    db.Technology.create({name: tech})
+    .then(dbTechnology => {
+      console.log(" ");
+      console.log("technology creation: ");
+       console.log(dbTechnology);
+        resourcesArray.forEach(resource => {
+          db.Resource.create(resource)
+          .then(dbResource => {
+              console.log(" ");
+              console.log("resource creation: ");
+              console.log(dbResource);
+              console.log(dbTechnology);
+              dbTechnology.update({$push: {resources: dbResource._id }})
+              process.exit(0);
+          })
+          .catch(err => {
+            console.error(err);
+            process.exit(1);
+          })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });
   })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+})})
