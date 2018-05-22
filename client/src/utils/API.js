@@ -14,5 +14,11 @@ export default {
     var result = axios.post("/api/users", user);
     console.log(result);
     return result;
+},
+  technology: function(technology) {
+    console.log(technology);
+    var result = axios.post("/api/technology", technology);
+    console.log(result);
+    return result;
 }
 };
