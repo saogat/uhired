@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Container, Card, Grid, Form, TextArea, Button, Icon, Image, Label, Menu, Table, Checkbox } from 'semantic-ui-react'
 import MainBreadCrumb from "../../components/BreadCrumb/BreadCrumb.js";
 import AccomplishmentModal from "../../components/Modal/AccomplishmentModal.js";
-
+import UserModal from "../../components/Modal/UserModal.js";
+import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
+import AddJobNoteModal from "../../components/Modal/AddJobNoteModal.js";
 
 
 class PortfolioPage extends Component {
@@ -32,7 +34,7 @@ class PortfolioPage extends Component {
 export default PortfolioPage
 
 const UserCard = () => (
-  <Card style={{ color: 'blue', width: "175px", float: "left", marginLeft: "30px", marginRight: "45px" }} >
+  <Card style={{width: "175px", float: "left", marginLeft: "30px", marginRight: "45px" }} >
     <Image style={{ width: '175px', height: "160px" }} src='https://static1.squarespace.com/static/57645625f5e231759e260acf/t/58fa2266f5e231a86437fce0/1492787823235/Richard' />
     <Card.Content>
       <Card.Header>
@@ -40,7 +42,7 @@ const UserCard = () => (
         </Card.Header>
       <Card.Meta>
         <span className='date'>
-          Joined in 2015
+          Joined in 2018
           </span>
       </Card.Meta>
       <Card.Description>
@@ -70,14 +72,14 @@ const PortfolioJobs = () => (
     <Table.Body>
       <Table.Row>
         <Table.Cell><Button className="blue">Remove</Button>
-          <Button className="blue">Add Note</Button>
+        <AddJobNoteModal />
         </Table.Cell>
         <Table.Cell>Job 1</Table.Cell>
         <Table.Cell>This job sounds cool...</Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.Cell><Button className="blue">Remove</Button>
-          <Button className="blue">Add Note</Button>
+        <AddJobNoteModal />
         </Table.Cell>
         <Table.Cell>Job 2</Table.Cell>
         <Table.Cell>Great prospect</Table.Cell>
@@ -101,7 +103,7 @@ const PortfolioResources = () => (
         <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
         <Table.HeaderCell width={5}>Richard's Resources</Table.HeaderCell>
         <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
-        <Table.HeaderCell width={1}><Icon name="checkmark box" /></Table.HeaderCell>
+        <Table.HeaderCell width={1}><Icon name="checkmark box" />Done</Table.HeaderCell>
         <Table.HeaderCell width={1}>Share</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
@@ -109,21 +111,21 @@ const PortfolioResources = () => (
     <Table.Body>
       <Table.Row>
         <Table.Cell><Button className="blue">Remove</Button>
-          <Button className="blue">Add Note</Button>
+        <AddResourceNoteModal />
         </Table.Cell>
         <Table.Cell>React Article</Table.Cell>
         <Table.Cell>Fantastic Info</Table.Cell>
         <Table.Cell><Checkbox /></Table.Cell>
-        <Table.Cell> <Button icon="users" /></Table.Cell>
+        <Table.Cell> <UserModal/></Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.Cell><Button className="blue">Remove</Button>
-          <Button className="blue">Add Note</Button>
+        <AddResourceNoteModal />
         </Table.Cell>
         <Table.Cell>Javascript Tutorial</Table.Cell>
         <Table.Cell>Well done!</Table.Cell>
         <Table.Cell><Checkbox /></Table.Cell>
-        <Table.Cell> <Button icon="users" /></Table.Cell>
+        <Table.Cell> <UserModal/></Table.Cell>
       </Table.Row>
     </Table.Body>
 

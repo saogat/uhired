@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ResourceContainer from "../../components/Grid/ResourceContainer.js";
 import { Sidebar, Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
 import AddResourceModal from "../../components/Modal/AddResource.js";
-
+import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
 
 
 class ResourcePage extends Component {
@@ -72,21 +72,21 @@ state = {
 
     <Table.Body>
       <Table.Row>
-        <Table.Cell><Button className="blue">Add to Portfolio</Button><Button className="blue">Add Note</Button>
+        <Table.Cell><Button className="blue">Add to Portfolio</Button><AddResourceNoteModal />
         </Table.Cell>
         <Table.Cell>Learning HTML</Table.Cell>
         <Table.Cell><Button icon="remove" style={{color: "blue", align: "center"}}  /></Table.Cell>
         <Table.Cell>Great article</Table.Cell>
       </Table.Row>
       <Table.Row>
-      <Table.Cell><Button className="blue">Add to Portfolio</Button><Button className="blue">Add Note</Button>
+      <Table.Cell><Button className="blue">Add to Portfolio</Button><AddResourceNoteModal />
         </Table.Cell>
         <Table.Cell>Semantic UI for Beginners</Table.Cell>
         <Table.Cell><Button icon="remove" style={{color: "blue"}}/></Table.Cell>
         <Table.Cell>......</Table.Cell>
       </Table.Row>
       <Table.Row>
-      <Table.Cell><Button className="blue">Add to Portfolio</Button><Button className="blue">Add Note</Button>
+      <Table.Cell><Button className="blue">Add to Portfolio</Button><AddResourceNoteModal />
         </Table.Cell>
         <Table.Cell>React Tutorial</Table.Cell>
         <Table.Cell><Button icon="remove" style={{color: "blue"}}/></Table.Cell>

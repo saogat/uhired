@@ -3,21 +3,21 @@ import { Button, Checkbox, Form } from 'semantic-ui-react'
 import LoginContainer from "../../components/Grid/LoginContainer.js";
 import API from "../../utils/API";
 
-const AccomplishmentForm = () => (
+const ShareForm = () => (
 
-      <Form>
-      <Form.Field>
-      <label>User Email Address</label>
-      <input 
-          type='email' 
-          placeholder='abc@gmail.com' 
-          name="email"/>
-      </Form.Field>
-      <Button 
-        type='submit' className="large blue">
-        Share
+    <Form>
+        <Form.Field>
+            <label>User Email Address</label>
+            <input
+                type='email'
+                placeholder='abc@gmail.com'
+                name="email" />
+        </Form.Field>
+        <Button
+            type='submit' className="large blue">
+            Share
       </Button>
-      </Form>
-    )
+    </Form>
+)
 
-    export default ShareForm
+export default ShareForm
