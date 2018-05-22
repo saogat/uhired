@@ -16,17 +16,17 @@ const AboutGrid = () => (
     <Grid.Row>
       <Grid.Column>
         <Image src='https://www.biography.com/.image/t_share/MTMyNDczNDI1MjgwMTQ1ODg2/bill_gates_2012_wikimedia_commons_promojpg.jpg' size='medium' circular />
-        <p>CEO</p>
+        <p></p>
       </Grid.Column>
       <Grid.Column>
-        <p>Bio here</p>
+        <p>Cody Goss - Back-End</p>
       </Grid.Column>
       <Grid.Column>
-        <p>Bio here</p>
+        <p>Kristen Speckhals - UI Lead/Front-End</p>
       </Grid.Column>
       <Grid.Column>
         <Image src='https://www.biography.com/.image/t_share/MTMyNDczNDI1MjgwMTQ1ODg2/bill_gates_2012_wikimedia_commons_promojpg.jpg' size='medium' circular  />
-        <p>CEO</p>
+        <p></p>
       </Grid.Column>
     
     </Grid.Row>
@@ -37,13 +37,15 @@ const AboutGrid = () => (
         <p>CEO</p>
       </Grid.Column>
       <Grid.Column>
-        <p>Bio here</p>
+        <p>Saogat Rab - Project Lead - Back-End</p>
       </Grid.Column>
       <Grid.Column>
-        <p>Bio here</p>
+        <p>Rani Rab - UI/Front-End</p>
       </Grid.Column>
       <Grid.Column>
-        <Image src='https://www.biography.com/.image/t_share/MTMyNDczNDI1MjgwMTQ1ODg2/bill_gates_2012_wikimedia_commons_promojpg.jpg' size='medium' circular  />
+        {/* <Image src='https://www.biography.com/.image/t_share/MTMyNDczNDI1MjgwMTQ1ODg2/bill_gates_2012_wikimedia_commons_promojpg.jpg' size='medium' circular  /> */}
+        <img class="ui medium circular image" src="../images/Rani.jpg"/>
+
         <p>CEO</p> 
       </Grid.Column>
     </Grid.Row>
