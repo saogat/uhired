@@ -109,7 +109,7 @@ handleFormSubmit = event => {
       <ResourceContainer />   
       <h1 style={{textAlign: "center"}}>Resources</h1>
       <hr />
-      <p style={{fontSize: "20px", marginLeft: "30px", marginTop: "30px"}}>Select one or more skills to search.</p>
+      <p style={{fontSize: "20px", marginLeft: "30px", marginTop: "30px"}}>Select one or more technologies to search.</p>
       <Form>
         <this.resourceSelection />
         <Button style = {{marginLeft: "20px", marginTop: "10px"}} className = "large blue" type='submit'>Search</Button>

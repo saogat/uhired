@@ -10,7 +10,7 @@ class AddResourceModal extends Component {
 
         <Modal style={{marginRight:"1000px"}}
           className="small" 
-          trigger={<Button className = "large blue">Add Resource</Button>}>
+          trigger={<Button className = "medium blue">Add Resource</Button>}>
          <Modal.Header>
           <Image wrapped size='tiny' src='https://st2.depositphotos.com/3265223/11274/v/950/depositphotos_112741124-stock-illustration-handshake-line-icon-deal-partnership.jpg' />
            Add Resource
