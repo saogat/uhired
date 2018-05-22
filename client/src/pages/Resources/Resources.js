@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ResourceContainer from "../../components/Grid/ResourceContainer.js";
 import { Sidebar, Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
 import AddResourceModal from "../../components/Modal/AddResource.js";
-
+import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
 
 class ResourcePage extends Component {
 
@@ -82,6 +82,6 @@ state = {
       </div>
     )};
   }
+  
 
-  export default ResourcePage;
 

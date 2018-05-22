@@ -116,9 +116,9 @@ const resources = [
   }],
   ['Developer',
   {
-    url: "https://medium.freecodecamp.org/how-to-read-your-way-to-becoming-a-better-developer-b6432fa5bc0c",
+    url: "https://docs.microsoft.com/en-us/dotnet/csharp/",
     description:
-         "reading documentation",
+         "C# documentation",
     date: new Date(Date.now())
   }]];
 

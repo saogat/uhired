@@ -9,7 +9,7 @@ class ModalAccomplishment extends Component {
       
 
         <Modal
-          className="small" 
+          className="small" style={{float: "center"}}
           trigger={<Button className = "large blue">Add Accomplishment</Button>}
 
         >
