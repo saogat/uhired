@@ -13,7 +13,42 @@ state = {
 
 };
 
-options = [
+// onload { }
+
+loadResource = () => {
+  API.getResource()
+    .then(res =>
+      this.setState({ resources: res.data, name: "", description: ""})
+    )
+    .catch(err => console.log(err));
+};
+
+deleteResource = id => {
+  API.deleteResource(id)
+    .then(res => this.loadResource())
+    .catch(err => console.log(err));
+};
+
+handleInputChange = event => {
+  const { name, value } = event.target;
+  this.setState({
+    [name]: value
+  });
+};
+
+handleFormSubmit = event => {
+  event.preventDefault();
+  if (this.state.name ) {
+    API.saveResource({
+      name: this.state.name,
+      description: this.state.description,
+    })
+      .then(res => this.loadResource())
+      .catch(err => console.log(err));
+  }
+};
+
+ options = [
   { key: 'angular', text: 'Angular', value: 'angular' },
   { key: 'css', text: 'CSS', value: 'css' },
   { key: 'design', text: 'Graphic Design', value: 'design' },
@@ -62,7 +97,7 @@ handleAddPortfolio = (id, toShareWithEmail) => {
 };
 
  resourceSelection = () => (
-  <Dropdown style={{marginLeft: "30px", marginBottom: "30px"}}placeholder='Skills' multiple selection options={this.options} />
+  <Dropdown style={{marginLeft: "30px", marginBottom: "30px"}}placeholder='Skills' multiple selection options={this.name} />
 );
 
  resourcesTable = () => (
@@ -97,6 +132,7 @@ handleAddPortfolio = (id, toShareWithEmail) => {
    )}
    </Table.Body>
 </Table>
+
 );
 
   render() {
@@ -109,8 +145,10 @@ handleAddPortfolio = (id, toShareWithEmail) => {
       <Form>
         <this.resourceSelection />
         <Button style = {{marginLeft: "20px", marginTop: "10px"}} className = "large blue" type='submit'>Search</Button>
+        <AddResourceModal />
       </Form> 
       <this.resourcesTable />
+     ≈
       </div>
     )};
   }
