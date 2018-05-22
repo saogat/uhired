@@ -65,6 +65,7 @@ state = {
    )}
    </Table.Body>
 </Table>
+
 );
 
   render() {
@@ -77,8 +78,10 @@ state = {
       <Form>
         <this.resourceSelection />
         <Button style = {{marginLeft: "20px", marginTop: "10px"}} className = "large blue" type='submit'>Search</Button>
+        <AddResourceModal />
       </Form> 
       <this.resourcesTable />
+     ≈
       </div>
     )};
   }

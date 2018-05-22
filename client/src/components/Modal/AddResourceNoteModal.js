@@ -25,3 +25,4 @@ class AddResourceNoteModal extends Component {
   }
 
 export default AddResourceNoteModal
+

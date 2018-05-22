@@ -20,5 +20,11 @@ export default {
     var result = axios.post("/api/technology", technology);
     console.log(result);
     return result;
+},
+  resource: function(resource) {
+    console.log(resource);
+    var result = axios.post("/api/resource", resource);
+    console.log(result);
+    return result;
 }
 };
