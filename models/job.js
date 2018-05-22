@@ -18,7 +18,7 @@ const jobSchema = new Schema({
     type: String,
     required: false
   },
-  note: [{
+  notes: [{
     type: Schema.Types.ObjectId,
     ref: "Note"
     }],
