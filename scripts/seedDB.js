@@ -5,10 +5,7 @@ mongoose.Promise = global.Promise;
 // This file empties the Books collection and inserts the books below
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/uhired",
-  {
-    useMongoClient: true
-  }
+  process.env.MONGODB_URI || "mongodb://localhost/uhired"
 );
 
 const resources = [
@@ -129,30 +126,44 @@ const resources = [
 
   db.Resource.remove({});
   db.Technology.remove({});
-  resources.forEach(each => {
-    const [tech, ...resourcesArray] = each;
-    db.Technology.create({name: tech})
-    .then(dbTechnology => {
+
+resources.forEach(each => {
+  const [tech, ...resourcesArray] = each;
+  console.log(" ");
+  console.log("Each:");
+  console.log(each);
+  console.log(" ");
+  db.Technology.create({name: tech})
+  .then(dbTechnology => {
       console.log(" ");
       console.log("technology creation: ");
-       console.log(dbTechnology);
-        resourcesArray.forEach(resource => {
-          db.Resource.create(resource)
-          .then(dbResource => {
-              console.log(" ");
-              console.log("resource creation: ");
-              console.log(dbResource);
-              console.log(dbTechnology);
-              dbTechnology.update({$push: {resources: dbResource._id }})
-              process.exit(0);
-          })
-          .catch(err => {
-            console.error(err);
-            process.exit(1);
-          })
-    .catch(err => {
-        console.error(err);
-        process.exit(1);
-    });
-  })
+      console.log(dbTechnology);
+      resourcesArray.forEach(resource => {
+        db.Resource.create(resource)
+        .then(dbResource => {
+            console.log(" ");
+            console.log("resource creation: ");
+            console.log(dbResource);
+            console.log(dbTechnology);
+            db.Technology.findByIdAndUpdate(dbTechnology._id,{$push: {resources: dbResource._id }})
+            .then(dbTech => {
+                console.log(" ");
+                console.log("pushing to technology: ");
+                console.log(dbTech._id);
+                console.log(resource);
+            })
+            .catch(err => {
+              console.error(err);
+              process.exit(1);
+            })
+        })
+        .catch(err => {
+          console.error(err);
+          process.exit(1);
+        })
+  .catch(err => {
+      console.error(err);
+      process.exit(1);
+  });
+})
 })})
