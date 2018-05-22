@@ -2,26 +2,30 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const jobSchema = new Schema({
-  url: {
+  title: {
     type: String,
     required: true
   },
-  city: {
-    type: String,
-    required: false
-  },
   company: {
     type: String,
-    required: false
+    required: true
+  },
+  location: {
+    type: String,
+    required: true
   },
   description: {
     type: String,
     required: false
   },
-  note: {
+  link: {
+    type: String,
+    required: true
+  },
+  note: [{
     type: Schema.Types.ObjectId,
     ref: "Note"
-    },
+    }],
   date: {
     type: Date,
     default: Date.now
