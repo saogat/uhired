@@ -7,13 +7,15 @@ import ResourceSelection from "../Selection/ResourceSelection.js";
 const AccomplishmentForm = () => (
 
       <Form>
-      <Form.Field>
-      <ResourceSelection />
-      </Form.Field>
+         <Button className="blue large floated right" style={{marginBottom: "20px"}}
+        type='submit'>
+        Add Accomplishment
+      </Button>
+     
       <Form.Field>
       <label>Project Title</label>
       <input 
-          type='string' 
+          type='text' 
           placeholder='Project App' 
           name="title"/>
       </Form.Field>
@@ -23,10 +25,10 @@ const AccomplishmentForm = () => (
           placeholder='//http:github.com'  
           name="link"/>
       </Form.Field>
-      <Button 
-        type='submit'>
-        Add
-      </Button>
+      <Form.Field>
+      <ResourceSelection />
+      </Form.Field>
+     
       </Form>
     )
 

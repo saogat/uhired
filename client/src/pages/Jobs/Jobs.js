@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import JobContainer from "../../components/Grid/JobsContainer.js";
 import { Dropdown, Select, Table, Sidebar, Form, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid, Container, Input } from 'semantic-ui-react'
-
+import AddJobNoteModal from "../../components/Modal/AddJobNoteModal.js"
 
 class JobPage extends Component {
 
@@ -83,21 +83,21 @@ class JobPage extends Component {
 
     <Table.Body>
       <Table.Row>
-        <Table.Cell><Button className="blue">Add to Portfolio</Button><Button className="blue">Add Note</Button>
+        <Table.Cell><Button className="blue">Add to Portfolio</Button><AddJobNoteModal />
         </Table.Cell>
         <Table.Cell>Job 1</Table.Cell>
         <Table.Cell><Button icon="remove" style={{color: "blue"}}/></Table.Cell>
         <Table.Cell>Job 1</Table.Cell>
       </Table.Row>
       <Table.Row>
-      <Table.Cell><Button className="blue">Add to Portfolio</Button><Button className="blue">Add Note</Button>
+      <Table.Cell><Button className="blue">Add to Portfolio</Button><AddJobNoteModal />
         </Table.Cell>
         <Table.Cell>Job 2</Table.Cell>
         <Table.Cell><Button icon="remove" style={{color: "blue"}}/></Table.Cell>
         <Table.Cell>......</Table.Cell>
       </Table.Row>
       <Table.Row>
-      <Table.Cell><Button className="blue">Add to Portfolio</Button><Button className="blue">Add Note</Button>
+      <Table.Cell><Button className="blue">Add to Portfolio</Button><AddJobNoteModal />
         </Table.Cell>
         <Table.Cell>Job 3</Table.Cell>
         <Table.Cell><Button icon="remove" style={{color: "blue"}}/></Table.Cell>

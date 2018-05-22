@@ -18,10 +18,9 @@ class ModalJoin extends Component {
     return (
       <Modal
         className="mini" 
-        trigger={<Button onClick={this.handleOpen} className = "huge inverted blue">Join</Button>}
+        trigger={<Button onClick={this.handleOpen}  style={{backgroundColor: "skyBlue", color:"white", textShadow: "2px 2px black", marginRight: "20px"}}className = "massive">Join</Button>}
         open={this.state.modalOpen}
         onClose={this.handleClose}
-        basic
         size='small'
       >
        <Modal.Header>
