@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ResourceContainer from "../../components/Grid/ResourceContainer.js";
 import { Sidebar, Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
+import AddResourceModal from "../../components/Modal/AddResource.js";
+
 
 class ResourcePage extends Component {
 
@@ -65,11 +67,12 @@ state = {
 </Table>
 );
 
-
   render() {
     return (
       <div>
       <ResourceContainer />   
+      <h1 style={{textAlign: "center"}}>Resources</h1>
+      <hr />
       <p style={{fontSize: "20px", marginLeft: "30px", marginTop: "30px"}}>Select one or more skills to search.</p>
       <Form>
         <this.resourceSelection />
@@ -80,7 +83,5 @@ state = {
     )};
   }
 
-
   export default ResourcePage;
 
- 
