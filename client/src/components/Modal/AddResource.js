@@ -3,14 +3,27 @@ import { Button, Header, Image, Modal, Form } from 'semantic-ui-react';
 import AddResourceForm from "../../components/Form/AddResourceForm.js";
 
 class AddResourceModal extends Component {
+
+  state = { modalOpen: false }
+  
+    handleOpen = () => {
+        this.setState({ modalOpen: true }); 
+    };
+    handleClose = () => {
+        this.setState({ modalOpen: false });
+        console.log("Resource Added")
+        // this.props.openResource();
+    }
      
     render() {
       return (
       
 
-        <Modal style={{marginRight:"1000px"}}
+        <Modal
           className="small" 
-          trigger={<Button className = "medium blue">Add Resource</Button>}>
+          trigger={<Button onClick={this.handleOpen} className = "large blue">Add Resource</Button>}
+           open={this.state.modalOpen}
+          onClose={this.handleClose}>
          <Modal.Header>
           <Image wrapped size='tiny' src='https://st2.depositphotos.com/3265223/11274/v/950/depositphotos_112741124-stock-illustration-handshake-line-icon-deal-partnership.jpg' />
            Add Resource
@@ -25,3 +38,9 @@ class AddResourceModal extends Component {
   }
 
 export default AddResourceModal
+
+
+    
+
+
+

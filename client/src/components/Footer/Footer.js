@@ -1,29 +1,33 @@
 import React from 'react'
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid, Image, Container } from 'semantic-ui-react'
 
-const GridExampleRows = () => (
+const FooterDiv = () => (
+  <Container className= "ui fluid inverted vertical masthead padded left aligned segment massive">
   <Grid columns={3}>
     <Grid.Row>
       <Grid.Column>
-        <Image src='/assets/images/wireframe/paragraph.png' />
+       <p style={{fontFamily: "cursive", color: "skyBlue", fontSize: "35px", fontWeight: "bold", marginRight: "15px"}}>uHired</p> 
       </Grid.Column>
       <Grid.Column>
-        <Image src='/assets/images/wireframe/paragraph.png' />
+        <p>Uhired Latest News</p>
       </Grid.Column>
     </Grid.Row>
 
     <Grid.Row>
       <Grid.Column>
-        <Image src='/assets/images/wireframe/paragraph.png' />
+        <p> 123 A Street</p>
+        <p> Atlanta, GA</p>
+        <p> 404.867.5309</p>
       </Grid.Column>
       <Grid.Column>
-        <Image src='/assets/images/wireframe/paragraph.png' />
+      <p> Latest Blogs</p>
       </Grid.Column>
       <Grid.Column>
-        <Image src='/assets/images/wireframe/paragraph.png' />
+      <p> Uhired</p>
       </Grid.Column>
     </Grid.Row>
   </Grid>
+  </Container>
 )
 
-export default GridExampleRows
+export default FooterDiv

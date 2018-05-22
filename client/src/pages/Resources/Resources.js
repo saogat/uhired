@@ -101,6 +101,7 @@ handleFormSubmit = event => {
    )}
    </Table.Body>
 </Table>
+
 );
 
   render() {
@@ -113,8 +114,10 @@ handleFormSubmit = event => {
       <Form>
         <this.resourceSelection />
         <Button style = {{marginLeft: "20px", marginTop: "10px"}} className = "large blue" type='submit'>Search</Button>
+        <AddResourceModal />
       </Form> 
       <this.resourcesTable />
+     ≈
       </div>
     )};
   }
