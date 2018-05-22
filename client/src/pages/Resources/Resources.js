@@ -3,15 +3,17 @@ import ResourceContainer from "../../components/Grid/ResourceContainer.js";
 import { Sidebar, Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
 import AddResourceModal from "../../components/Modal/AddResource.js";
 import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
+import API from "../../utils/API";
 
 class ResourcePage extends Component {
 
 state = {
   testingList: ["html", "javascript", "react"],
-  resources: []
+  resources: [],
+
 };
 
- options = [
+options = [
   { key: 'angular', text: 'Angular', value: 'angular' },
   { key: 'css', text: 'CSS', value: 'css' },
   { key: 'design', text: 'Graphic Design', value: 'design' },
@@ -32,6 +34,33 @@ state = {
   { key: 'ux', text: 'User Experience', value: 'ux' },
 ];
 
+componentDidMount() {
+  this.loadResources();
+}
+
+loadResources() {
+  this.setState({
+    resources: 
+    [
+    {
+      id: 1234,
+      url: 'https://www.google.com',
+      description: 'Google'
+    }]})
+}
+
+handleAddPortfolio = (id, toShareWithEmail) => {
+  event.preventDefault();
+    const resources = this.state.resources.filter(resource => resource.id !== id);
+    // Set this.state.resources equal to the new resources array
+    this.setState({ resources });
+    API.addResourceToPortfolio({
+      userEmail: toShareWithEmail,
+      resourceId: id})
+      .then()
+      .catch(err => console.log(err));
+};
+
  resourceSelection = () => (
   <Dropdown style={{marginLeft: "30px", marginBottom: "30px"}}placeholder='Skills' multiple selection options={this.options} />
 );
@@ -51,7 +80,10 @@ state = {
       this.state.resources.map(resource => (
             <Table.Row key={resource._id}>
               <Table.Cell>
-                <Button className="blue">Add to Portfolio</Button>
+                <Button 
+                  className="blue"
+                  id = {resource._id}
+                  onClick={this.handleAddPortfolio}>Add to Portfolio</Button>
               </Table.Cell>
               <Table.Cell>
                   {resource.url}
