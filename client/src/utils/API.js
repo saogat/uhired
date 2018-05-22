@@ -23,7 +23,7 @@ export default {
 },
   resource: function(resource) {
     console.log(resource);
-    var result = axios.post("/api/resource", resource);
+    var result = axios.post("/api/resources", resource);
     console.log(result);
     return result;
 }

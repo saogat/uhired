@@ -8,7 +8,9 @@ class AddResourceForm extends Component {
 
     state = {
       description: "",
-      link: "",
+      url: "",
+      done: false,
+      notes: {},
       modalOpen: false 
     };
   
@@ -22,7 +24,7 @@ class AddResourceForm extends Component {
       });
     };
   
-    loadPortfolio = res => {
+    loadResources = res => {
       console.log
       console.log(res);
       if(res.status === 200)
@@ -51,10 +53,6 @@ class AddResourceForm extends Component {
       return (
         <div>
       <Form>
-         <Button className="medium blue" style={{marginBottom: "20px"}}
-        type='submit'>
-        Add
-      </Button>
       <Form.Field>
       <label>Add Resource</label>
       <input 
@@ -71,6 +69,12 @@ class AddResourceForm extends Component {
           onChange={this.handleInputChange}
           name="url"/>
       </Form.Field>
+      <Button 
+        type='submit' className="medium blue"
+        disabled={!(this.state.description && this.state.url)}
+        onClick={this.handleFormSubmit}>
+        Add Resource  
+      </Button>
      
       </Form>
       </div>
