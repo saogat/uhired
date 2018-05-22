@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Button, Checkbox, Form } from 'semantic-ui-react'
-import LoginContainer from "../../components/Grid/LoginContainer.js";
 import API from "../../utils/API";
 
-class LoginForm extends Component {
+class TechnologyForm extends Component {
 
   state = {
-    email: "",
-    password: "",
-    portfolio: {},
+    name1: "",
+    // description: "",
+    resources: {},
     modalOpen: false 
   };
 
@@ -22,27 +21,27 @@ class LoginForm extends Component {
     });
   };
 
-  loadPortfolio = res => {
-    console.log
-    console.log(res);
-    if(res.status === 200)
-    {
-      window.sessionStorage.setItem("user", JSON.stringify(res.data.token));
-      this.props.close();
-    } 
-    else {alert(res)}
-  };
+  // loadResources = res => {
+  //   console.log
+  //   console.log(res);
+  //   if(res.status === 200)
+  //   {
+  //     window.sessionStorage.setItem("user", JSON.stringify(res.data.token));
+  //     this.props.close();
+  //   } 
+  //   else {alert(res)}
+  // };
 
   handleFormSubmit = event => {
      // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
     console.log("Submit clicked");
-    if (this.state.email && this.state.password) {
-      API.login({
-        email: this.state.email,
-        password: this.state.password,
+    if (this.state.name) {
+      API.SaveTechnology({
+        name: this.state.name,
+        // description: this.state.description,
       })
-        .then(res => this.loadPortfolio(res))
+        .then(res => this.loadResources(res))
         .catch(err => alert(err))
     }
   };
@@ -52,33 +51,32 @@ class LoginForm extends Component {
       <div>
       <Form>
       <Form.Field>
-      <label>Email</label>
+      <label>Name</label>
       <input 
-          placeholder='Email'  
-          value={this.state.email}
+          placeholder='Name'  
+          value={this.state.name1}
           onChange={this.handleInputChange}
-          name="email"/>
+          name="name"/>
       </Form.Field>
-      <Form.Field>
-      <label>Password</label>
+      {/* <Form.Field>
+      <label>Description</label>
       <input 
-          type='password' 
-          placeholder='Password' 
-          value={this.state.password}
+          placeholder='Description' 
+          value={this.state.description}
           onChange={this.handleInputChange}
-          name="password"/>
-      </Form.Field>
+          name="description"/>
+      </Form.Field> */}
       <Button 
         type='submit'
-        disabled={!(this.state.email && this.state.password)}
+        disabled={!(this.state.name)}
         onClick={this.handleFormSubmit}>
-        Login
+        Submit Technology
       </Button>
       </Form>
       </div>
     )};
   }
 
-export default LoginForm
+export default TechnologyForm
 
 

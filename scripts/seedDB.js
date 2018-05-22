@@ -85,13 +85,7 @@ const resourceSeed = [
     date: new Date(Date.now())
   },
   {
-    url: "hhttp://www.sql-join.com/",
-    description:
-         "SQL joins",
-    date: new Date(Date.now())
-  },
-  {
-    url: "https://expressjs.com/en/guide/routing.html#route-parameters",
+    url: "https://expressjs.com/en/guide/routing.html",
     description:
          "Expressjs routing",
     date: new Date(Date.now())
@@ -103,15 +97,15 @@ const resourceSeed = [
     date: new Date(Date.now())
   },
   {
-      url: "https://hackernoon.com/getting-hired-in-2018-the-keys-to-building-an-attractive-online-portfolio-a1cf2ca834eb",
+      url: "https://blog.codecentric.de/files/2012/12/MongoDB-CheatSheet-v1_0.pdf",
       description:
            "mongodb cheat sheet",
       date: new Date(Date.now())
     },
   {
-    url: "https://medium.freecodecamp.org/how-to-read-your-way-to-becoming-a-better-developer-b6432fa5bc0c",
+    url: "https://docs.microsoft.com/en-us/dotnet/csharp/",
     description:
-         "reading documentation",
+         "C# documentation",
     date: new Date(Date.now())
   }
 ];
