@@ -3,12 +3,48 @@ import ResourceContainer from "../../components/Grid/ResourceContainer.js";
 import { Sidebar, Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
 import AddResourceModal from "../../components/Modal/AddResource.js";
 import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
+import API from "../../utils/API";
 
 class ResourcePage extends Component {
 
 state = {
   testingList: ["html", "javascript", "react"],
   resources: []
+};
+
+// onload { }
+
+loadResource = () => {
+  API.getResource()
+    .then(res =>
+      this.setState({ resources: res.data, name: "", description: ""})
+    )
+    .catch(err => console.log(err));
+};
+
+deleteResource = id => {
+  API.deleteResource(id)
+    .then(res => this.loadResource())
+    .catch(err => console.log(err));
+};
+
+handleInputChange = event => {
+  const { name, value } = event.target;
+  this.setState({
+    [name]: value
+  });
+};
+
+handleFormSubmit = event => {
+  event.preventDefault();
+  if (this.state.name ) {
+    API.saveResource({
+      name: this.state.name,
+      description: this.state.description,
+    })
+      .then(res => this.loadResource())
+      .catch(err => console.log(err));
+  }
 };
 
  options = [
@@ -33,7 +69,7 @@ state = {
 ];
 
  resourceSelection = () => (
-  <Dropdown style={{marginLeft: "30px", marginBottom: "30px"}}placeholder='Skills' multiple selection options={this.options} />
+  <Dropdown style={{marginLeft: "30px", marginBottom: "30px"}}placeholder='Skills' multiple selection options={this.name} />
 );
 
  resourcesTable = () => (
