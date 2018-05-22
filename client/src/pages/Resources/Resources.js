@@ -84,7 +84,7 @@ loadResources() {
     }]})
 }
 
-handleAddPortfolio = (id, toShareWithEmail) => {
+handleAddPortfolio = (event, id, toShareWithEmail) => {
   event.preventDefault();
     const resources = this.state.resources.filter(resource => resource.id !== id);
     // Set this.state.resources equal to the new resources array
