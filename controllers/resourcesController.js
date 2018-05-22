@@ -33,5 +33,12 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  share: function(req, res) {
+    db.User
+      .find({email: req.query.emailId}, { $push: { resources: req.query.id } }, { new: true })
+      .then(dbModel => res.json(dbModel))
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };

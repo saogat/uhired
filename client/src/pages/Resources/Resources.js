@@ -9,7 +9,8 @@ class ResourcePage extends Component {
 
 state = {
   testingList: ["html", "javascript", "react"],
-  resources: []
+  resources: [],
+
 };
 
 // onload { }
@@ -68,6 +69,33 @@ handleFormSubmit = event => {
   { key: 'ux', text: 'User Experience', value: 'ux' },
 ];
 
+componentDidMount() {
+  this.loadResources();
+}
+
+loadResources() {
+  this.setState({
+    resources: 
+    [
+    {
+      id: 1234,
+      url: 'https://www.google.com',
+      description: 'Google'
+    }]})
+}
+
+handleAddPortfolio = (id, toShareWithEmail) => {
+  event.preventDefault();
+    const resources = this.state.resources.filter(resource => resource.id !== id);
+    // Set this.state.resources equal to the new resources array
+    this.setState({ resources });
+    API.addResourceToPortfolio({
+      userEmail: toShareWithEmail,
+      resourceId: id})
+      .then()
+      .catch(err => console.log(err));
+};
+
  resourceSelection = () => (
   <Dropdown style={{marginLeft: "30px", marginBottom: "30px"}}placeholder='Skills' multiple selection options={this.name} />
 );
@@ -87,7 +115,10 @@ handleFormSubmit = event => {
       this.state.resources.map(resource => (
             <Table.Row key={resource._id}>
               <Table.Cell>
-                <Button className="blue">Add to Portfolio</Button>
+                <Button 
+                  className="blue"
+                  id = {resource._id}
+                  onClick={this.handleAddPortfolio}>Add to Portfolio</Button>
               </Table.Cell>
               <Table.Cell>
                   {resource.url}

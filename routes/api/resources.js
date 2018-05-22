@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const loginController = require("../../controllers/resourcesController");
 const resourcesController = require("../../controllers/resourcesController");
 
 // Matches with "/api/resources"
@@ -12,5 +13,8 @@ router
   .get(resourcesController.findById)
   .put(resourcesController.update)
   .delete(resourcesController.remove);
+
+router.route("/share")
+  .post(resourcesController.share);
 
 module.exports = router;
