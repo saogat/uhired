@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Container, Image, Transition } from 'semantic-ui-react'
+import { Container, Image, Transition, Sticky } from 'semantic-ui-react'
 import MainBreadCrumb from "../../components/BreadCrumb/BreadCrumb.js";
 import MainImage from "../../components/Image/Image.js";
 import "./home.css";
@@ -34,7 +34,7 @@ class HomePage extends Component {
             ) : ( 
               <div>
                 <Container className= "ui fluid inverted vertical masthead padded left aligned segment massive">
-                  <MainBreadCrumb />
+                 <Sticky> <MainBreadCrumb /></Sticky>
                 </Container>
                 <div className="bg">  </div>
                 <Container className= "ui fluid transparent vertical masthead center aligned segment massive">
