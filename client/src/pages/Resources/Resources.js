@@ -83,5 +83,4 @@ state = {
     )};
   }
   
-
-
+export default ResourcePage
