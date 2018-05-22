@@ -19,10 +19,13 @@ class PortfolioPage extends Component {
         <h1 style={{ textAlign: "center" }}>Portfolio</h1>
         <hr />
         <UserCard />
+        <h2 style={{marginLeft: "260px", padding: "0px", marginTop: "10px", marginBottom: "5px"}}>Accomplishments</h2>
+       
 
         <Accomplishments />
-
+        <h2 style={{marginLeft: "260px", padding: "0px", marginTop: "10px", marginBottom: "5px"}}>Jobs</h2>
         <PortfolioJobs />
+        <h2 style={{marginLeft: "260px", padding: "0px", marginTop: "10px", marginBottom: "5px"}}>Resources</h2>
         <PortfolioResources />
       </div>
 
@@ -60,7 +63,7 @@ const UserCard = () => (
 
 const PortfolioJobs = () => (
 
-  <Table celled style={{ width: "80%", align: "center" }}>
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "250px", marginTop: "10px" }}>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
@@ -97,7 +100,7 @@ const PortfolioJobs = () => (
 
 const PortfolioResources = () => (
 
-  <Table celled style={{ width: "80%", align: "center", marginLeft: "250px", marginTop: "30px" }}>
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "250px", marginTop: "10px" }}>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
@@ -143,7 +146,7 @@ const PortfolioResources = () => (
 const Accomplishments = () => (
 
 
-  <Table celled style={{ width: "80%", align: "center", marginLeft: "250px", marginTop: "30px" }}>
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "250px", marginTop: "18px" }}>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell width={5}>Richard's Accomplishments</Table.HeaderCell>
