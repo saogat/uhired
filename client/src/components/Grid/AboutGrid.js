@@ -45,7 +45,7 @@ const AboutGrid = () => (
       </Grid.Column>
       <Grid.Column>
         {/* <Image src='https://www.biography.com/.image/t_share/MTMyNDczNDI1MjgwMTQ1ODg2/bill_gates_2012_wikimedia_commons_promojpg.jpg' size='medium' circular  /> */}
-        <img class="ui medium circular image" src="../Image/Rani.jpg"/>
+        <img class="ui medium circular image" src="./Images/Rani.jpg"/>
 
         <p>CEO</p> 
       </Grid.Column>

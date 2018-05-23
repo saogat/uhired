@@ -3,22 +3,41 @@ import JobsContainer from "../../components/Grid/JobsContainer.js";
 import { Dropdown, Select, Table, Sidebar, Form, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid, Container, Input } from 'semantic-ui-react'
 import AddJobNoteModal from "../../components/Modal/AddJobNoteModal.js"
 import FooterDiv from "../../components/Footer/Footer.js";
+import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
+import API from "../../utils/API"
 
 class JobPage extends Component {
+  
+  state = {
+    resources: [],
+    technologies: [], 
+    options: [],
+    technologySelected: ""
+  };
+
+  resourceSelection = () => {
+    return (
+        <TechnologyDropDown />);
+  };
 
 
   render() {
     return (
       <div>
-      <JobsContainer />   
-      <h1 style={{textAlign: "center"}}>Jobs</h1>
-        <hr />
-
-      <p style={{fontSize: "20px", marginLeft: "30px", marginTop: "30px"}}>Select one or more technologies to search.</p>
+      <JobsContainer />   <hr/>
       <Form>
-    <ResourceSelection />
-    <Button style = {{marginLeft: "20px", marginTop: "10px"}} className = "large blue" type='submit'>Search</Button>
-    </Form>
+        <this.resourceSelection />
+        <Button 
+              style = {{marginLeft: "20px", marginTop: "10px"}} 
+              className = "large blue" 
+              type='submit'
+              disabled={!(this.state.technologySelected)}
+              onClick={this.handleTechnologySelection}>
+              Search</Button>
+      
+      </Form>   <hr />
+      <h1 style={{paddingLeft: "5%"}}>Jobs</h1>
+      
     <JobsTable />
     <FooterDiv />
 
@@ -32,31 +51,10 @@ class JobPage extends Component {
   export default JobPage
 
 
-  const options = [
-    { key: 'angular', text: 'Angular', value: 'angular' },
-    { key: 'css', text: 'CSS', value: 'css' },
-    { key: 'graphicdesign', text: 'Graphic Design', value: 'graphicdesign' },
-    { key: 'ember', text: 'Ember', value: 'ember' },
-    { key: 'html', text: 'HTML', value: 'html' },
-    { key: 'express', text: 'Express', value: 'express' },
-    { key: 'javascript', text: 'Javascript', value: 'javascript' },
-    { key: 'html', text: 'HTML', value: 'html' },
-    { key: 'bootstrap', text: 'Bootstrap', value: 'bootstrap' },
-    { key: 'nodejs', text: 'NodeJS', value: 'nodejs' },
-    { key: 'mongodb', text: 'MongoDB', value: 'mongodb' },
-    { key: 'python', text: 'Python', value: 'python' },
-    { key: 'rails', text: 'Rails', value: 'rails' },
-    { key: 'react', text: 'React', value: 'react' },
-    { key: 'mysql', text: 'MySQL', value: 'mysql' },
-    { key: 'ruby', text: 'Ruby', value: 'ruby' },
-    { key: 'ui', text: 'UI Design', value: 'ui' },
-    { key: 'github', text: 'GitHub', value: 'github' },
-    { key: 'firebase', text: 'Firebase', value: 'firebase' }
-  ]
+
+ 
   
-  const ResourceSelection = () => (
-    <Dropdown style={{marginLeft: "30px", marginBottom: "30px"}}placeholder='Skills' multiple selection options={options} />
-  )
+  
 
   const JobsTable = () => (
  

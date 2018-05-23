@@ -6,9 +6,24 @@ import UserModal from "../../components/Modal/UserModal.js";
 import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
 import AddJobNoteModal from "../../components/Modal/AddJobNoteModal.js";
 import FooterDiv from "../../components/Footer/Footer.js";
+import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
 
 
 class PortfolioPage extends Component {
+
+  state = {
+    resources: [],
+    technologies: [], 
+    options: [],
+    technologySelected: ""
+  };
+
+  resourceSelection = () => {
+    return (
+        <TechnologyDropDown />);
+  };
+
+
 
 
   render() {
@@ -17,12 +32,21 @@ class PortfolioPage extends Component {
         <Container className="ui fluid inverted vertical masthead left aligned segment massive">
        <MainBreadCrumb/>
         </Container></Sticky>
-        <h1 style={{ textAlign: "center" }}>Portfolio</h1>
+        <Form>
+        <this.resourceSelection />
+        <Button 
+              style = {{marginLeft: "20px", marginTop: "10px"}} 
+              className = "large blue" 
+              type='submit'
+              // disabled={!(this.state.technologySelected)}
+              onClick={this.handleTechnologySelection}>
+              Search</Button>
+              <AccomplishmentModal />
+      </Form> 
         <hr />
-        <UserCard />
-        <h2 style={{marginLeft: "260px", padding: "0px", marginTop: "10px", marginBottom: "5px"}}>Accomplishments</h2>
-       
+        <h2 style={{marginLeft: "70px", padding: "0px", marginTop: "10px", marginBottom: "5px" }}>Portfolio <span style={{marginLeft: "90px", padding: "0px", marginTop: "10px", marginBottom: "5px"}}>Accomplishments</span></h2>
 
+        <UserCard style={{float: "left"}} />
         <Accomplishments />
         <h2 style={{marginLeft: "260px", padding: "0px", marginTop: "10px", marginBottom: "5px"}}>Jobs</h2>
         <PortfolioJobs />
@@ -43,7 +67,7 @@ const UserCard = () => (
     <Image style={{ width: '175px', height: "160px" }} src='https://static1.squarespace.com/static/57645625f5e231759e260acf/t/58fa2266f5e231a86437fce0/1492787823235/Richard' />
     <Card.Content>
       <Card.Header>
-        Richard
+        Richard H.
         </Card.Header>
       <Card.Meta>
         <span className='date'>
@@ -181,7 +205,6 @@ const Accomplishments = () => (
     <Table.Footer>
       <Table.Row>
         <Table.HeaderCell colSpan='3'>
-          <AccomplishmentModal />
         </Table.HeaderCell>
       </Table.Row>
     </Table.Footer>

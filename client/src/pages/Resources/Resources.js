@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import ResourceContainer from "../../components/Grid/ResourceContainer.js";
-import { Sidebar, Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
+import { Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
 import AddResourceModal from "../../components/Modal/AddResource.js";
 import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
 import FooterDiv from "../../components/Footer/Footer.js";
-import API from "../../utils/API";
+import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
+import API from "../../utils/API"
 
 class ResourcePage extends Component {
 
 state = {
-  testingList: ["html", "javascript", "react"],
   resources: [],
-
+  technologies: [], 
+  options: [],
+  technologySelected: ""
 };
 
-// onload { }
-
-loadResource = () => {
-  API.getResource()
-    .then(res =>
-      this.setState({ resources: res.data, name: "", description: ""})
-    )
+loadResources = (technology) => {
+  console.log(technology);
+  API.getResources(technology)
+    .then(res => {
+      console.log(res.data);
+      this.setState({ resources: res.data})})
     .catch(err => console.log(err));
 };
 
@@ -37,72 +38,72 @@ handleInputChange = event => {
   });
 };
 
+handleDropdown = event => {
+  const { name, value } = event.target;
+  this.setState({
+    technologySelected: value
+  });
+};
+
 handleFormSubmit = event => {
   event.preventDefault();
   if (this.state.name ) {
     API.saveResource({
       name: this.state.name,
-      description: this.state.description,
-    })
+      description: this.state.description})
       .then(res => this.loadResource())
       .catch(err => console.log(err));
   }
 };
 
- options = [
-  { key: 'angular', text: 'Angular', value: 'angular' },
-  { key: 'css', text: 'CSS', value: 'css' },
-  { key: 'design', text: 'Graphic Design', value: 'design' },
-  { key: 'ember', text: 'Ember', value: 'ember' },
-  { key: 'html', text: 'HTML', value: 'html' },
-  { key: 'ia', text: 'Information Architecture', value: 'ia' },
-  { key: 'javascript', text: 'Javascript', value: 'javascript' },
-  { key: 'mech', text: 'Mechanical Engineering', value: 'mech' },
-  { key: 'meteor', text: 'Meteor', value: 'meteor' },
-  { key: 'node', text: 'NodeJS', value: 'node' },
-  { key: 'plumbing', text: 'Plumbing', value: 'plumbing' },
-  { key: 'python', text: 'Python', value: 'python' },
-  { key: 'rails', text: 'Rails', value: 'rails' },
-  { key: 'react', text: 'React', value: 'react' },
-  { key: 'repair', text: 'Kitchen Repair', value: 'repair' },
-  { key: 'ruby', text: 'Ruby', value: 'ruby' },
-  { key: 'ui', text: 'UI Design', value: 'ui' },
-  { key: 'ux', text: 'User Experience', value: 'ux' },
-];
-
 componentDidMount() {
-  this.loadResources();
+  this.loadTechnologies();
 }
 
-loadResources() {
-  this.setState({
-    resources: 
-    [
-    {
-      id: 1234,
-      url: 'https://www.google.com',
-      description: 'Google'
-    }]})
-}
-
-handleAddPortfolio = (id, toShareWithEmail) => {
-  // event.preventDefault();
-    const resources = this.state.resources.filter(resource => resource.id !== id);
-    // Set this.state.resources equal to the new resources array
-    this.setState({ resources });
-    API.addResourceToPortfolio({
-      userEmail: toShareWithEmail,
-      resourceId: id})
-      .then()
+loadTechnologies = () => {
+    console.log("I'm in loadTechnologies" )
+    API.getTechnologies()
+      .then( 
+        res => {
+            console.log("Loading technology");
+            console.log(res);
+            this.setState({technologies: res.data});
+            let temp = this.state.technologies.map(e => {
+                return { key: e.name,
+                        text: e.name,
+                        value: e.name}
+            });
+            this.setState({options: temp})
+          })
       .catch(err => console.log(err));
 };
 
- resourceSelection = () => (
-  <Dropdown style={{marginLeft: "30px", marginBottom: "30px"}}placeholder='Skills' multiple selection options={this.name} />
-);
+// handleAddPortfolio = (event, id, toShareWithEmail) => {
+//   console.log ("In handleAddPortfolio")
+//   event.preventDefault();
+//     const resources = this.state.resources.filter(resource => resource.id !== id);
+//     this.setState({ resources });
+//     API.addResourceToPortfolio({
+//       userEmail: toShareWithEmail,
+//       resourceId: id})
+//       .then()
+//       .catch(err => console.log(err));
+// };
+
+handleTechnologySelection = (event) => {
+  console.log ("In handleTechnologySelection")
+  event.preventDefault();
+  this.loadResources({name: "HTML"});
+  console.log(this.state.technologySelected);
+};
+
+ resourceSelection = () => {
+  return (
+      <TechnologyDropDown />);
+};
 
  resourcesTable = () => (
-  <Table celled style={{width: "80%", align: "center", margin: "auto"}}>
+  <Table celled class="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
   <Table.Header>
     <Table.Row>
      <Table.HeaderCell width={2}>Portfolio</Table.HeaderCell>
@@ -139,15 +140,21 @@ handleAddPortfolio = (id, toShareWithEmail) => {
   render() {
     return (
       <div>
-      <ResourceContainer />   
-      <h1 style={{textAlign: "center"}}>Resources</h1>
-      <hr />
-      <p style={{fontSize: "20px", marginLeft: "30px", marginTop: "30px"}}>Select one or more technologies to search.</p>
+      <ResourceContainer /> 
+      {/* <span > */}
       <Form>
         <this.resourceSelection />
-        <Button style = {{marginLeft: "20px", marginTop: "10px"}} className = "large blue" type='submit'>Search</Button>
+        <Button 
+              style = {{marginLeft: "20px", marginTop: "10px"}} 
+              className = "large blue" 
+              type='submit'
+              // disabled={!(this.state.technologySelected)}
+              onClick={this.handleTechnologySelection}>
+              Search</Button>
         <AddResourceModal />
       </Form> 
+      <hr />
+      <h1 style={{paddingLeft: "10%"}}>Resources</h1>
       <this.resourcesTable />
       <FooterDiv />
       </div>
