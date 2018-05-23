@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import JobContainer from "../../components/Grid/JobsContainer.js";
+import JobsContainer from "../../components/Grid/JobsContainer.js";
 import { Dropdown, Select, Table, Sidebar, Form, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid, Container, Input } from 'semantic-ui-react'
 import AddJobNoteModal from "../../components/Modal/AddJobNoteModal.js"
+import FooterDiv from "../../components/Footer/Footer.js";
 
 class JobPage extends Component {
 
@@ -9,7 +10,7 @@ class JobPage extends Component {
   render() {
     return (
       <div>
-      <JobContainer />   
+      <JobsContainer />   
       <h1 style={{textAlign: "center"}}>Jobs</h1>
         <hr />
 
@@ -19,6 +20,7 @@ class JobPage extends Component {
     <Button style = {{marginLeft: "20px", marginTop: "10px"}} className = "large blue" type='submit'>Search</Button>
     </Form>
     <JobsTable />
+    <FooterDiv />
 
     
       </div>

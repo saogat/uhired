@@ -3,6 +3,7 @@ import ResourceContainer from "../../components/Grid/ResourceContainer.js";
 import { Sidebar, Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
 import AddResourceModal from "../../components/Modal/AddResource.js";
 import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
+import FooterDiv from "../../components/Footer/Footer.js";
 import API from "../../utils/API";
 
 class ResourcePage extends Component {
@@ -85,7 +86,7 @@ loadResources() {
 }
 
 handleAddPortfolio = (id, toShareWithEmail) => {
-  event.preventDefault();
+  // event.preventDefault();
     const resources = this.state.resources.filter(resource => resource.id !== id);
     // Set this.state.resources equal to the new resources array
     this.setState({ resources });
@@ -148,7 +149,7 @@ handleAddPortfolio = (id, toShareWithEmail) => {
         <AddResourceModal />
       </Form> 
       <this.resourcesTable />
-     ≈
+      <FooterDiv />
       </div>
     )};
   }

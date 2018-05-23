@@ -1,9 +1,9 @@
-import React from 'react'
-import { Button } from 'semantic-ui-react'
+// import React from 'react'
+// import { Button } from 'semantic-ui-react'
 
 
-const JoinButton = () => (
-  <Button className = "huge inverted blue">Join</Button>
-)
+// const JoinButton = () => (
+//   <Button className = "huge inverted blue">Join</Button>
+// )
 
-export default JoinButton
+// export default JoinButton

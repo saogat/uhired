@@ -1,33 +1,28 @@
 import React from 'react'
-import { Grid, Image, Container } from 'semantic-ui-react'
+import { Grid, Image, Container, Segment } from 'semantic-ui-react'
 
 const FooterDiv = () => (
-  <Container className= "ui fluid inverted vertical masthead padded left aligned segment massive">
+  <div className= "ui vertical footer segment center" style={{display: "flex",
+    minHeight: "70vh", flexDirection: "column"}}>
+  <div className="ui  aligned container" style={{flex: "1"}}></div>
   <Grid columns={3}>
-    <Grid.Row>
+    <Grid.Row className="ui black inverted center aligned" >
       <Grid.Column>
-       <p style={{fontFamily: "cursive", color: "skyBlue", fontSize: "35px", fontWeight: "bold", marginRight: "15px"}}>uHired</p> 
+      <p style={{fontFamily: "cursive", color: "skyBlue", fontSize: "55px", fontWeight: "bold", marginLeft: "250px", marginTop: "15px"}}>uHired</p> 
       </Grid.Column>
       <Grid.Column>
-        <p>Uhired Latest News</p>
-      </Grid.Column>
-    </Grid.Row>
-
-    <Grid.Row>
-      <Grid.Column>
-        <p> 123 A Street</p>
-        <p> Atlanta, GA</p>
-        <p> 404.867.5309</p>
+      <p style={{fontSize: "18px", fontWeight: "bold"}}>CONTACT US:</p>
+         <p style={{fontSize: "14px"}}> 123 A Street<br/>
+          Atlanta, GA  30300<br/>
+          Support@uHired.com<br/>
+          404.867.5309</p>
       </Grid.Column>
       <Grid.Column>
-      <p> Latest Blogs</p>
-      </Grid.Column>
-      <Grid.Column>
-      <p> Uhired</p>
+      <Image src="http://pngimg.com/uploads/globe/globe_PNG33.png" size='small' style={{paddingLeft: "60px", paddingTop: "10px"}} />
       </Grid.Column>
     </Grid.Row>
   </Grid>
-  </Container>
+  </div>
 )
 
 export default FooterDiv
