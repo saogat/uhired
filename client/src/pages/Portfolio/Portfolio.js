@@ -5,6 +5,7 @@ import AccomplishmentModal from "../../components/Modal/AccomplishmentModal.js";
 import UserModal from "../../components/Modal/UserModal.js";
 import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
 import AddJobNoteModal from "../../components/Modal/AddJobNoteModal.js";
+import FooterDiv from "../../components/Footer/Footer.js";
 
 
 class PortfolioPage extends Component {
@@ -19,11 +20,15 @@ class PortfolioPage extends Component {
         <h1 style={{ textAlign: "center" }}>Portfolio</h1>
         <hr />
         <UserCard />
+        <h2 style={{marginLeft: "260px", padding: "0px", marginTop: "10px", marginBottom: "5px"}}>Accomplishments</h2>
+       
 
         <Accomplishments />
-
+        <h2 style={{marginLeft: "260px", padding: "0px", marginTop: "10px", marginBottom: "5px"}}>Jobs</h2>
         <PortfolioJobs />
+        <h2 style={{marginLeft: "260px", padding: "0px", marginTop: "10px", marginBottom: "5px"}}>Resources</h2>
         <PortfolioResources />
+        <FooterDiv/>
       </div>
 
     )
@@ -60,12 +65,13 @@ const UserCard = () => (
 
 const PortfolioJobs = () => (
 
-  <Table celled style={{ width: "80%", align: "center" }}>
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "250px", marginTop: "10px" }}>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
         <Table.HeaderCell width={7}>Richard's Job Prospects</Table.HeaderCell>
         <Table.HeaderCell width={6}>Notes</Table.HeaderCell>
+        <Table.HeaderCell width={1}>Share</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
@@ -76,6 +82,7 @@ const PortfolioJobs = () => (
         </Table.Cell>
         <Table.Cell>Job 1</Table.Cell>
         <Table.Cell>This job sounds cool...</Table.Cell>
+        <Table.Cell> <UserModal/></Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.Cell><Button className="blue">Remove</Button>
@@ -83,12 +90,13 @@ const PortfolioJobs = () => (
         </Table.Cell>
         <Table.Cell>Job 2</Table.Cell>
         <Table.Cell>Great prospect</Table.Cell>
+        <Table.Cell> <UserModal/></Table.Cell>
       </Table.Row>
     </Table.Body>
 
     <Table.Footer>
       <Table.Row>
-        <Table.HeaderCell colSpan='3'>
+        <Table.HeaderCell colSpan='4'>
         </Table.HeaderCell>
       </Table.Row>
     </Table.Footer>
@@ -97,11 +105,11 @@ const PortfolioJobs = () => (
 
 const PortfolioResources = () => (
 
-  <Table celled style={{ width: "80%", align: "center", marginLeft: "250px", marginTop: "30px" }}>
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "250px", marginTop: "10px" }}>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
-        <Table.HeaderCell width={5}>Richard's Resources</Table.HeaderCell>
+        <Table.HeaderCell width={7}>Richard's Resources</Table.HeaderCell>
         <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
         <Table.HeaderCell width={1}><Icon name="checkmark box" />Done</Table.HeaderCell>
         <Table.HeaderCell width={1}>Share</Table.HeaderCell>
@@ -143,7 +151,7 @@ const PortfolioResources = () => (
 const Accomplishments = () => (
 
 
-  <Table celled style={{ width: "80%", align: "center", marginLeft: "250px", marginTop: "30px" }}>
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "250px", marginTop: "18px" }}>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell width={5}>Richard's Accomplishments</Table.HeaderCell>

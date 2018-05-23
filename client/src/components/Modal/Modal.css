@@ -1,0 +1,11 @@
+.dimmed.dimmable > .ui.modals.dimmer.visible {
+    display: flex !important;
+  }
+
+  .ui.modal {
+    margin-top: 0 !important;
+    }
+
+    .visible.transition {
+        visibility: visible !important;
+    }

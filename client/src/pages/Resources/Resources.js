@@ -3,38 +3,109 @@ import ResourceContainer from "../../components/Grid/ResourceContainer.js";
 import { Sidebar, Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
 import AddResourceModal from "../../components/Modal/AddResource.js";
 import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
+import API from "../../utils/API";
 
 class ResourcePage extends Component {
 
 state = {
-  testingList: ["html", "javascript", "react"],
-  resources: []
+  resources: [],
+  technologies: [],
+  options: [],
+  technologySelected: ""
 };
 
- options = [
-  { key: 'angular', text: 'Angular', value: 'angular' },
-  { key: 'css', text: 'CSS', value: 'css' },
-  { key: 'design', text: 'Graphic Design', value: 'design' },
-  { key: 'ember', text: 'Ember', value: 'ember' },
-  { key: 'html', text: 'HTML', value: 'html' },
-  { key: 'ia', text: 'Information Architecture', value: 'ia' },
-  { key: 'javascript', text: 'Javascript', value: 'javascript' },
-  { key: 'mech', text: 'Mechanical Engineering', value: 'mech' },
-  { key: 'meteor', text: 'Meteor', value: 'meteor' },
-  { key: 'node', text: 'NodeJS', value: 'node' },
-  { key: 'plumbing', text: 'Plumbing', value: 'plumbing' },
-  { key: 'python', text: 'Python', value: 'python' },
-  { key: 'rails', text: 'Rails', value: 'rails' },
-  { key: 'react', text: 'React', value: 'react' },
-  { key: 'repair', text: 'Kitchen Repair', value: 'repair' },
-  { key: 'ruby', text: 'Ruby', value: 'ruby' },
-  { key: 'ui', text: 'UI Design', value: 'ui' },
-  { key: 'ux', text: 'User Experience', value: 'ux' },
-];
+loadResources = (technology) => {
+  console.log(technology);
+  API.getResources(technology)
+    .then(res => {
+      console.log(res.data);
+      this.setState({ resources: res.data})})
+    .catch(err => console.log(err));
+};
 
- resourceSelection = () => (
-  <Dropdown style={{marginLeft: "30px", marginBottom: "30px"}}placeholder='Skills' multiple selection options={this.options} />
-);
+deleteResource = id => {
+  API.deleteResource(id)
+    .then(res => this.loadResource())
+    .catch(err => console.log(err));
+};
+
+handleInputChange = event => {
+  const { name, value } = event.target;
+  this.setState({
+    [name]: value
+  });
+};
+
+handleDropdown = event => {
+  const { name, value } = event.target;
+  this.setState({
+    technologySelected: value
+  });
+};
+
+handleFormSubmit = event => {
+  event.preventDefault();
+  if (this.state.name ) {
+    API.saveResource({
+      name: this.state.name,
+      description: this.state.description})
+      .then(res => this.loadResource())
+      .catch(err => console.log(err));
+  }
+};
+
+componentDidMount() {
+  this.loadTechnologies();
+}
+
+loadTechnologies = () => {
+    console.log("I'm in loadTechnologies" )
+    API.getTechnologies()
+      .then( 
+        res => {
+            console.log("Loading technology");
+            console.log(res);
+            this.setState({technologies: res.data});
+            let temp = this.state.technologies.map(e => {
+                return { key: e.name,
+                        text: e.name,
+                        value: e.name}
+            });
+            this.setState({options: temp})
+          })
+      .catch(err => console.log(err));
+};
+
+handleAddPortfolio = (event, id, toShareWithEmail) => {
+  console.log ("In handleAddPortfolio")
+  event.preventDefault();
+    const resources = this.state.resources.filter(resource => resource.id !== id);
+    this.setState({ resources });
+    API.addResourceToPortfolio({
+      userEmail: toShareWithEmail,
+      resourceId: id})
+      .then()
+      .catch(err => console.log(err));
+};
+
+handleTechnologySelection = (event) => {
+  console.log ("In handleTechnologySelection")
+  event.preventDefault();
+  this.loadResources({name: "HTML"});
+  console.log(this.state.technologySelected);
+};
+
+ resourceSelection = () => {
+  return (
+      <Dropdown 
+          style={{marginLeft: "30px", marginBottom: "30px"}} 
+          placeholder='Technology' 
+          multiple selection options={this.state.options}  
+          onSelection={this.handleDropdown}
+          name='technologySelected'
+          // value={this.state.technologySelected}
+         />);
+};
 
  resourcesTable = () => (
   <Table celled style={{width: "80%", align: "center", margin: "auto"}}>
@@ -51,7 +122,10 @@ state = {
       this.state.resources.map(resource => (
             <Table.Row key={resource._id}>
               <Table.Cell>
-                <Button className="blue">Add to Portfolio</Button>
+                <Button 
+                  className="blue"
+                  id = {resource._id}
+                  onClick={this.handleAddPortfolio}>Add to Portfolio</Button>
               </Table.Cell>
               <Table.Cell>
                   {resource.url}
@@ -65,6 +139,7 @@ state = {
    )}
    </Table.Body>
 </Table>
+
 );
 
   render() {
@@ -73,10 +148,17 @@ state = {
       <ResourceContainer />   
       <h1 style={{textAlign: "center"}}>Resources</h1>
       <hr />
-      <p style={{fontSize: "20px", marginLeft: "30px", marginTop: "30px"}}>Select one or more skills to search.</p>
+      <p style={{fontSize: "20px", marginLeft: "30px", marginTop: "30px"}}>Select one or more technologies to search.</p>
       <Form>
         <this.resourceSelection />
-        <Button style = {{marginLeft: "20px", marginTop: "10px"}} className = "large blue" type='submit'>Search</Button>
+        <Button 
+              style = {{marginLeft: "20px", marginTop: "10px"}} 
+              className = "large blue" 
+              type='submit'
+              // disabled={!(this.state.technologySelected)}
+              onClick={this.handleTechnologySelection}>
+              Search</Button>
+        <AddResourceModal />
       </Form> 
       <this.resourcesTable />
       </div>

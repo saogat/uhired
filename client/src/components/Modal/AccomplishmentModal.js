@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Header, Image, Modal } from 'semantic-ui-react';
 import AccomplishmentForm from "../../components/Form/AccomplishmentForm.js";
+import "./Modal.css";
 
 class ModalAccomplishment extends Component {
      
@@ -8,8 +9,8 @@ class ModalAccomplishment extends Component {
       return (
       
 
-        <Modal
-          className="small" style={{float: "center"}}
+        <Modal style={{marginTop: '0px !important', marginLeft: 'auto', marginRight: 'auto'}}
+          className="small vertical align center" 
           trigger={<Button className = "large blue">Add Accomplishment</Button>}
 
         >

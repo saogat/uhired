@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Container, Image, Transition } from 'semantic-ui-react'
+import { Container, Image, Transition, Sticky } from 'semantic-ui-react'
 import MainBreadCrumb from "../../components/BreadCrumb/BreadCrumb.js";
 import MainImage from "../../components/Image/Image.js";
 import "./home.css";
@@ -34,11 +34,11 @@ class HomePage extends Component {
             ) : ( 
               <div>
                 <Container className= "ui fluid inverted vertical masthead padded left aligned segment massive">
-                  <MainBreadCrumb />
+                 <Sticky> <MainBreadCrumb /></Sticky>
                 </Container>
                 <div className="bg">  </div>
                 <Container className= "ui fluid transparent vertical masthead center aligned segment massive">
-                    <h1 style={{marginTop: "230px", color: "skyBlue", textShadow: "3px 3px black", fontFamily: "Courier", fontSize: "60px"}}>Welcome to UHired</h1>
+                    <h1 style={{marginTop: "230px", color: "skyBlue", textShadow: "3px 3px black", fontFamily: "Courier", fontSize: "60px"}}>Welcome to</h1><h1 style={{color: "skyBlue", textShadow: "3px 3px black", fontFamily: "cursive", fontSize: "60px"}}>UHired</h1>
                     <h1 style={{color: "white", fontFamily: "Arial Narrow", textShadow: "2px 2px black", fontSize: "35px", marginBottom: "45px"}}>A site for entry-level developers to search for jobs and share resources</h1>
                       <ModalLogin openPortfolio={this.handleLogin}/>
                       <ModalJoin openPortfolio={this.handleLogin}/>
