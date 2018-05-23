@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ResourceContainer from "../../components/Grid/ResourceContainer.js";
-import { Sidebar, Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
+import { Form, Dropdown, Table, Button } from 'semantic-ui-react'
 import AddResourceModal from "../../components/Modal/AddResource.js";
-import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
 import API from "../../utils/API";
 
 class ResourcePage extends Component {
@@ -23,23 +22,23 @@ loadResources = (technology) => {
     .catch(err => console.log(err));
 };
 
-deleteResource = id => {
-  API.deleteResource(id)
-    .then(res => this.loadResource())
-    .catch(err => console.log(err));
-};
+// deleteResource = id => {
+//   API.deleteResource(id)
+//     .then(res => this.loadResource())
+//     .catch(err => console.log(err));
+// };
 
-handleInputChange = event => {
-  const { name, value } = event.target;
-  this.setState({
-    [name]: value
-  });
-};
+// handleInputChange = event => {
+//   const { name, value } = event.target;
+//   this.setState({
+//     [name]: value
+//   });
+// };
 
-handleDropdown = event => {
-  const { name, value } = event.target;
+handleDropdown = (event, data) => {
+  // const { name, value } = event.target;
   this.setState({
-    technologySelected: value
+    technologySelected: data.value
   });
 };
 
@@ -91,8 +90,8 @@ handleAddPortfolio = (event, id, toShareWithEmail) => {
 handleTechnologySelection = (event) => {
   console.log ("In handleTechnologySelection")
   event.preventDefault();
-  this.loadResources({name: "HTML"});
-  console.log(this.state.technologySelected);
+  this.loadResources({name: this.state.technologySelected[0]});
+  console.log(this.state.technologySelected[0]);
 };
 
  resourceSelection = () => {
@@ -101,7 +100,7 @@ handleTechnologySelection = (event) => {
           style={{marginLeft: "30px", marginBottom: "30px"}} 
           placeholder='Technology' 
           multiple selection options={this.state.options}  
-          onSelection={this.handleDropdown}
+          onChange={this.handleDropdown}
           name='technologySelected'
           // value={this.state.technologySelected}
          />);

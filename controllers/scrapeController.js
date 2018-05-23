@@ -3,16 +3,14 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 module.exports = {
-  scrape: function (req, res) {
+  scrape: function(req, res) {
 
-  console.log("In scrapeController");
-
-      axios.get("https://www.indeed.com/jobs?q=junior+web+developer&l=Atlanta%2C+GA").then(function (response) {
-
+    axios
+      .get("https://www.indeed.com/jobs?q=" + req.body.name + "&l=Atlanta%2C+GA")
+      .then(function(response) {
         var $ = cheerio.load(response.data);
 
-        $(".result").each(function (i, element) {
-
+        $(".result[data-tn-component='organicJob']").each(function(i, element) {
           var result = {};
 
           result.title = $(this)
@@ -37,19 +35,22 @@ module.exports = {
             .trim()
             .split("...")[0];
 
-          result.link = "https://www.indeed.com" + $(this)
-            .children("h2")
-            .children("a")
-            .attr("href");
+          result.link =
+            "https://www.indeed.com" +
+            $(this)
+              .children("h2")
+              .children("a")
+              .attr("href");
 
           // Create a new Job using the `result` object built from scraping
+          console.log( "RESULT!!!", result );
           db.Job.create(result)
-            .then(function (dbJob) {
-              // View the added result in the console
-              console.log(dbJob);
+            .then(function(dbJob) {
+              db.Technology.findByIdAndUpdate(req.body.id,{$push: {jobs: dbJob._id }})
             })
-            .catch(function (err) {
+            .catch(function(err) {
               // If an error occurred, send it to the client
+              console.log( err )
               return res.json(err);
             });
         });
@@ -57,5 +58,4 @@ module.exports = {
         res.send("Scrape Complete");
       });
   }
-}
-
+};

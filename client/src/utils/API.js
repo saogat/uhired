@@ -48,13 +48,8 @@ export default {
     console.log(result);
     return result;
   },
-  scrape: function () {
+  scrape: function (query) {
     console.log("in API client scrape");
-
-    var result = axios.get("/api/scrape");
-
-    console.log("API" + result);
-
-    return result;
+    return axios.post("/api/scrape", query);
   }
 };

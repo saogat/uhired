@@ -3,7 +3,7 @@ const scrapeController = require("../../controllers/scrapeController");
 
 
 router.route("/")
-  .get(scrapeController.scrape);
+  .post(scrapeController.scrape);
 
 module.exports = router;
 
