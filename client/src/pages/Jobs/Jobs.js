@@ -25,7 +25,7 @@ class JobPage extends Component {
     return (
       <div>
       <JobsContainer />   <hr/>
-      <Form>
+      <Form style={{marginLeft: "30px"}}>
         <this.resourceSelection />
         <Button 
               style = {{marginLeft: "20px", marginTop: "10px"}} 
