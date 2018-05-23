@@ -8,6 +8,7 @@ import ModalJoin from "../../components/Modal/JoinModal.js";
 import List from "../../components/List/List.js";
 import PortfolioPage from "../Portfolio/Portfolio.js";
 import ResourcesPage from "../Resources/Resources.js";
+import FooterDiv from "../../components/Footer/Footer.js";
 
 
 class HomePage extends Component {
@@ -33,16 +34,19 @@ class HomePage extends Component {
               // </div> */}
             ) : ( 
               <div>
-                <Container className= "ui fluid inverted vertical masthead padded left aligned segment massive">
-                 <Sticky> <MainBreadCrumb /></Sticky>
-                </Container>
-                <div className="bg">  </div>
+                 <div className="bg">   </div>  <Sticky>
+                <Container style={{width: "100%"}} className= "ui fluid inverted vertical masthead padded left aligned segment massive">
+                 <MainBreadCrumb />
+                </Container></Sticky>
+               
                 <Container className= "ui fluid transparent vertical masthead center aligned segment massive">
-                    <h1 style={{marginTop: "230px", color: "skyBlue", textShadow: "3px 3px black", fontFamily: "Courier", fontSize: "60px"}}>Welcome to</h1><h1 style={{color: "skyBlue", textShadow: "3px 3px black", fontFamily: "cursive", fontSize: "60px"}}>UHired</h1>
-                    <h1 style={{color: "white", fontFamily: "Arial Narrow", textShadow: "2px 2px black", fontSize: "35px", marginBottom: "45px"}}>A site for entry-level developers to search for jobs and share resources</h1>
+                    <h1 className="titleText">Welcome to<span className="logoText">UHired</span></h1>
+                    <h1 className="blurb">A site for entry-level developers to search for jobs and share resources</h1>
                       <ModalLogin openPortfolio={this.handleLogin}/>
                       <ModalJoin openPortfolio={this.handleLogin}/>
-                </Container>  
+                </Container> <FooterDiv/>
+              
+      
              </div>   
             )}
       </div>

@@ -1,13 +1,13 @@
 import React from 'react'
-import { Container } from 'semantic-ui-react'
+import { Container, Sticky } from 'semantic-ui-react'
 import MainBreadCrumb from "../BreadCrumb/BreadCrumb.js";
 import "./Container.css";
 
 const PortfolioContainer = () => (
-  <div>
+  <div> <Sticky>
   <Container className= "ui fluid inverted vertical masthead left aligned segment massive">
-     <MainBreadCrumb></MainBreadCrumb>
-     </Container>
+ <MainBreadCrumb/>
+     </Container></Sticky>
      <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
     <h1>Portfolio</h1>
   </Container>
