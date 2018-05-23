@@ -10,16 +10,16 @@ class ResourcePage extends Component {
 state = {
   resources: [],
   technologies: [],
-  options: []
-
+  options: [],
+  technologySelected: ""
 };
 
-
-loadResource = () => {
-  API.getResource()
-    .then(res =>
-      this.setState({ resources: res.data, name: "", description: ""})
-    )
+loadResources = (technology) => {
+  console.log(technology);
+  API.getResources(technology)
+    .then(res => {
+      console.log(res.data);
+      this.setState({ resources: res.data})})
     .catch(err => console.log(err));
 };
 
@@ -36,53 +36,26 @@ handleInputChange = event => {
   });
 };
 
+handleDropdown = event => {
+  const { name, value } = event.target;
+  this.setState({
+    technologySelected: value
+  });
+};
+
 handleFormSubmit = event => {
   event.preventDefault();
   if (this.state.name ) {
     API.saveResource({
       name: this.state.name,
-      description: this.state.description,
-    })
+      description: this.state.description})
       .then(res => this.loadResource())
       .catch(err => console.log(err));
   }
 };
 
-//  options = [
-//   { key: 'angular', text: 'Angular', value: 'angular1' },
-//   { key: 'css', text: 'CSS', value: 'css' },
-//   { key: 'design', text: 'Graphic Design', value: 'design' },
-//   { key: 'ember', text: 'Ember', value: 'ember' },
-//   { key: 'html', text: 'HTML', value: 'html' },
-//   { key: 'ia', text: 'Information Architecture', value: 'ia' },
-//   { key: 'javascript', text: 'Javascript', value: 'javascript' },
-//   { key: 'mech', text: 'Mechanical Engineering', value: 'mech' },
-//   { key: 'meteor', text: 'Meteor', value: 'meteor' },
-//   { key: 'node', text: 'NodeJS', value: 'node' },
-//   { key: 'plumbing', text: 'Plumbing', value: 'plumbing' },
-//   { key: 'python', text: 'Python', value: 'python' },
-//   { key: 'rails', text: 'Rails', value: 'rails' },
-//   { key: 'react', text: 'React', value: 'react' },
-//   { key: 'repair', text: 'Kitchen Repair', value: 'repair' },
-//   { key: 'ruby', text: 'Ruby', value: 'ruby' },
-//   { key: 'ui', text: 'UI Design', value: 'ui' },
-//   { key: 'ux', text: 'User Experience', value: 'ux' },
-// ];
-
 componentDidMount() {
-  this.loadResources();
   this.loadTechnologies();
-}
-
-loadResources() {
-  this.setState({
-    resources: 
-    [
-    {
-      id: 1234,
-      url: 'https://www.google.com',
-      description: 'Google'
-    }]})
 }
 
 loadTechnologies = () => {
@@ -107,7 +80,6 @@ handleAddPortfolio = (event, id, toShareWithEmail) => {
   console.log ("In handleAddPortfolio")
   event.preventDefault();
     const resources = this.state.resources.filter(resource => resource.id !== id);
-    // Set this.state.resources equal to the new resources array
     this.setState({ resources });
     API.addResourceToPortfolio({
       userEmail: toShareWithEmail,
@@ -116,11 +88,23 @@ handleAddPortfolio = (event, id, toShareWithEmail) => {
       .catch(err => console.log(err));
 };
 
+handleTechnologySelection = (event) => {
+  console.log ("In handleTechnologySelection")
+  event.preventDefault();
+  this.loadResources({name: "HTML"});
+  console.log(this.state.technologySelected);
+};
+
  resourceSelection = () => {
-   console.log("in resourceSelection");
   return (
-  <Dropdown style={{marginLeft: "30px", marginBottom: "30px"}} placeholder='Technology' multiple selection options={this.state.options}  />
- );
+      <Dropdown 
+          style={{marginLeft: "30px", marginBottom: "30px"}} 
+          placeholder='Technology' 
+          multiple selection options={this.state.options}  
+          onSelection={this.handleDropdown}
+          name='technologySelected'
+          // value={this.state.technologySelected}
+         />);
 };
 
  resourcesTable = () => (
@@ -167,7 +151,13 @@ handleAddPortfolio = (event, id, toShareWithEmail) => {
       <p style={{fontSize: "20px", marginLeft: "30px", marginTop: "30px"}}>Select one or more technologies to search.</p>
       <Form>
         <this.resourceSelection />
-        <Button style = {{marginLeft: "20px", marginTop: "10px"}} className = "large blue" type='submit'>Search</Button>
+        <Button 
+              style = {{marginLeft: "20px", marginTop: "10px"}} 
+              className = "large blue" 
+              type='submit'
+              // disabled={!(this.state.technologySelected)}
+              onClick={this.handleTechnologySelection}>
+              Search</Button>
         <AddResourceModal />
       </Form> 
       <this.resourcesTable />
