@@ -38,10 +38,10 @@ handleInputChange = event => {
   });
 };
 
-handleDropdown = event => {
-  const { name, value } = event.target;
+handleDropdown = (event, data) => {
+  // const { name, value } = event.target;
   this.setState({
-    technologySelected: value
+    technologySelected: data.value
   });
 };
 
@@ -93,13 +93,8 @@ loadTechnologies = () => {
 handleTechnologySelection = (event) => {
   console.log ("In handleTechnologySelection")
   event.preventDefault();
-  this.loadResources({name: "HTML"});
-  console.log(this.state.technologySelected);
-};
-
- resourceSelection = () => {
-  return (
-      <TechnologyDropDown />);
+  this.loadResources({name: this.state.technologySelected[0]});
+  console.log(this.state.technologySelected[0]);
 };
 
  resourcesTable = () => (
@@ -142,8 +137,8 @@ handleTechnologySelection = (event) => {
       <div>
       <ResourceContainer /> 
       {/* <span > */}
-      <Form style={{marginLeft: "30px"}}>
-        <this.resourceSelection />
+      <Form>
+        <TechnologyDropDown />
         <Button 
               style = {{marginLeft: "20px", marginTop: "10px"}} 
               className = "large blue" 
