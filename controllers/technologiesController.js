@@ -33,5 +33,13 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  getResources: function(req, res) {
+    console.log("in technologies controller");
+    db.Technology
+    .findOne({name: req.params.name})
+    .populate("resources")
+    .then(dbModel => res.json(dbModel.resources))
+    .catch(err => res.status(422).json(err));
   }
 };

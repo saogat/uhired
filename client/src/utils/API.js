@@ -30,10 +30,18 @@ export default {
     return result;
   },
   addResourceToPortfolio: function (resourceId) {
-    var result = axios.post("/api/resources/share", resourceId);
+    var result = axios.post("/api/resources/share", {resourceId});
     console.log(result);
     return result;
   },
+  getResources: function (technology) {
+    console.log("API.js getResources");
+    console.log(technology.name);
+    var result = axios.get("/api/technologies/resources/" + technology.name);
+    console.log("API.js getResources result");
+    console.log(result);
+    return result;
+    },
   resource: function (resource) {
     console.log(resource);
     var result = axios.post("/api/resources", resource);
