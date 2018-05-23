@@ -4,17 +4,18 @@ const Schema = mongoose.Schema;
 const technologySchema = new Schema({
   name: {
     type: String,
+    unique: true,
     required: true
   },
   description: {
     type: String,
     required: false
   },
-  resource: [{
+  resources: [{
     type: Schema.Types.ObjectId,
     ref: "Resource"
   }],
-  job: [{
+  jobs: [{
     type: Schema.Types.ObjectId,
     ref: "Job"
     }]

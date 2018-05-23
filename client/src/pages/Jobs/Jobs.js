@@ -1,20 +1,32 @@
 import React, { Component } from 'react';
 import JobContainer from "../../components/Grid/JobsContainer.js";
 import { Dropdown, Select, Table, Sidebar, Form, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid, Container, Input } from 'semantic-ui-react'
+import AddJobNoteModal from "../../components/Modal/AddJobNoteModal.js"
+import API from "../../utils/API";
 
 
 class JobPage extends Component {
 
+handleJobScrape = event => {
+  event.preventDefault();
+    API.scrape()
+      .then(res => this.loadJobs())
+      .catch(err => console.log(err));
+};
 
   render() {
     return (
       <div>
       <JobContainer />   
+      <h1 style={{textAlign: "center"}}>Jobs</h1>
+        <hr />
 
       <p style={{fontSize: "20px", marginLeft: "30px", marginTop: "30px"}}>Select one or more skills to search.</p>
       <Form>
     <ResourceSelection />
     <Button style = {{marginLeft: "20px", marginTop: "10px"}} className = "large blue" type='submit'>Search</Button>
+    <Button style = {{marginLeft: "20px", marginTop: "10px"}} className = "large blue" type='submit' onClick={this.handleJobScrape}>Add</Button>
+
     </Form>
     <JobsTable />
 
@@ -26,7 +38,6 @@ class JobPage extends Component {
   }
 
   export default JobPage
-
 
   const optionsa = [
     { key: 'resources', text: 'Resources', value: 'Resources' },
@@ -44,22 +55,23 @@ class JobPage extends Component {
   const options = [
     { key: 'angular', text: 'Angular', value: 'angular' },
     { key: 'css', text: 'CSS', value: 'css' },
-    { key: 'design', text: 'Graphic Design', value: 'design' },
+    { key: 'graphicdesign', text: 'Graphic Design', value: 'graphicdesign' },
     { key: 'ember', text: 'Ember', value: 'ember' },
     { key: 'html', text: 'HTML', value: 'html' },
-    { key: 'ia', text: 'Information Architecture', value: 'ia' },
+    { key: 'express', text: 'Express', value: 'express' },
     { key: 'javascript', text: 'Javascript', value: 'javascript' },
-    { key: 'mech', text: 'Mechanical Engineering', value: 'mech' },
-    { key: 'meteor', text: 'Meteor', value: 'meteor' },
-    { key: 'node', text: 'NodeJS', value: 'node' },
-    { key: 'plumbing', text: 'Plumbing', value: 'plumbing' },
+    { key: 'html', text: 'HTML', value: 'html' },
+    { key: 'bootstrap', text: 'Bootstrap', value: 'bootstrap' },
+    { key: 'nodejs', text: 'NodeJS', value: 'nodejs' },
+    { key: 'mongodb', text: 'MongoDB', value: 'mongodb' },
     { key: 'python', text: 'Python', value: 'python' },
     { key: 'rails', text: 'Rails', value: 'rails' },
     { key: 'react', text: 'React', value: 'react' },
-    { key: 'repair', text: 'Kitchen Repair', value: 'repair' },
+    { key: 'mysql', text: 'MySQL', value: 'mysql' },
     { key: 'ruby', text: 'Ruby', value: 'ruby' },
     { key: 'ui', text: 'UI Design', value: 'ui' },
-    { key: 'ux', text: 'User Experience', value: 'ux' },
+    { key: 'github', text: 'GitHub', value: 'github' },
+    { key: 'firebase', text: 'Firebase', value: 'firebase' }
   ]
   
   const ResourceSelection = () => (
@@ -68,51 +80,44 @@ class JobPage extends Component {
 
   const JobsTable = () => (
  
-    <Table celled style={{width: "80%", align: "center", margin: "auto"}}>
+    <Table celled style={{width: "90%", align: "center", margin: "auto"}}>
     <Table.Header>
       <Table.Row>
-       <Table.HeaderCell width={2}>Actions</Table.HeaderCell>
+       <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
         <Table.HeaderCell width={6}>Job Results</Table.HeaderCell>
-        <Table.HeaderCell width={6}>Portfolio Jobs</Table.HeaderCell>
+        <Table.HeaderCell width={1}>Remove</Table.HeaderCell>
+        <Table.HeaderCell width={6}>Notes</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
     <Table.Body>
       <Table.Row>
-        <Table.Cell><Button className="blue">Add to Portfolio</Button>
+        <Table.Cell><Button className="blue">Add to Portfolio</Button><AddJobNoteModal />
         </Table.Cell>
         <Table.Cell>Job 1</Table.Cell>
+        <Table.Cell><Button icon="remove" style={{color: "blue"}}/></Table.Cell>
         <Table.Cell>Job 1</Table.Cell>
       </Table.Row>
       <Table.Row>
-      <Table.Cell><Button className="blue">Add to Portfolio</Button>
+      <Table.Cell><Button className="blue">Add to Portfolio</Button><AddJobNoteModal />
         </Table.Cell>
         <Table.Cell>Job 2</Table.Cell>
+        <Table.Cell><Button icon="remove" style={{color: "blue"}}/></Table.Cell>
         <Table.Cell>......</Table.Cell>
       </Table.Row>
       <Table.Row>
-      <Table.Cell><Button className="blue">Add to Portfolio</Button>
+      <Table.Cell><Button className="blue">Add to Portfolio</Button><AddJobNoteModal />
         </Table.Cell>
         <Table.Cell>Job 3</Table.Cell>
+        <Table.Cell><Button icon="remove" style={{color: "blue"}}/></Table.Cell>
         <Table.Cell>....</Table.Cell>
       </Table.Row>
     </Table.Body>
 
     <Table.Footer>
       <Table.Row>
-        <Table.HeaderCell colSpan='3'>
-          <Menu floated='right' pagination>
-            <Menu.Item as='a' icon>
-              <Icon name='chevron left' />
-            </Menu.Item>
-            <Menu.Item as='a'>1</Menu.Item>
-            <Menu.Item as='a'>2</Menu.Item>
-            <Menu.Item as='a'>3</Menu.Item>
-            <Menu.Item as='a'>4</Menu.Item>
-            <Menu.Item as='a' icon>
-              <Icon name='chevron right' />
-            </Menu.Item>
-          </Menu>
+        <Table.HeaderCell colSpan='4'>
+    
         </Table.HeaderCell>
       </Table.Row>
     </Table.Footer>

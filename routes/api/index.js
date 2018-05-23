@@ -1,7 +1,10 @@
 const router = require("express").Router();
 const usersRoutes = require("./users");
+const scrapeRoutes = require("./scrape.js");
 
-// Book routes
+
+// Tehnology routes
 router.use("/users", usersRoutes);
+router.use("/scrape", scrapeRoutes);
 
 module.exports = router;

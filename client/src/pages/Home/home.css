@@ -1,0 +1,11 @@
+.bg {
+    background: url('https://images.pexels.com/photos/872957/pexels-photo-872957.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat center center;
+    width: 100%;
+    top:0;
+    left:0;
+    z-index: -1;
+    opacity: 0.9; 
+    background-color: #01080e; 
+  }
+
+ 

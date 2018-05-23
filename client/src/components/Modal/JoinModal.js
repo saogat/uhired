@@ -9,16 +9,18 @@ class ModalJoin extends Component {
   state = { modalOpen: false }
 
   handleOpen = () => this.setState({ modalOpen: true })
-  handleClose = () => this.setState({ modalOpen: false })
+  handleClose = () => {
+    this.setState({ modalOpen: false });
+    this.props.openPortfolio();
+}
 
   render() {
     return (
       <Modal
         className="mini" 
-        trigger={<Button onClick={this.handleOpen} className = "huge inverted blue">Join</Button>}
+        trigger={<Button onClick={this.handleOpen}  style={{backgroundColor: "skyBlue", color:"white", textShadow: "2px 2px black", marginRight: "20px"}}className = "massive">Join</Button>}
         open={this.state.modalOpen}
         onClose={this.handleClose}
-        basic
         size='small'
       >
        <Modal.Header>
