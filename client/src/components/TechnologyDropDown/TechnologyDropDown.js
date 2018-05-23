@@ -9,8 +9,6 @@ class TechnologyDropDown extends Component {
         technologySelected: ""
       };
       
-
-
     componentDidMount() {
         this.loadTechnologies();
       }
@@ -33,15 +31,23 @@ class TechnologyDropDown extends Component {
             .catch(err => console.log(err));
       };
 
-      render() {
-    return (
+      handleDropdown = (event, data) => {
+           this.setState({
+              technologySelected: data.value
+           });	
+           console.log("Technology Component - technologySelected:") 
+           console.log(data.value);
+           console.log(this.state.technologySelected); 
+           this.props.setTechnologySelected(data.value);
+    	 };
+
+    render() {
+      return (
         <Dropdown 
             style={{marginLeft: "30px", marginBottom: "30px", marginTop: "30px"}} 
             placeholder='Technology' 
             selection options={this.state.options}  
-            onSelection={this.handleDropdown}
-            name='technologySelected'
-            // value={this.state.technologySelected}
+            onChange={this.handleDropdown}
            />);
   }
 }

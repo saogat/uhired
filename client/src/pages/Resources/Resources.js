@@ -17,6 +17,7 @@ state = {
 };
 
 loadResources = (technology) => {
+  console.log("in load resources");
   console.log(technology);
   API.getResources(technology)
     .then(res => {
@@ -90,15 +91,24 @@ loadTechnologies = () => {
 //       .catch(err => console.log(err));
 // };
 
+setTechnologySelected = (data) => {
+  console.log("setTechnologySelected");
+  console.log(data);
+  this.setState({
+    technologySelected: data
+  });
+}
+
 handleTechnologySelection = (event) => {
   console.log ("In handleTechnologySelection")
   event.preventDefault();
-  this.loadResources({name: this.state.technologySelected[0]});
-  console.log(this.state.technologySelected[0]);
+  console.log(this.state.technologySelected);
+  this.loadResources({name: this.state.technologySelected});
+  // console.log(this.state.technologySelected[0]);
 };
 
  resourcesTable = () => (
-  <Table celled class="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
+  <Table celled className="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
   <Table.Header>
     <Table.Row>
      <Table.HeaderCell width={2}>Portfolio</Table.HeaderCell>
@@ -132,13 +142,32 @@ handleTechnologySelection = (event) => {
 
 );
 
+
+// renderRow(rowData) {
+//   return (
+//     <SomeComponent onPress={(args) => this.someMethod(args)} data={rowData} />
+//   )
+// }
+// In SomeComponent's onPress, I am then able to actually call the onPress method with an argument:
+
+// render() {
+//  return (
+//     <TouchableHighlight
+//     underlayColor='#EFEFEF'
+//     onPress={() => this.props.onPress(this.props.data[1])}>
+//       <View>
+//         <Text>{this.props.data[0]}</Text>
+//       </View>
+//     </TouchableHighlight>
+//  )
+
+
   render() {
     return (
       <div>
       <ResourceContainer /> 
-      {/* <span > */}
-      <Form>
-        <TechnologyDropDown />
+      <Form> 
+        <TechnologyDropDown setTechnologySelected={(data) => this.setTechnologySelected(data)}/>
         <Button 
               style = {{marginLeft: "20px", marginTop: "10px"}} 
               className = "large blue" 
