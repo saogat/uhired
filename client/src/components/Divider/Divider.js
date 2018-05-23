@@ -1,8 +1,8 @@
-import React from 'react'
-import { Divider } from 'semantic-ui-react'
+// import React from 'react'
+// import { Divider } from 'semantic-ui-react'
 
-const MainDivider = () => (
-  <Divider />
-)
+// const MainDivider = () => (
+//   <Divider />
+// )
 
-export default MainDivider
+// export default MainDivider

@@ -23,7 +23,7 @@ const userSchema = new Schema({
     default: Date.now
   },
   portfolio: {
-  type: Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "Portfolio"
   }
 });

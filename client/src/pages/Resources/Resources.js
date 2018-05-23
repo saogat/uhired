@@ -8,7 +8,7 @@ class ResourcePage extends Component {
 
 state = {
   resources: [],
-  technologies: [],
+  technologies: [], 
   options: [],
   technologySelected: ""
 };
@@ -75,14 +75,17 @@ loadTechnologies = () => {
       .catch(err => console.log(err));
 };
 
-handleAddPortfolio = (event, id, toShareWithEmail) => {
+handleAddPortfolio = (event, props) => {
   console.log ("In handleAddPortfolio")
   event.preventDefault();
-    const resources = this.state.resources.filter(resource => resource.id !== id);
+    const resources = this.state.resources.filter(resource => resource.id !== props.id);
     this.setState({ resources });
+    console.log("handleAddPortfolio props" + props.id)
+    var userId = window.sessionStorage.getItem("user_id");
+    console.log ("userID" + userId)
     API.addResourceToPortfolio({
-      userEmail: toShareWithEmail,
-      resourceId: id})
+      userId: userId,
+      resourceId: props.id})
       .then()
       .catch(err => console.log(err));
 };
@@ -94,20 +97,8 @@ handleTechnologySelection = (event) => {
   console.log(this.state.technologySelected[0]);
 };
 
- resourceSelection = () => {
-  return (
-      <Dropdown 
-          style={{marginLeft: "30px", marginBottom: "30px"}} 
-          placeholder='Technology' 
-          multiple selection options={this.state.options}  
-          onChange={this.handleDropdown}
-          name='technologySelected'
-          // value={this.state.technologySelected}
-         />);
-};
-
  resourcesTable = () => (
-  <Table celled style={{width: "80%", align: "center", margin: "auto"}}>
+  <Table celled class="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
   <Table.Header>
     <Table.Row>
      <Table.HeaderCell width={2}>Portfolio</Table.HeaderCell>
@@ -144,12 +135,10 @@ handleTechnologySelection = (event) => {
   render() {
     return (
       <div>
-      <ResourceContainer />   
-      <h1 style={{textAlign: "center"}}>Resources</h1>
-      <hr />
-      <p style={{fontSize: "20px", marginLeft: "30px", marginTop: "30px"}}>Select one or more technologies to search.</p>
+      <ResourceContainer /> 
+      {/* <span > */}
       <Form>
-        <this.resourceSelection />
+        <TechnologyDropDown />
         <Button 
               style = {{marginLeft: "20px", marginTop: "10px"}} 
               className = "large blue" 
@@ -159,7 +148,10 @@ handleTechnologySelection = (event) => {
               Search</Button>
         <AddResourceModal />
       </Form> 
+      <hr />
+      <h1 style={{paddingLeft: "10%"}}>Resources</h1>
       <this.resourcesTable />
+      <FooterDiv />
       </div>
     )};
   }

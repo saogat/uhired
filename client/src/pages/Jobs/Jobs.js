@@ -11,6 +11,18 @@ import {
 import API from "../../utils/API";
 
 class JobPage extends Component {
+  
+  state = {
+    resources: [],
+    technologies: [], 
+    options: [],
+    technologySelected: ""
+  };
+
+  resourceSelection = () => {
+    return (
+        <TechnologyDropDown />);
+  };
 
 
   handleJobScrape = event => {
@@ -28,32 +40,24 @@ class JobPage extends Component {
   render() {
     return (
       <div>
-        <JobContainer />
-        <h1 style={{ textAlign: "center" }}>Jobs</h1>
-        <hr />
+      <JobsContainer />   <hr/>
+      <Form style={{marginLeft: "30px"}}>
+        <this.resourceSelection />
+        <Button 
+              style = {{marginLeft: "20px", marginTop: "10px"}} 
+              className = "large blue" 
+              type='submit'
+              disabled={!(this.state.technologySelected)}
+              onClick={this.handleTechnologySelection}>
+              Search</Button>
+      
+      </Form>   <hr />
+      <h1 style={{paddingLeft: "5%"}}>Jobs</h1>
+      
+    <JobsTable />
+    <FooterDiv />
 
-        <p style={{ fontSize: "20px", marginLeft: "30px", marginTop: "30px" }}>
-          Select one or more technologies to search.
-        </p>
-        <Form>
-          <ResourceSelection />
-          <Button
-            style={{ marginLeft: "20px", marginTop: "10px" }}
-            className="large blue"
-            type="submit"
-          >
-            Search
-          </Button>
-          <Button
-            style={{ marginLeft: "20px", marginTop: "10px" }}
-            className="large blue"
-            type="submit"
-            onClick={this.handleJobScrape}
-          >
-            Add
-          </Button>
-        </Form>
-        <JobsTable />
+    
       </div>
     );
   }

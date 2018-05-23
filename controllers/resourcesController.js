@@ -35,9 +35,13 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   share: function(req, res) {
+    // db.User
+    // .findById( req.body.userId )
+    // .then(dbModel => res.json(dbModel))
+    // .catch(err => res.status(422).json(err));
+
     db.User
-      .find({email: req.query.emailId}, { $push: { resources: req.query.id } }, { new: true })
-      .then(dbModel => res.json(dbModel))
+      .findByIdAndUpdate(req.body.userId, { $push: { resources: req.body.resourceId } })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }

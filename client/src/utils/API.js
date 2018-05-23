@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export default {
   // Post login
   login: function (login) {
@@ -29,8 +30,9 @@ export default {
     console.log(result);
     return result;
   },
-  addResourceToPortfolio: function (resourceId) {
-    var result = axios.post("/api/resources/share", {resourceId});
+  addResourceToPortfolio: function (share) {
+    var result = axios.post("/api/resources/share", share);
+    console.log ("result for addResourceToPortfolio");
     console.log(result);
     return result;
   },

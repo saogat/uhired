@@ -1,13 +1,14 @@
 import React from 'react'
-import { Grid, Image, Container } from 'semantic-ui-react'
+import { Grid, Image, Container, Sticky } from 'semantic-ui-react'
 import MainBreadCrumb from "../BreadCrumb/BreadCrumb.js";
+import FooterDiv from "../../components/Footer/Footer.js";
 
 const AboutGrid = () => (
     <div>
 
-    <Container className= "ui fluid inverted vertical masthead padded left aligned segment massive">
-    <MainBreadCrumb></MainBreadCrumb>
-    </Container>
+    <Sticky><Container className= "ui fluid inverted vertical masthead padded left aligned segment massive">
+    <MainBreadCrumb/>
+    </Container></Sticky>
     <Container className= "ui fluid vertical masthead center aligned segment massive">
     <h2 style={{fontFamily: "cursive"}}>Meet the Team</h2>
     </Container>
@@ -22,7 +23,7 @@ const AboutGrid = () => (
         <p>Cody Goss - Back-End</p>
       </Grid.Column>
       <Grid.Column>
-        <p>Kristen Speckhals - UI Lead/Front-End</p>
+        <p>Kristen Speckhals - UI/Front-End</p>
       </Grid.Column>
       <Grid.Column>
         <Image src='https://www.biography.com/.image/t_share/MTMyNDczNDI1MjgwMTQ1ODg2/bill_gates_2012_wikimedia_commons_promojpg.jpg' size='medium' circular  />
@@ -44,13 +45,15 @@ const AboutGrid = () => (
       </Grid.Column>
       <Grid.Column>
         {/* <Image src='https://www.biography.com/.image/t_share/MTMyNDczNDI1MjgwMTQ1ODg2/bill_gates_2012_wikimedia_commons_promojpg.jpg' size='medium' circular  /> */}
-        <img class="ui medium circular image" src="../Image/Rani.jpg"/>
+        <img class="ui medium circular image" src="./Images/Rani.jpg"/>
 
         <p>CEO</p> 
       </Grid.Column>
     </Grid.Row>
   </Grid>
   </Container>
+  <div>
+                <FooterDiv /></div>
   </div>
 )
 
