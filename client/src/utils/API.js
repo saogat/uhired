@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export default {
   // Post login
   login: function (login) {

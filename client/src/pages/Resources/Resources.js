@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import ResourceContainer from "../../components/Grid/ResourceContainer.js";
-import { Sidebar, Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
+import { Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
 import AddResourceModal from "../../components/Modal/AddResource.js";
 import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
-import API from "../../utils/API";
+import FooterDiv from "../../components/Footer/Footer.js";
+import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
+import API from "../../utils/API"
 
 class ResourcePage extends Component {
 
 state = {
   resources: [],
-  technologies: [],
+  technologies: [], 
   options: [],
   technologySelected: ""
 };
@@ -76,17 +78,17 @@ loadTechnologies = () => {
       .catch(err => console.log(err));
 };
 
-handleAddPortfolio = (event, id, toShareWithEmail) => {
-  console.log ("In handleAddPortfolio")
-  event.preventDefault();
-    const resources = this.state.resources.filter(resource => resource.id !== id);
-    this.setState({ resources });
-    API.addResourceToPortfolio({
-      userEmail: toShareWithEmail,
-      resourceId: id})
-      .then()
-      .catch(err => console.log(err));
-};
+// handleAddPortfolio = (event, id, toShareWithEmail) => {
+//   console.log ("In handleAddPortfolio")
+//   event.preventDefault();
+//     const resources = this.state.resources.filter(resource => resource.id !== id);
+//     this.setState({ resources });
+//     API.addResourceToPortfolio({
+//       userEmail: toShareWithEmail,
+//       resourceId: id})
+//       .then()
+//       .catch(err => console.log(err));
+// };
 
 handleTechnologySelection = (event) => {
   console.log ("In handleTechnologySelection")
@@ -95,20 +97,8 @@ handleTechnologySelection = (event) => {
   console.log(this.state.technologySelected[0]);
 };
 
- resourceSelection = () => {
-  return (
-      <Dropdown 
-          style={{marginLeft: "30px", marginBottom: "30px"}} 
-          placeholder='Technology' 
-          multiple selection options={this.state.options}  
-          onChange={this.handleDropdown}
-          name='technologySelected'
-          // value={this.state.technologySelected}
-         />);
-};
-
  resourcesTable = () => (
-  <Table celled style={{width: "80%", align: "center", margin: "auto"}}>
+  <Table celled class="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
   <Table.Header>
     <Table.Row>
      <Table.HeaderCell width={2}>Portfolio</Table.HeaderCell>
@@ -145,12 +135,10 @@ handleTechnologySelection = (event) => {
   render() {
     return (
       <div>
-      <ResourceContainer />   
-      <h1 style={{textAlign: "center"}}>Resources</h1>
-      <hr />
-      <p style={{fontSize: "20px", marginLeft: "30px", marginTop: "30px"}}>Select one or more technologies to search.</p>
+      <ResourceContainer /> 
+      {/* <span > */}
       <Form>
-        <this.resourceSelection />
+        <TechnologyDropDown />
         <Button 
               style = {{marginLeft: "20px", marginTop: "10px"}} 
               className = "large blue" 
@@ -160,7 +148,10 @@ handleTechnologySelection = (event) => {
               Search</Button>
         <AddResourceModal />
       </Form> 
+      <hr />
+      <h1 style={{paddingLeft: "10%"}}>Resources</h1>
       <this.resourcesTable />
+      <FooterDiv />
       </div>
     )};
   }
