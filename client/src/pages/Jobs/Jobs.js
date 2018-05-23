@@ -10,8 +10,6 @@ class JobPage extends Component {
   
   state = {
     resources: [],
-    technologies: [], 
-    options: [],
     technologySelected: ""
   };
 
@@ -20,17 +18,13 @@ class JobPage extends Component {
         <TechnologyDropDown />);
   };
 
-
   setTechnologySelected = (data) => {
-    console.log("setTechnologySelected");
-    console.log(data);
     this.setState({
       technologySelected: data
     });
   }
 
   jobsTable = () => (
- 
     <Table celled style={{width: "90%", align: "center", margin: "auto"}}>
     <Table.Header>
       <Table.Row>
