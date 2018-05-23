@@ -39,13 +39,6 @@ handleInputChange = event => {
   });
 };
 
-handleDropdown = (event, data) => {
-  // const { name, value } = event.target;
-  this.setState({
-    technologySelected: data.value
-  });
-};
-
 handleFormSubmit = event => {
   event.preventDefault();
   if (this.state.name ) {
@@ -55,28 +48,6 @@ handleFormSubmit = event => {
       .then(res => this.loadResource())
       .catch(err => console.log(err));
   }
-};
-
-componentDidMount() {
-  this.loadTechnologies();
-}
-
-loadTechnologies = () => {
-    console.log("I'm in loadTechnologies" )
-    API.getTechnologies()
-      .then( 
-        res => {
-            console.log("Loading technology");
-            console.log(res);
-            this.setState({technologies: res.data});
-            let temp = this.state.technologies.map(e => {
-                return { key: e.name,
-                        text: e.name,
-                        value: e.name}
-            });
-            this.setState({options: temp})
-          })
-      .catch(err => console.log(err));
 };
 
 handleAddPortfolio = (event, props) => {
