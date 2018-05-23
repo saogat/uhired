@@ -11,18 +11,12 @@ class ResourcePage extends Component {
 
 state = {
   resources: [],
-  technologies: [], 
-  options: [],
   technologySelected: ""
 };
 
 loadResources = (technology) => {
-  console.log("in load resources");
-  console.log(technology);
   API.getResources(technology)
-    .then(res => {
-      console.log(res.data);
-      this.setState({ resources: res.data})})
+    .then(res => {this.setState({ resources: res.data})})
     .catch(err => console.log(err));
 };
 
@@ -37,6 +31,17 @@ handleInputChange = event => {
   this.setState({
     [name]: value
   });
+};
+
+setTechnologySelected = (data) => {
+  this.setState({
+    technologySelected: data
+  });
+}
+
+handleTechnologySelection = (event) => {
+  event.preventDefault();
+  this.loadResources({id: this.state.technologySelected});
 };
 
 handleFormSubmit = event => {
@@ -63,22 +68,6 @@ handleAddPortfolio = (event, props) => {
       resourceId: props.id})
       .then()
       .catch(err => console.log(err));
-};
-
-setTechnologySelected = (data) => {
-  console.log("setTechnologySelected");
-  console.log(data);
-  this.setState({
-    technologySelected: data
-  });
-}
-
-handleTechnologySelection = (event) => {
-  console.log ("In handleTechnologySelection")
-  event.preventDefault();
-  console.log(this.state.technologySelected);
-  this.loadResources({name: this.state.technologySelected});
-  // console.log(this.state.technologySelected[0]);
 };
 
  resourcesTable = () => (
@@ -113,28 +102,7 @@ handleTechnologySelection = (event) => {
    )}
    </Table.Body>
 </Table>
-
 );
-
-
-// renderRow(rowData) {
-//   return (
-//     <SomeComponent onPress={(args) => this.someMethod(args)} data={rowData} />
-//   )
-// }
-// In SomeComponent's onPress, I am then able to actually call the onPress method with an argument:
-
-// render() {
-//  return (
-//     <TouchableHighlight
-//     underlayColor='#EFEFEF'
-//     onPress={() => this.props.onPress(this.props.data[1])}>
-//       <View>
-//         <Text>{this.props.data[0]}</Text>
-//       </View>
-//     </TouchableHighlight>
-//  )
-
 
   render() {
     return (
