@@ -36,10 +36,10 @@ handleInputChange = event => {
   });
 };
 
-handleDropdown = event => {
-  const { name, value } = event.target;
+handleDropdown = (event, data) => {
+  // const { name, value } = event.target;
   this.setState({
-    technologySelected: value
+    technologySelected: data.value
   });
 };
 
@@ -91,8 +91,8 @@ handleAddPortfolio = (event, id, toShareWithEmail) => {
 handleTechnologySelection = (event) => {
   console.log ("In handleTechnologySelection")
   event.preventDefault();
-  this.loadResources({name: "HTML"});
-  console.log(this.state.technologySelected);
+  this.loadResources({name: this.state.technologySelected[0]});
+  console.log(this.state.technologySelected[0]);
 };
 
  resourceSelection = () => {
@@ -101,7 +101,7 @@ handleTechnologySelection = (event) => {
           style={{marginLeft: "30px", marginBottom: "30px"}} 
           placeholder='Technology' 
           multiple selection options={this.state.options}  
-          onSelection={this.handleDropdown}
+          onChange={this.handleDropdown}
           name='technologySelected'
           // value={this.state.technologySelected}
          />);
