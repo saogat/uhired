@@ -8,12 +8,12 @@ import API from "../../utils/API";
 class ResourcePage extends Component {
 
 state = {
-  testingList: ["html", "javascript", "react"],
   resources: [],
+  technologies: [],
+  options: []
 
 };
 
-// onload { }
 
 loadResource = () => {
   API.getResource()
@@ -48,29 +48,30 @@ handleFormSubmit = event => {
   }
 };
 
- options = [
-  { key: 'angular', text: 'Angular', value: 'angular' },
-  { key: 'css', text: 'CSS', value: 'css' },
-  { key: 'design', text: 'Graphic Design', value: 'design' },
-  { key: 'ember', text: 'Ember', value: 'ember' },
-  { key: 'html', text: 'HTML', value: 'html' },
-  { key: 'ia', text: 'Information Architecture', value: 'ia' },
-  { key: 'javascript', text: 'Javascript', value: 'javascript' },
-  { key: 'mech', text: 'Mechanical Engineering', value: 'mech' },
-  { key: 'meteor', text: 'Meteor', value: 'meteor' },
-  { key: 'node', text: 'NodeJS', value: 'node' },
-  { key: 'plumbing', text: 'Plumbing', value: 'plumbing' },
-  { key: 'python', text: 'Python', value: 'python' },
-  { key: 'rails', text: 'Rails', value: 'rails' },
-  { key: 'react', text: 'React', value: 'react' },
-  { key: 'repair', text: 'Kitchen Repair', value: 'repair' },
-  { key: 'ruby', text: 'Ruby', value: 'ruby' },
-  { key: 'ui', text: 'UI Design', value: 'ui' },
-  { key: 'ux', text: 'User Experience', value: 'ux' },
-];
+//  options = [
+//   { key: 'angular', text: 'Angular', value: 'angular1' },
+//   { key: 'css', text: 'CSS', value: 'css' },
+//   { key: 'design', text: 'Graphic Design', value: 'design' },
+//   { key: 'ember', text: 'Ember', value: 'ember' },
+//   { key: 'html', text: 'HTML', value: 'html' },
+//   { key: 'ia', text: 'Information Architecture', value: 'ia' },
+//   { key: 'javascript', text: 'Javascript', value: 'javascript' },
+//   { key: 'mech', text: 'Mechanical Engineering', value: 'mech' },
+//   { key: 'meteor', text: 'Meteor', value: 'meteor' },
+//   { key: 'node', text: 'NodeJS', value: 'node' },
+//   { key: 'plumbing', text: 'Plumbing', value: 'plumbing' },
+//   { key: 'python', text: 'Python', value: 'python' },
+//   { key: 'rails', text: 'Rails', value: 'rails' },
+//   { key: 'react', text: 'React', value: 'react' },
+//   { key: 'repair', text: 'Kitchen Repair', value: 'repair' },
+//   { key: 'ruby', text: 'Ruby', value: 'ruby' },
+//   { key: 'ui', text: 'UI Design', value: 'ui' },
+//   { key: 'ux', text: 'User Experience', value: 'ux' },
+// ];
 
 componentDidMount() {
   this.loadResources();
+  this.loadTechnologies();
 }
 
 loadResources() {
@@ -84,7 +85,26 @@ loadResources() {
     }]})
 }
 
+loadTechnologies = () => {
+    console.log("I'm in loadTechnologies" )
+    API.getTechnologies()
+      .then( 
+        res => {
+            console.log("Loading technology");
+            console.log(res);
+            this.setState({technologies: res.data});
+            let temp = this.state.technologies.map(e => {
+                return { key: e.name,
+                        text: e.name,
+                        value: e.name}
+            });
+            this.setState({options: temp})
+          })
+      .catch(err => console.log(err));
+};
+
 handleAddPortfolio = (event, id, toShareWithEmail) => {
+  console.log ("In handleAddPortfolio")
   event.preventDefault();
     const resources = this.state.resources.filter(resource => resource.id !== id);
     // Set this.state.resources equal to the new resources array
@@ -96,9 +116,12 @@ handleAddPortfolio = (event, id, toShareWithEmail) => {
       .catch(err => console.log(err));
 };
 
- resourceSelection = () => (
-  <Dropdown style={{marginLeft: "30px", marginBottom: "30px"}}placeholder='Skills' multiple selection options={this.name} />
-);
+ resourceSelection = () => {
+   console.log("in resourceSelection");
+  return (
+  <Dropdown style={{marginLeft: "30px", marginBottom: "30px"}} placeholder='Technology' multiple selection options={this.state.options}  />
+ );
+};
 
  resourcesTable = () => (
   <Table celled style={{width: "80%", align: "center", margin: "auto"}}>
@@ -148,7 +171,6 @@ handleAddPortfolio = (event, id, toShareWithEmail) => {
         <AddResourceModal />
       </Form> 
       <this.resourcesTable />
-     ≈
       </div>
     )};
   }

@@ -17,9 +17,15 @@ export default {
     console.log(result);
     return result;
   },
-  technology: function (technology) {
+  saveTechnology: function (technology) {
     console.log(technology);
-    var result = axios.post("/api/technology", technology);
+    var result = axios.post("/api/technologies", technology);
+    console.log(result);
+    return result;
+  },
+  getTechnologies: function () {
+    console.log("In Api.js getTechnologies");
+    var result = axios.get("/api/technologies");
     console.log(result);
     return result;
   },
