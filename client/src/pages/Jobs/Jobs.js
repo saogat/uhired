@@ -21,42 +21,15 @@ class JobPage extends Component {
   };
 
 
-  render() {
-    return (
-      <div>
-      <JobsContainer />   <hr/>
-      <Form style={{marginLeft: "30px"}}>
-        <this.resourceSelection />
-        <Button 
-              style = {{marginLeft: "20px", marginTop: "10px"}} 
-              className = "large blue" 
-              type='submit'
-              disabled={!(this.state.technologySelected)}
-              onClick={this.handleTechnologySelection}>
-              Search</Button>
-      
-      </Form>   <hr />
-      <h1 style={{paddingLeft: "5%"}}>Jobs</h1>
-      
-    <JobsTable />
-    <FooterDiv />
-
-    
-      </div>
- 
-    )};
-  
+  setTechnologySelected = (data) => {
+    console.log("setTechnologySelected");
+    console.log(data);
+    this.setState({
+      technologySelected: data
+    });
   }
 
-  export default JobPage
-
-
-
- 
-  
-  
-
-  const JobsTable = () => (
+  jobsTable = () => (
  
     <Table celled style={{width: "90%", align: "center", margin: "auto"}}>
     <Table.Header>
@@ -100,4 +73,28 @@ class JobPage extends Component {
       </Table.Row>
     </Table.Footer>
   </Table>
-)
+);
+
+  render() {
+    return (
+      <div>
+      <JobsContainer />   <hr/>
+      <Form style={{marginLeft: "30px"}}>
+      <TechnologyDropDown setTechnologySelected={(data) => this.setTechnologySelected(data)}/>
+        <Button 
+              style = {{marginLeft: "20px", marginTop: "10px"}} 
+              className = "large blue" 
+              type='submit'
+              disabled={!(this.state.technologySelected)}
+              onClick={this.handleTechnologySelection}>
+              Search</Button>
+      
+      </Form>   <hr />
+      <h1 style={{paddingLeft: "5%"}}>Jobs</h1>
+    <this.jobsTable />
+    <FooterDiv />
+      </div>
+     )};
+  }
+
+  export default JobPage

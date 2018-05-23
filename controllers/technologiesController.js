@@ -36,8 +36,9 @@ module.exports = {
   },
   getResources: function(req, res) {
     console.log("in technologies controller");
+    console.log(req.params.name);
     db.Technology
-    .findOne({name: req.params.name})
+    .findById(req.params.name)
     .populate("resources")
     .then(dbModel => res.json(dbModel.resources))
     .catch(err => res.status(422).json(err));

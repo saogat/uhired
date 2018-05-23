@@ -24,7 +24,7 @@ class TechnologyDropDown extends Component {
                   let temp = this.state.technologies.map(e => {
                       return { key: e.name,
                               text: e.name,
-                              value: e.name}
+                              value: e._id}
                   });
                   this.setState({options: temp})
                 })
