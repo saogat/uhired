@@ -3,6 +3,7 @@ import { Button, Header, Image, Modal } from 'semantic-ui-react';
 import AccomplishmentForm from "../../components/Form/AccomplishmentForm.js";
 import "./Modal.css";
 
+
 class ModalAccomplishment extends Component {
      
     render() {

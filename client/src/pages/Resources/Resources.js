@@ -142,7 +142,7 @@ handleTechnologySelection = (event) => {
       <div>
       <ResourceContainer /> 
       {/* <span > */}
-      <Form>
+      <Form style={{marginLeft: "30px"}}>
         <this.resourceSelection />
         <Button 
               style = {{marginLeft: "20px", marginTop: "10px"}} 

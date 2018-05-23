@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Checkbox, Form } from 'semantic-ui-react'
 import LoginContainer from "../../components/Grid/LoginContainer.js";
 import API from "../../utils/API";
-import ResourceSelection from "../Selection/ResourceSelection.js";
+import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
 
 class AddResourceForm extends Component {
 
@@ -69,6 +69,9 @@ class AddResourceForm extends Component {
           onChange={this.handleInputChange}
           name="url"/>
       </Form.Field>
+      <Form.Field>
+        <TechnologyDropDown />
+        </Form.Field>
       <Button 
         type='submit' className="medium blue"
         disabled={!(this.state.description && this.state.url)}

@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react'
-import LoginContainer from "../../components/Grid/LoginContainer.js";
+import { Button, Form } from 'semantic-ui-react'
 import API from "../../utils/API";
-import ResourceSelection from "../Selection/ResourceSelection.js";
+import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
 
 const AccomplishmentForm = () => (
 
-      <Form>
-         <Button className="blue large floated right" style={{marginBottom: "20px"}}
-        type='submit'>
-        Add Accomplishment
-      </Button>
-     
+      <Form>   
       <Form.Field>
       <label>Project Title</label>
       <input 
@@ -25,9 +19,13 @@ const AccomplishmentForm = () => (
           placeholder='//http:github.com'  
           name="link"/>
       </Form.Field>
-      <Form.Field>
-      <ResourceSelection />
+      <Form.Field style={{marginLeft: "0px"}}>
+      <TechnologyDropDown />
       </Form.Field>
+      <Button className="blue large floated right" style={{marginBottom: "20px"}}
+        type='submit'>
+        Add Accomplishment
+      </Button>
      
       </Form>
     )
