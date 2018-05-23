@@ -26,7 +26,6 @@ class JobPage extends Component {
 
 
   handleJobScrape = event => {
-    var query = {id: ObjectId("5b05b15e0bbf2c1fe525d299") , name: "HTML"};
     event.preventDefault();
     API.scrape(query)
       .then(res => this.loadJobs( res ))

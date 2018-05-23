@@ -3,6 +3,7 @@ import ResourceContainer from "../../components/Grid/ResourceContainer.js";
 import { Form, Dropdown, Table, Button } from 'semantic-ui-react'
 import AddResourceModal from "../../components/Modal/AddResource.js";
 import API from "../../utils/API";
+import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
 
 class ResourcePage extends Component {
 

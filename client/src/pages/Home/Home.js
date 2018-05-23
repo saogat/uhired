@@ -5,11 +5,8 @@ import "./home.css";
 import ModalLogin from "../../components/Modal/LoginModal.js";
 import ModalJoin from "../../components/Modal/JoinModal.js";
 import PortfolioPage from "../Portfolio/Portfolio.js";
-<<<<<<< HEAD
-=======
 import ResourcesPage from "../Resources/Resources.js";
 import FooterDiv from "../../components/Footer/Footer.js";
->>>>>>> master
 
 
 class HomePage extends Component {
