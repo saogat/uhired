@@ -32,7 +32,7 @@ class PortfolioPage extends Component {
         <Container className="ui fluid inverted vertical masthead left aligned segment massive">
        <MainBreadCrumb/>
         </Container></Sticky>
-        <Form>
+        <Form style={{marginLeft: "30px"}}>
         <this.resourceSelection />
         <Button 
               style = {{marginLeft: "20px", marginTop: "10px"}} 

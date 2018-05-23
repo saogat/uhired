@@ -23,11 +23,14 @@ class LoginForm extends Component {
   };
 
   loadPortfolio = res => {
-    console.log
     console.log(res);
     if(res.status === 200)
     {
-      window.sessionStorage.setItem("user", JSON.stringify(res.data.token));
+      window.sessionStorage.setItem("user", res.data.token);
+      console.log ("res.data.user");
+      console.log(res.data.user);
+      window.sessionStorage.setItem("user_id", res.data.user._id);
+
       this.props.close();
     } 
     else {alert(res)}

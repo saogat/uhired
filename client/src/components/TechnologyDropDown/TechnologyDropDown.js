@@ -44,7 +44,7 @@ class TechnologyDropDown extends Component {
     render() {
       return (
         <Dropdown 
-            style={{marginLeft: "30px", marginBottom: "30px", marginTop: "30px"}} 
+            style={{marginLeft: "0px", marginBottom: "30px", marginTop: "30px"}} 
             placeholder='Technology' 
             selection options={this.state.options}  
             onChange={this.handleDropdown}
