@@ -98,5 +98,26 @@ module.exports = {
         console.log( "User error:", err );
         res.status(422).json(err)
       });
-  }
+  },
+
+  note: function (req, res) {
+    db.Note
+      .create(req.body.note)
+      .then(dbNote => {
+          db.Resource
+            .findByIdAndUpdate(req.body.resourceId, {
+                $push: {
+                  notes: dbNote._id
+                }
+             })
+          .then(dbModel => res.json(dbModel))
+          .catch(
+            err => {
+              console.log(err);
+              res.status(422).json(err)})})
+      .catch(err => {
+        console.log(err);
+        res.status(422).json(err)
+      });
+    }
 };

@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const noteSchema = new Schema({
-  owner: { 
-        type: Schema.Types.ObjectId,
-        ref: "User" },
+  owner:{ 
+        type: String
+     },
   title: { type: String },
   body: { type: String, required: true },
   date: { type: Date, default: Date.now }

@@ -61,9 +61,10 @@ class PortfolioPage extends Component {
                 <Table.Cell>
                   <Button 
                     className="blue compact"
-                    id = {resource._id}
+                    id={resource._id}
                     onClick={this.handleRemovePortfolio}>Delete</Button>
-                    <AddResourceNoteModal /><UserModal />
+                    <AddResourceNoteModal id={resource._id} />
+                    <UserModal />
                 </Table.Cell>
               </Table.Row>
         ))) : (

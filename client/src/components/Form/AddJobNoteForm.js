@@ -18,23 +18,17 @@ class AddJobNoteForm extends Component {
     });
   };
   
-  loadJobs = res => {
-    console.log(res);
-    if(res.status === 200)
-    {
-      window.sessionStorage.setItem("resource", JSON.stringify(res.data.token));
-      this.props.close();
-    } 
-    else {alert(res)}
+  loadJobs = jobs => {
+    console.log(jobs);
   };
 
   handleFormSubmit = event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
    event.preventDefault();
    console.log("Submit clicked");
-   if (this.state.notes) {
+   if (this.state.note) {
      API.resource({
-       description: this.state.notes,
+       description: this.state.note,
        _id: this.state._id,
      })
        .then(res => this.loadResources(res))
@@ -43,17 +37,17 @@ class AddJobNoteForm extends Component {
  };
 
 
-handleAddJobNote = (event, props) => {
-event.preventDefault();
-  const resources = this.state.resources.filter(job => job.id === props.id);
-  this.setState({ resources });
-  var resourceId = window.sessionStorage.getItem("job_id");
-  API.addJobNote({
-    notes: "",
-    jobId: props.id})
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
-};
+// handleAddJobNote = (event, props) => {
+// event.preventDefault();
+//   const resources = this.state.jobs.filter(jobs => jobs.id === props.id);
+//   this.setState({ notes });
+//   var resourceId = window.sessionStorage.getItem("job_id");
+//   API.addJobNote({
+//     note: "",
+//     jobId: props.id})
+//     .then(res => console.log(res))
+//     .catch(err => console.log(err));
+// };
  render() {
   return (
     <div>
@@ -70,7 +64,7 @@ event.preventDefault();
       <Button className="blue medium"
         type='submit'
         id = {this.job.id}
-        onClick={this.handleAddResourceNote}> 
+        onClick={this.handleAddJobNote}> 
         Add Note
       </Button>
       </Form>

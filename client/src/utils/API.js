@@ -43,7 +43,8 @@ export default {
     return result;
   },
   addResourceNote: function (resource) {
-    var result = axios.get("api/resources", resource)
+    console.log("In api notes", resource);
+    var result = axios.post("api/resources/note", resource)
     return result;
   },
   scrape: function (query) {
