@@ -17,7 +17,9 @@ class JobPage extends Component {
 
   handleJobScrape = event => {
     event.preventDefault();
+
     var query = {id: this.state.technologySelected};
+
     API.scrape(query)
       .then(res => this.loadJobs(res))
       .catch(err => console.log(err));
@@ -28,10 +30,11 @@ class JobPage extends Component {
   };
 
   setTechnologySelected = data => {
-    this.setState({
-      technologySelected: data
-    });
-  };
+      this.setState({
+        technologySelected: data
+      });
+    };
+  
 
   jobsTable = () => (
     <Table
@@ -87,8 +90,7 @@ class JobPage extends Component {
         <JobsContainer /> <hr />
         <Form style={{ marginLeft: "30px" }}>
           <TechnologyDropDown
-            setTechnologySelected={data => this.setTechnologySelected(data)}
-          />
+            setTechnologySelected={data => this.setTechnologySelected(data)}/>
           <Button
             style={{ marginLeft: "20px", marginTop: "10px" }}
             className="large blue"
@@ -96,17 +98,17 @@ class JobPage extends Component {
             disabled={!this.state.technologySelected}
             onClick={this.handleTechnologySelection}
             onClick={this.handleJobScrape}
-          >
+           >
             Search
           </Button>
-        </Form>{" "}
+        </Form>
         <hr />
         <h1 style={{ paddingLeft: "5%" }}>Jobs</h1>
         <this.jobsTable />
         <FooterDiv />
       </div>
     );
-  }
-}
+  };
+};
 
 export default JobPage;

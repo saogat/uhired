@@ -35,14 +35,64 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   share: function(req, res) {
-    // db.User
-    // .findById( req.body.userId )
-    // .then(dbModel => res.json(dbModel))
-    // .catch(err => res.status(422).json(err));
-
     db.User
       .findByIdAndUpdate(req.body.userId, { $push: { resources: req.body.resourceId } })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  portfolio: function(req, res) {
+    console.log(req.body);
+    db.User
+      .findByIdAndUpdate(req.body.userId, {$push: { resources: req.body.resourceId }})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findPortfolio: function(req, res) {
+    console.log("in findPortfolio:");
+    console.log(req.params.query);
+    db.User
+      .findById(req.params.query.userId)
+      .populate("resources")
+      .then(
+        dbModel1 => {
+          console.log(dbModel1);
+          // let userResources = dbModel1.resources;
+          // console.log(userResources);
+          // db.Technology
+          //     .findById(req.params.id)
+          //     .populate("resources")
+          //     .then(dbModel2 => {
+          //           let techResources = dbModel2.resources;
+          //           console.log(techResources);
+          //           res.json(userResources.filter(each => techResources.includes(ea)));
+          //           })
+          //     .catch(err => res.status(422).json(err));
+                  })
+      .catch(err => res.status(422).json(err));
+  },
+
+  findPortfolio1: function(req, res) {
+    console.log("in findPortfolio:");
+    console.log(req.body);
+    db.User
+      .findById(req.body.userId)
+      .populate("resources")
+      .then(
+        dbModel1 => {
+          console.log(dbModel1);
+          let userResources = dbModel1.resources;
+          console.log(userResources);
+          db.Technology
+              .findById(req.params.id)
+              .populate("resources")
+              .then(dbModel2 => {
+                    let techResources = dbModel2.resources;
+                    console.log(techResources);
+                    res.json(userResources.filter(each => techResources.includes(ea)));
+                    })
+              .catch(err => res.status(422).json(err));
+                  })
+      .catch(err => res.status(422).json(err));
   }
+
 };
