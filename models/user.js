@@ -25,7 +25,15 @@ const userSchema = new Schema({
   portfolio: {
     type: Schema.Types.ObjectId,
     ref: "Portfolio"
-  }
+  },
+  resources: [{
+    type: Schema.Types.ObjectId,
+    ref: "Resource"
+  }],
+  jobs: [{
+    type: Schema.Types.ObjectId,
+    ref: "Job"
+    }]
 });
 
 const User = mongoose.model("User", userSchema);

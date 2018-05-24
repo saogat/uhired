@@ -19,13 +19,18 @@ export default {
     return result;
   },
   addResourceToPortfolio: function (query) {
-    var result = axios.post("/api/resources/share", query);
+    var result = axios.post("/api/resources/portfolio", query);
     return result;
   },
   getResources: function (technology) {
     var result = axios.get("/api/technologies/resources/" + technology.id);
     return result;
     },
+  getPortfolioResources: function (query) {
+      console.log("In getPortfolioResources");
+      var result = axios.get("/api/resources/portfolio/" + query.id + "/" + query.userId);
+      return result;
+      },
   resource: function (resource) {
     console.log(resource);
     var result = axios.post("/api/resources", resource);
@@ -35,5 +40,10 @@ export default {
   addAccomplishment: function (accomplishment) {
     var result = axios.get("api/accomplishments", accomplishment)
     return result;
+  },
+  scrape: function (query) {
+    console.log("in API client scrape");
+    console.log(query);
+    return axios.post("/api/scrape", query);
   }
 };
