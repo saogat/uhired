@@ -29,8 +29,8 @@ class PortfolioPage extends Component {
   render() {
     return (
       <div> <Sticky>
-        <Container className="ui fluid inverted vertical masthead left aligned segment massive">
-       <MainBreadCrumb/>
+        <Container className="ui fluid inverted vertical masthead left aligned segment massive" >
+       <MainBreadCrumb />
         </Container></Sticky>
         <Form style={{marginLeft: "30px"}}>
         <this.resourceSelection />
@@ -87,7 +87,7 @@ const UserCard = () => (
 
 const PortfolioJobs = () => (
 
-  <Table celled style={{ width: "85%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
     <Table.Header>
     <Table.Row> <Table.HeaderCell colSpan='4'>
        <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Jobs</h2></Table.HeaderCell>
@@ -130,7 +130,7 @@ const PortfolioJobs = () => (
 
 const PortfolioResources = () => (
 
-  <Table celled style={{ width: "85%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
     <Table.Header>
     <Table.Row> <Table.HeaderCell colSpan='5'>
        <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Resources</h2></Table.HeaderCell>
@@ -179,7 +179,7 @@ const PortfolioResources = () => (
 const Accomplishments = () => (
 
 
-  <Table celled style={{ width: "85%", align: "center", marginLeft: "15%", marginTop: "18px" }}>
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "18px" }}>
     <Table.Header>
     <Table.Row> <Table.HeaderCell colSpan='4'>
        <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}>Accomplishments</h2></Table.HeaderCell>

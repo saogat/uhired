@@ -31,5 +31,9 @@ export default {
     var result = axios.post("/api/resources", resource);
     console.log(result);
     return result;
+  },
+  addAccomplishment: function (accomplishment) {
+    var result = axios.get("api/accomplishments", accomplishment)
+    return result;
   }
 };

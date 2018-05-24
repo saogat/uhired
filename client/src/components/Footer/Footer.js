@@ -20,17 +20,16 @@ const FooterDiv = () => (
             404.555.5555</p>
             <Button color='facebook'>
           <Icon name='facebook' />
-    </Button>
-        <Button color='twitter'>
+         </Button>
+          <Button color='twitter'>
           <Icon name='twitter' />
-    </Button>
-
-        <Button color='github'>
+         </Button>
+          <Button color='github'>
           <Icon name='github' />
-    </Button>
-        <Button color='linkedin'>
+         </Button>
+          <Button color='linkedin'>
           <Icon name='linkedin' />
-    </Button>
+         </Button>
         {/* <Icon color='blue' name='facebook official' size="big"/>
           <Icon color='white' name='twitter' size="big"/>
           <Icon color='blue' name='github' size="big"/>

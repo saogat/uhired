@@ -15,6 +15,7 @@
     text-Shadow: 3px 3px black; 
     font-Family: Courier;
     font-Size: 60px;
+    z-index: -2;
   }
   
   .logoText {
@@ -25,6 +26,7 @@
     font-Size: 70px;
     padding-left:15px;
     font-weight: bold;
+    z-index: 100;
   }
   .blurb {
     margin-bottom: 45px;
@@ -32,6 +34,7 @@
     text-Shadow: 3px 3px black; 
     font-Family: Arial;
     font-Size: 35px;
+    z-index: 100;
 
   }
 

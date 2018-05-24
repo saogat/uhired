@@ -5,16 +5,28 @@ import "./Modal.css";
 
 
 class ModalAccomplishment extends Component {
+
+
+  state = { modalOpen: false }
+  
+    handleOpen = () => {
+        this.setState({ modalOpen: true }); 
+    };
+    handleClose = () => {
+        this.setState({ modalOpen: false });
+        console.log("Project Added")
+        // this.props.openResource();
+    }
      
     render() {
       return (
       
 
-        <Modal style={{marginTop: '0px !important', marginLeft: 'auto', marginRight: 'auto'}}
+        <Modal 
           className="small vertical align center" 
-          trigger={<Button className = "large blue">Add Project</Button>}
-
-        >
+          trigger={<Button onClick={this.handleOpen} className = "large blue">Add Project</Button>}
+          open={this.state.modalOpen}
+          onClose={this.handleClose}>
          <Modal.Header>
           <Image wrapped size='tiny' src='https://st2.depositphotos.com/3265223/11274/v/950/depositphotos_112741124-stock-illustration-handshake-line-icon-deal-partnership.jpg' />
            Add Project

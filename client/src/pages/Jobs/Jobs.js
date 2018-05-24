@@ -78,7 +78,7 @@ class JobPage extends Component {
               style = {{marginLeft: "20px", marginTop: "10px"}} 
               className = "large blue" 
               type='submit'
-              disabled={!(this.state.technologySelected)}
+              // disabled={!(this.state.technologySelected)}
               onClick={this.handleTechnologySelection}>
               Search</Button>
       
