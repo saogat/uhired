@@ -31,5 +31,9 @@ export default {
     var result = axios.post("/api/resources", resource);
     console.log(result);
     return result;
+  },
+  scrape: function (query) {
+    console.log("in API client scrape");
+    return axios.post("/api/scrape", query);
   }
 };
