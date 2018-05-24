@@ -70,7 +70,7 @@ handleAddResourceNote = (event, props) => {
       </Form.Field>
       <Button className="blue medium"
         type='submit'
-        id = {resource.id}
+        id = {this.resource.id}
         onClick={this.handleAddResourceNote}>
         Add Note
       </Button>
