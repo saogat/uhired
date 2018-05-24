@@ -56,7 +56,6 @@ handleFormSubmit = event => {
 };
 
 handleAddPortfolio = (event, props) => {
-  console.log ("In handleAddPortfolio")
   event.preventDefault();
     const resources = this.state.resources.filter(resource => resource.id !== props.id);
     this.setState({ resources });
