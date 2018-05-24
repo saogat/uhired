@@ -33,6 +33,10 @@ const userSchema = new Schema({
   jobs: [{
     type: Schema.Types.ObjectId,
     ref: "Job"
+    }],
+  accomplishments: [{
+      type: Schema.Types.ObjectId,
+      ref: "Resource"
     }]
 });
 
