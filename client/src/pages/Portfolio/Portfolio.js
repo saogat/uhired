@@ -36,12 +36,15 @@ class PortfolioPage extends Component {
   };
 
   resourcesTable = () => (
-    <Table celled className="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
+    <Table celled className="ui unstackable table"  style={{width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
     <Table.Header>
+    <Table.Row> <Table.HeaderCell colSpan='3'>
+       <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Resources</h2></Table.HeaderCell>
+      </Table.Row>
       <Table.Row>
-       <Table.HeaderCell width={2}>Portfolio</Table.HeaderCell>
-        <Table.HeaderCell width={6}>URL</Table.HeaderCell>
-        <Table.HeaderCell width={6}>Description</Table.HeaderCell>
+        <Table.HeaderCell width={6}>Resources</Table.HeaderCell>
+        <Table.HeaderCell width={6}>Notes</Table.HeaderCell>
+        <Table.HeaderCell width={4}>Actions</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
   
@@ -54,6 +57,7 @@ class PortfolioPage extends Component {
                     className="blue"
                     id = {resource._id}
                     onClick={this.handleRemovePortfolio}>Delete</Button>
+                    <AddResourceNoteModal /><UserModal />
                 </Table.Cell>
                 <Table.Cell>
                     {resource.url}
@@ -66,6 +70,12 @@ class PortfolioPage extends Component {
       <Table.Row />
      )}
      </Table.Body>
+
+    <Table.Footer>
+      <Table.Row>
+        <Table.HeaderCell colSpan="3" />
+      </Table.Row>
+    </Table.Footer>
   </Table>
   );
 
@@ -117,8 +127,6 @@ class PortfolioPage extends Component {
         <this.userCard style={{float: "left"}} />
         <Accomplishments />
         <PortfolioJobs />
-
-        <h2 style={{marginLeft: "260px", padding: "0px", marginTop: "10px", marginBottom: "5px"}}>Resources</h2>
         <this.resourcesTable />
         <FooterDiv/>
       </div>
@@ -132,41 +140,30 @@ const PortfolioJobs = () => (
 
   <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
     <Table.Header>
-    <Table.Row> <Table.HeaderCell colSpan='4'>
+    <Table.Row> <Table.HeaderCell colSpan='3'>
        <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Jobs</h2></Table.HeaderCell>
       </Table.Row>
       <Table.Row>
-        <Table.HeaderCell width={4}>Actions</Table.HeaderCell>
         <Table.HeaderCell width={6}>Richard's Job Prospects</Table.HeaderCell>
         <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
-        <Table.HeaderCell width={1}>Share</Table.HeaderCell>
+        <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
     <Table.Body>
       <Table.Row>
-        <Table.Cell><Button className="blue compact">Remove</Button>
-        <AddJobNoteModal />
-        </Table.Cell>
-        <Table.Cell>Job 1</Table.Cell>
+        <Table.Cell>Job Description</Table.Cell>
         <Table.Cell>This job sounds cool...</Table.Cell>
-        <Table.Cell>
-          {" "}
-          <UserModal />
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
         <Table.Cell><Button className="blue compact">Remove</Button>
-        <AddJobNoteModal />
+        <AddJobNoteModal /> <UserModal/>
         </Table.Cell>
-        <Table.Cell> <UserModal/></Table.Cell>
       </Table.Row>
     </Table.Body>
 
 
     <Table.Footer>
       <Table.Row>
-        <Table.HeaderCell colSpan="4" />
+        <Table.HeaderCell colSpan="3" />
       </Table.Row>
     </Table.Footer>
   </Table>
@@ -191,16 +188,6 @@ const Accomplishments = () => (
       <Table.Row>
         <Table.Cell>React App</Table.Cell>
         <Table.Cell>React, Semantic UI</Table.Cell>
-        <Table.Cell>Link</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>React App</Table.Cell>
-        <Table.Cell>Javascript</Table.Cell>
-        <Table.Cell>Link</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Database App</Table.Cell>
-        <Table.Cell>SQL</Table.Cell>
         <Table.Cell>Link</Table.Cell>
       </Table.Row>
     </Table.Body>

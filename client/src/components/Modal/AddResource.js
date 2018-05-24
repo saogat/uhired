@@ -21,7 +21,7 @@ class AddResourceModal extends Component {
       
 
         <Modal
-          className="small" 
+        className="small vertical align center" 
           trigger={<Button onClick={this.handleOpen} className = "large blue">Add Resource</Button>}
            open={this.state.modalOpen}
           onClose={this.handleClose}>

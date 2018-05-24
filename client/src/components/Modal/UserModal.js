@@ -11,7 +11,7 @@ class UserShare extends Component {
 
         <Modal
           className="small" 
-          trigger={<Button icon='users' color="blue"/>}
+          trigger={<Button color="blue" size="compact">Share</Button>}
 
         >
          <Modal.Header>
