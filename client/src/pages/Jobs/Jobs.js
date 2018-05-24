@@ -1,14 +1,11 @@
-import React, { Component } from "react";
-import JobContainer from "../../components/Grid/JobsContainer.js";
-import {
-  Dropdown,
-  Select,
-  Table,
-  Form,
-  Button,
-  Input
-} from "semantic-ui-react";
-import API from "../../utils/API";
+
+import React, { Component } from 'react';
+import JobsContainer from "../../components/Grid/JobsContainer.js";
+import { Dropdown, Select, Table, Sidebar, Form, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid, Container, Input } from 'semantic-ui-react'
+import AddJobNoteModal from "../../components/Modal/AddJobNoteModal.js"
+import FooterDiv from "../../components/Footer/Footer.js";
+import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
+import API from "../../utils/API"
 
 class JobPage extends Component {
   
@@ -27,6 +24,7 @@ class JobPage extends Component {
 
   handleJobScrape = event => {
     event.preventDefault();
+    var query = "HTML";
     API.scrape(query)
       .then(res => this.loadJobs( res ))
       .catch(err => console.log(err));

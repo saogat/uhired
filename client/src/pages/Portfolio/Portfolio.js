@@ -1,13 +1,6 @@
-import React, { Component } from "react";
-import {
-  Container,
-  Card,
-  Button,
-  Icon,
-  Image,
-  Table,
-  Checkbox
-} from "semantic-ui-react";
+
+import React, { Component } from 'react';
+import { Container, Card, Grid, Form, TextArea, Button, Icon, Image, Label, Menu, Table, Checkbox, Sticky } from 'semantic-ui-react'
 import MainBreadCrumb from "../../components/BreadCrumb/BreadCrumb.js";
 import AccomplishmentModal from "../../components/Modal/AccomplishmentModal.js";
 import UserModal from "../../components/Modal/UserModal.js";

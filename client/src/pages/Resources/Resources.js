@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import ResourceContainer from "../../components/Grid/ResourceContainer.js";
-import { Form, Dropdown, Table, Button } from 'semantic-ui-react'
+import { Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
 import AddResourceModal from "../../components/Modal/AddResource.js";
-import API from "../../utils/API";
+import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
+import FooterDiv from "../../components/Footer/Footer.js";
 import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
+import API from "../../utils/API"
 
 class ResourcePage extends Component {
 
@@ -23,18 +25,18 @@ loadResources = (technology) => {
     .catch(err => console.log(err));
 };
 
-// deleteResource = id => {
-//   API.deleteResource(id)
-//     .then(res => this.loadResource())
-//     .catch(err => console.log(err));
-// };
+deleteResource = id => {
+  API.deleteResource(id)
+    .then(res => this.loadResource())
+    .catch(err => console.log(err));
+};
 
-// handleInputChange = event => {
-//   const { name, value } = event.target;
-//   this.setState({
-//     [name]: value
-//   });
-// };
+handleInputChange = event => {
+  const { name, value } = event.target;
+  this.setState({
+    [name]: value
+  });
+};
 
 handleDropdown = (event, data) => {
   // const { name, value } = event.target;
@@ -94,12 +96,12 @@ handleAddPortfolio = (event, props) => {
 handleTechnologySelection = (event) => {
   console.log ("In handleTechnologySelection")
   event.preventDefault();
-  this.loadResources({name: this.state.technologySelected[0]});
+  this.loadResources({name: "CSS"});
   console.log(this.state.technologySelected[0]);
 };
 
  resourcesTable = () => (
-  <Table celled class="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
+  <Table celled className="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
   <Table.Header>
     <Table.Row>
      <Table.HeaderCell width={2}>Portfolio</Table.HeaderCell>
