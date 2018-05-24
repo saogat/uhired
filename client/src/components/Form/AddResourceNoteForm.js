@@ -47,7 +47,7 @@ import API from "../../utils/API";
 
 handleAddResourceNote = (event, props) => {
   event.preventDefault();
-    const resources = this.state.resources.filter(resource => resource.id === props.id);
+    const resources = this.state.resources.filter(resource => resource.id = props.id);
     this.setState({ resources });
     var resourceId = window.sessionStorage.getItem("resource_id");
     API.addResourceNote({
@@ -70,7 +70,7 @@ handleAddResourceNote = (event, props) => {
       </Form.Field>
       <Button className="blue medium"
         type='submit'
-        id = {this.resource.id}
+        id = {this.props.id}
         onClick={this.handleAddResourceNote}>
         Add Note
       </Button>
