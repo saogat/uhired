@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ResourceContainer from "../../components/Grid/ResourceContainer.js";
-import { Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
+import { Form, Dropdown, Table, Button, Icon } from 'semantic-ui-react'
 import AddResourceModal from "../../components/Modal/AddResource.js";
-import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
 import FooterDiv from "../../components/Footer/Footer.js";
 import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
 import API from "../../utils/API"
@@ -11,17 +10,12 @@ class ResourcePage extends Component {
 
 state = {
   resources: [],
-  technologies: [], 
-  options: [],
   technologySelected: ""
 };
 
 loadResources = (technology) => {
-  console.log(technology);
   API.getResources(technology)
-    .then(res => {
-      console.log(res.data);
-      this.setState({ resources: res.data})})
+    .then(res => {this.setState({ resources: res.data})})
     .catch(err => console.log(err));
 };
 
@@ -38,11 +32,15 @@ handleInputChange = event => {
   });
 };
 
-handleDropdown = (event, data) => {
-  // const { name, value } = event.target;
+setTechnologySelected = (data) => {
   this.setState({
-    technologySelected: data.value
+    technologySelected: data
   });
+}
+
+handleTechnologySelection = (event) => {
+  event.preventDefault();
+  this.loadResources({id: this.state.technologySelected});
 };
 
 handleFormSubmit = event => {
@@ -56,30 +54,7 @@ handleFormSubmit = event => {
   }
 };
 
-componentDidMount() {
-  this.loadTechnologies();
-}
-
-loadTechnologies = () => {
-    console.log("I'm in loadTechnologies" )
-    API.getTechnologies()
-      .then( 
-        res => {
-            console.log("Loading technology");
-            console.log(res);
-            this.setState({technologies: res.data});
-            let temp = this.state.technologies.map(e => {
-                return { key: e.name,
-                        text: e.name,
-                        value: e.name}
-            });
-            this.setState({options: temp})
-          })
-      .catch(err => console.log(err));
-};
-
 handleAddPortfolio = (event, props) => {
-  console.log ("In handleAddPortfolio")
   event.preventDefault();
     const resources = this.state.resources.filter(resource => resource.id !== props.id);
     this.setState({ resources });
@@ -93,6 +68,7 @@ handleAddPortfolio = (event, props) => {
       .catch(err => console.log(err));
 };
 
+<<<<<<< HEAD
 handleTechnologySelection = (event) => {
   console.log ("In handleTechnologySelection")
   event.preventDefault();
@@ -100,6 +76,8 @@ handleTechnologySelection = (event) => {
   console.log(this.state.technologySelected[0]);
 };
 
+=======
+>>>>>>> master
  resourcesTable = () => (
   <Table celled className="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
   <Table.Header>
@@ -131,17 +109,21 @@ handleTechnologySelection = (event) => {
     <Table.Row />
    )}
    </Table.Body>
+   <Table.Footer>
+      <Table.Row>
+        <Table.HeaderCell colSpan='3'>
+        </Table.HeaderCell>
+      </Table.Row>
+    </Table.Footer>
 </Table>
-
 );
 
   render() {
     return (
       <div>
       <ResourceContainer /> 
-      {/* <span > */}
-      <Form>
-        <TechnologyDropDown />
+      <Form style={{marginLeft: "20px"}}> 
+        <TechnologyDropDown setTechnologySelected={(data) => this.setTechnologySelected(data)}/>
         <Button 
               style = {{marginLeft: "20px", marginTop: "10px"}} 
               className = "large blue" 

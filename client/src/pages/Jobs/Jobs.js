@@ -1,8 +1,7 @@
 
 import React, { Component } from 'react';
 import JobsContainer from "../../components/Grid/JobsContainer.js";
-import { Dropdown, Select, Table, Sidebar, Form, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid, Container, Input } from 'semantic-ui-react'
-import AddJobNoteModal from "../../components/Modal/AddJobNoteModal.js"
+import {Table, Form, Button, Icon, Container } from 'semantic-ui-react'
 import FooterDiv from "../../components/Footer/Footer.js";
 import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
 import API from "../../utils/API"
@@ -11,8 +10,6 @@ class JobPage extends Component {
   
   state = {
     resources: [],
-    technologies: [], 
-    options: [],
     technologySelected: ""
   };
 
@@ -21,6 +18,7 @@ class JobPage extends Component {
         <TechnologyDropDown />);
   };
 
+<<<<<<< HEAD
 
   handleJobScrape = event => {
     event.preventDefault();
@@ -57,9 +55,16 @@ class JobPage extends Component {
     
       </div>
     );
+=======
+  setTechnologySelected = (data) => {
+    this.setState({
+      technologySelected: data
+    });
+>>>>>>> master
   }
 }
 
+<<<<<<< HEAD
 export default JobPage;
 
 const optionsa = [
@@ -115,6 +120,10 @@ const ResourceSelection = () => (
 
 const JobsTable = () => (
   <Table celled style={{ width: "90%", align: "center", margin: "auto" }}>
+=======
+  jobsTable = () => (
+    <Table celled style={{width: "90%", align: "center", margin: "auto"}}>
+>>>>>>> master
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
@@ -164,3 +173,30 @@ const JobsTable = () => (
     </Table.Footer>
   </Table>
 );
+<<<<<<< HEAD
+=======
+
+  render() {
+    return (
+      <div>
+      <JobsContainer />   <hr/>
+      <Form style={{marginLeft: "30px"}}>
+      <TechnologyDropDown setTechnologySelected={(data) => this.setTechnologySelected(data)}/>
+        <Button 
+              style = {{marginLeft: "20px", marginTop: "10px"}} 
+              className = "large blue" 
+              type='submit'
+              disabled={!(this.state.technologySelected)}
+              onClick={this.handleTechnologySelection}>
+              Search</Button>
+      
+      </Form>   <hr />
+      <h1 style={{paddingLeft: "5%"}}>Jobs</h1>
+    <this.jobsTable />
+    <FooterDiv />
+      </div>
+     )};
+  }
+
+  export default JobPage
+>>>>>>> master

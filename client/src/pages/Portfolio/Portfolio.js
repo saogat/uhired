@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Container, Card, Grid, Form, TextArea, Button, Icon, Image, Label, Menu, Table, Checkbox, Sticky } from 'semantic-ui-react'
+import { Container, Card, Form, Button, Icon, Image, Table, Checkbox, Sticky } from 'semantic-ui-react'
 import MainBreadCrumb from "../../components/BreadCrumb/BreadCrumb.js";
 import AccomplishmentModal from "../../components/Modal/AccomplishmentModal.js";
 import UserModal from "../../components/Modal/UserModal.js";
@@ -44,10 +44,11 @@ class PortfolioPage extends Component {
               <AccomplishmentModal />
       </Form> 
         <hr />
-        <h2 style={{marginLeft: "70px", padding: "0px", marginTop: "10px", marginBottom: "5px" }}>Portfolio <span style={{marginLeft: "90px", padding: "0px", marginTop: "10px", marginBottom: "5px"}}>Accomplishments</span></h2>
+        <h2 style={{marginLeft: "70px", padding: "0px", marginTop: "10px", marginBottom: "5px" }}>Portfolio</h2>
 
         <UserCard style={{float: "left"}} />
         <Accomplishments />
+<<<<<<< HEAD
         <h2
           style={{
             marginLeft: "260px",
@@ -69,6 +70,9 @@ class PortfolioPage extends Component {
         >
           Resources
         </h2>
+=======
+        <PortfolioJobs />
+>>>>>>> master
         <PortfolioResources />
         <FooterDiv />
       </div>
@@ -110,6 +114,7 @@ const UserCard = () => (
 );
 
 const PortfolioJobs = () => (
+<<<<<<< HEAD
   <Table
     celled
     style={{
@@ -119,20 +124,32 @@ const PortfolioJobs = () => (
       marginTop: "10px"
     }}
   >
+=======
+
+  <Table celled style={{ width: "85%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
+>>>>>>> master
     <Table.Header>
+    <Table.Row> <Table.HeaderCell colSpan='4'>
+       <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Jobs</h2></Table.HeaderCell>
+      </Table.Row>
       <Table.Row>
-        <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
-        <Table.HeaderCell width={7}>Richard's Job Prospects</Table.HeaderCell>
-        <Table.HeaderCell width={6}>Notes</Table.HeaderCell>
+        <Table.HeaderCell width={4}>Actions</Table.HeaderCell>
+        <Table.HeaderCell width={6}>Richard's Job Prospects</Table.HeaderCell>
+        <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
         <Table.HeaderCell width={1}>Share</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
     <Table.Body>
       <Table.Row>
+<<<<<<< HEAD
         <Table.Cell>
           <Button className="blue">Remove</Button>
           <AddJobNoteModal />
+=======
+        <Table.Cell><Button className="blue compact">Remove</Button>
+        <AddJobNoteModal />
+>>>>>>> master
         </Table.Cell>
         <Table.Cell>Job 1</Table.Cell>
         <Table.Cell>This job sounds cool...</Table.Cell>
@@ -142,9 +159,14 @@ const PortfolioJobs = () => (
         </Table.Cell>
       </Table.Row>
       <Table.Row>
+<<<<<<< HEAD
         <Table.Cell>
           <Button className="blue">Remove</Button>
           <AddJobNoteModal />
+=======
+        <Table.Cell><Button className="blue compact">Remove</Button>
+        <AddJobNoteModal />
+>>>>>>> master
         </Table.Cell>
         <Table.Cell>Job 2</Table.Cell>
         <Table.Cell>Great prospect</Table.Cell>
@@ -164,6 +186,7 @@ const PortfolioJobs = () => (
 );
 
 const PortfolioResources = () => (
+<<<<<<< HEAD
   <Table
     celled
     style={{
@@ -173,10 +196,17 @@ const PortfolioResources = () => (
       marginTop: "10px"
     }}
   >
+=======
+
+  <Table celled style={{ width: "85%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
+>>>>>>> master
     <Table.Header>
+    <Table.Row> <Table.HeaderCell colSpan='5'>
+       <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Resources</h2></Table.HeaderCell>
+      </Table.Row>
       <Table.Row>
-        <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
-        <Table.HeaderCell width={7}>Richard's Resources</Table.HeaderCell>
+        <Table.HeaderCell width={4}>Actions</Table.HeaderCell>
+        <Table.HeaderCell width={5}>Richard's Resources</Table.HeaderCell>
         <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
         <Table.HeaderCell width={1}>
           <Icon name="checkmark box" />Done
@@ -187,9 +217,14 @@ const PortfolioResources = () => (
 
     <Table.Body>
       <Table.Row>
+<<<<<<< HEAD
         <Table.Cell>
           <Button className="blue">Remove</Button>
           <AddResourceNoteModal />
+=======
+        <Table.Cell><Button className="blue compact">Remove</Button>
+        <AddResourceNoteModal />
+>>>>>>> master
         </Table.Cell>
         <Table.Cell>React Article</Table.Cell>
         <Table.Cell>Fantastic Info</Table.Cell>
@@ -202,9 +237,14 @@ const PortfolioResources = () => (
         </Table.Cell>
       </Table.Row>
       <Table.Row>
+<<<<<<< HEAD
         <Table.Cell>
           <Button className="blue">Remove</Button>
           <AddResourceNoteModal />
+=======
+        <Table.Cell><Button className="blue compact">Remove</Button>
+        <AddResourceNoteModal />
+>>>>>>> master
         </Table.Cell>
         <Table.Cell>Javascript Tutorial</Table.Cell>
         <Table.Cell>Well done!</Table.Cell>
@@ -227,6 +267,7 @@ const PortfolioResources = () => (
 );
 
 const Accomplishments = () => (
+<<<<<<< HEAD
   <Table
     celled
     style={{
@@ -236,9 +277,17 @@ const Accomplishments = () => (
       marginTop: "18px"
     }}
   >
+=======
+
+
+  <Table celled style={{ width: "85%", align: "center", marginLeft: "15%", marginTop: "18px" }}>
+>>>>>>> master
     <Table.Header>
+    <Table.Row> <Table.HeaderCell colSpan='4'>
+       <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}>Accomplishments</h2></Table.HeaderCell>
+      </Table.Row>
       <Table.Row>
-        <Table.HeaderCell width={5}>Richard's Accomplishments</Table.HeaderCell>
+        <Table.HeaderCell width={5}>Richard's Projects</Table.HeaderCell>
         <Table.HeaderCell width={5}>Skills</Table.HeaderCell>
         <Table.HeaderCell width={5}>Link</Table.HeaderCell>
       </Table.Row>

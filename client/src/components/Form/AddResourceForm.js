@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react'
-import LoginContainer from "../../components/Grid/LoginContainer.js";
+import { Button, Form } from 'semantic-ui-react'
 import API from "../../utils/API";
 import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
 
@@ -11,7 +10,8 @@ class AddResourceForm extends Component {
       url: "",
       done: false,
       notes: {},
-      modalOpen: false 
+      modalOpen: false ,
+      technologySelected: ""
     };
   
     handleOpen = () => this.setState({ modalOpen: true });
@@ -25,7 +25,6 @@ class AddResourceForm extends Component {
     };
   
     loadResources = res => {
-      console.log
       console.log(res);
       if(res.status === 200)
       {
@@ -43,6 +42,7 @@ class AddResourceForm extends Component {
         API.resource({
           description: this.state.description,
           url: this.state.url,
+          name: this.state.technologySelected,
         })
           .then(res => this.loadResources(res))
           .catch(err => alert(err))
