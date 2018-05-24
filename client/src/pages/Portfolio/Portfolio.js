@@ -155,11 +155,11 @@ const PortfolioJobs = () => (
         <Table.Cell>Job Description</Table.Cell>
         <Table.Cell>This job sounds cool...</Table.Cell>
         <Table.Cell><Button className="blue compact">Remove</Button>
-        <AddJobNoteModal /> <UserModal/>
+        <AddJobNoteModal /> 
+        <UserModal/>
         </Table.Cell>
       </Table.Row>
     </Table.Body>
-
 
     <Table.Footer>
       <Table.Row>
