@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ResourceContainer from "../../components/Grid/ResourceContainer.js";
-import { Form, Dropdown, Table, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid } from 'semantic-ui-react'
+import { Form, Dropdown, Table, Button, Icon } from 'semantic-ui-react'
 import AddResourceModal from "../../components/Modal/AddResource.js";
-import AddResourceNoteModal from "../../components/Modal/AddResourceNoteModal.js";
 import FooterDiv from "../../components/Footer/Footer.js";
 import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
 import API from "../../utils/API"
@@ -131,6 +130,12 @@ handleTechnologySelection = (event) => {
     <Table.Row />
    )}
    </Table.Body>
+   <Table.Footer>
+      <Table.Row>
+        <Table.HeaderCell colSpan='3'>
+        </Table.HeaderCell>
+      </Table.Row>
+    </Table.Footer>
 </Table>
 
 );
@@ -140,7 +145,7 @@ handleTechnologySelection = (event) => {
       <div>
       <ResourceContainer /> 
       {/* <span > */}
-      <Form>
+      <Form style={{marginLeft: "30px"}}>
         <TechnologyDropDown />
         <Button 
               style = {{marginLeft: "20px", marginTop: "10px"}} 

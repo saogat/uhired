@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import JobsContainer from "../../components/Grid/JobsContainer.js";
-import { Dropdown, Select, Table, Sidebar, Form, Segment, Button, Menu, Image, Icon, Header, Checkbox, Grid, Container, Input } from 'semantic-ui-react'
-import AddJobNoteModal from "../../components/Modal/AddJobNoteModal.js"
+import {Table, Form, Button, Icon, Container } from 'semantic-ui-react'
 import FooterDiv from "../../components/Footer/Footer.js";
 import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
 import API from "../../utils/API"
