@@ -4,3 +4,6 @@
     font-weight: bold;
     z-index: 100;
 }
+.navlist .masthead{
+    z-index: 100 !important;
+}

@@ -47,6 +47,11 @@ export default {
     var result = axios.post("api/resources/note", resource)
     return result;
   },
+  addJobNote: function (job) {
+    console.log("In api notes", job);
+    var result = axios.post("api/jobs/:id", job)
+    return result;
+  },
   scrape: function (query) {
     console.log("in API client scrape");
     console.log(query);

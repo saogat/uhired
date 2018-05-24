@@ -5,8 +5,7 @@ import API from "../../utils/API";
 class AddJobNoteForm extends Component {
 
   state = {
-    notes: "",
-    _id: ""
+    notes: ""
   };
   handleOpen = () => this.setState({ modalOpen: true });
   handleClose = () => this.setState({ modalOpen: false });  
@@ -18,36 +17,36 @@ class AddJobNoteForm extends Component {
     });
   };
   
-  loadJobs = jobs => {
-    console.log(jobs);
+  loadJobs = res => {
+    console.log(res);
+    if (res.status === 200) {
+      window.sessionStorage.setItem("job", JSON.stringify(res.data.token));
+      this.props.close();
+    } else {
+      alert(res);
+    }
   };
 
-  handleFormSubmit = event => {
-    // Preventing the default behavior of the form submit (which is to refresh the page)
-   event.preventDefault();
-   console.log("Submit clicked");
-   if (this.state.note) {
-     API.resource({
-       description: this.state.note,
-       _id: this.state._id,
-     })
-       .then(res => this.loadResources(res))
-       .catch(err => alert(err))
-   }
- };
+
+  handleAddJobNote = (event, props) => {
+    event.preventDefault();
+    console.log("in handle add job note");
+
+    var userId = window.sessionStorage.getItem("user_id");
+    if (this.state.notes) {
+      API.addJobNote({
+        note: {
+          body: this.state.notes,
+          owner: userId
+        },
+        jobId: this.props.id
+      })
+        .then(res => this.loadJobs(res))
+        .catch(err => console.log(err));
+    }
+  };
 
 
-// handleAddJobNote = (event, props) => {
-// event.preventDefault();
-//   const resources = this.state.jobs.filter(jobs => jobs.id === props.id);
-//   this.setState({ notes });
-//   var resourceId = window.sessionStorage.getItem("job_id");
-//   API.addJobNote({
-//     note: "",
-//     jobId: props.id})
-//     .then(res => console.log(res))
-//     .catch(err => console.log(err));
-// };
  render() {
   return (
     <div>
@@ -59,11 +58,13 @@ class AddJobNoteForm extends Component {
       <textarea 
           type='text' 
           placeholder='Enter notes here...' 
-          name="notes"/>
+          name="notes"
+          value={this.state.notes}
+          onChange={this.handleInputChange}/>
       </Form.Field>
       <Button className="blue medium"
         type='submit'
-        id = {this.job.id}
+        id = {this.props.id}
         onClick={this.handleAddJobNote}> 
         Add Note
       </Button>
