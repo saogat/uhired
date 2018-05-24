@@ -41,6 +41,10 @@ export default {
     var result = axios.get("api/accomplishments", accomplishment)
     return result;
   },
+  addResourceNote: function (resource) {
+    var result = axios.get("api/resources", resource)
+    return result;
+  },
   scrape: function (query) {
     console.log("in API client scrape");
     console.log(query);

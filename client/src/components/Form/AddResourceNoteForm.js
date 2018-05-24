@@ -6,7 +6,7 @@ import API from "../../utils/API";
   class AddResourceNoteForm extends Component {
 
     state = {
-      note: "",
+      notes: "",
       _id: ""
     };
 
@@ -34,15 +34,28 @@ import API from "../../utils/API";
       // Preventing the default behavior of the form submit (which is to refresh the page)
      event.preventDefault();
      console.log("Submit clicked");
-     if (this.state.note) {
+     if (this.state.notes) {
        API.resource({
-         description: this.state.note,
+         description: this.state.notes,
          _id: this.state._id,
        })
          .then(res => this.loadResources(res))
          .catch(err => alert(err))
      }
    };
+
+
+handleAddResourceNote = (event, props) => {
+  event.preventDefault();
+    const resources = this.state.resources.filter(resource => resource.id === props.id);
+    this.setState({ resources });
+    var resourceId = window.sessionStorage.getItem("resource_id");
+    API.addResourceNote({
+      notes: "",
+      resourceId: props.id})
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+};
    render() {
     return (
       <div>
@@ -53,10 +66,12 @@ import API from "../../utils/API";
       <textarea 
           type='text' 
           placeholder='Enter notes here...' 
-          name="note"/>
+          name="notes"/>
       </Form.Field>
       <Button className="blue medium"
-        type='submit'> 
+        type='submit'
+        id = {resource.id}
+        onClick={this.handleAddResourceNote}>
         Add Note
       </Button>
       </Form>
