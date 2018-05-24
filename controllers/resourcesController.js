@@ -62,31 +62,21 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findPortfolio: function (req, res) {
-    console.log("in findPortfolio:");
-    console.log(req.params);
     db.User
       .findById(req.params.userId)
       .populate("resources")
       .then(
         user => {
           let userResources = user.resources;
-          console.log(userResources);
           db.Technology
             .findById(req.params.id)
             .populate("resources")
             .then(technology => {
-              console.log(technology);
-              console.log( technology.resources )
               let techResourceIds = technology.resources.map(techResource => techResource._id);
-              console.log(techResourceIds);
-              console.log(userResources);
               let result = (userResources.filter(userResource => {
                     let comparison = techResourceIds.find(id => userResource._id.equals(id));
-                    console.log(userResource);
-                    console.log(comparison);
                     return !comparison;
                   }));
-              console.log(result);
               res.json(result);
             })
             .catch(err => {
