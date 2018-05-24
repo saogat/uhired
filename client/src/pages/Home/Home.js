@@ -33,8 +33,8 @@ class HomePage extends Component {
             ) : ( 
               <div>
                  <div className="bg">   </div>  <Sticky>
-                <Container style={{width: "100%", zIndex: "1000"}} className= "ui fluid inverted vertical masthead padded left aligned segment massive">
-                 <MainBreadCrumb style={{width: "100%", zIndex: "1000"}}/>
+                <Container style={{width: "100%"}} className= "ui fluid inverted vertical masthead padded left aligned segment massive">
+                 <MainBreadCrumb />
                 </Container></Sticky>
                
                 <Container className= "ui fluid transparent vertical masthead center aligned segment massive">
