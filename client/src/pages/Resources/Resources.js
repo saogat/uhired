@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ResourceContainer from "../../components/Grid/ResourceContainer.js";
-import { Form, Dropdown, Table, Button, Icon } from "semantic-ui-react";
+import { Form, Table, Button } from "semantic-ui-react";
 import AddResourceModal from "../../components/Modal/AddResource.js";
 import FooterDiv from "../../components/Footer/Footer.js";
 import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";

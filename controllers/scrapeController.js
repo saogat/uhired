@@ -51,21 +51,15 @@ module.exports = {
 
           // Create a new Job using the `result` object built from scraping
           // console.log(result);
-
-
-
-
-
-
-
-
-          
           db.Job.create(result)
             .then(function(dbJob) {
               console.log(dbJob._id);
               db.Technology
-              .findByIdAndUpdate(req.body.id, {$push: { jobs: dbJob._id }})
-              .then()
+                  .findByIdAndUpdate(req.body.id, {$push: { jobs: dbJob._id }})
+                  .then(dbData => {
+                        console.log(dbData);
+                        res.json(dbData)})
+                  .catch(err => res.status(422).json(err))
               .catch(err => res.status(422).json(err));
             })
         });

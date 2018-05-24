@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Container, Card, Form, Button, Icon, Image, Table, Checkbox, Sticky } from 'semantic-ui-react'
+import { Container, Card, Form, Button, Icon, Image, Table, Sticky } from 'semantic-ui-react'
 import MainBreadCrumb from "../../components/BreadCrumb/BreadCrumb.js";
 import AccomplishmentModal from "../../components/Modal/AccomplishmentModal.js";
 import UserModal from "../../components/Modal/UserModal.js";

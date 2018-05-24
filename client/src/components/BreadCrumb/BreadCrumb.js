@@ -1,5 +1,4 @@
 import React from 'react'
-import { BreadCrumb } from 'semantic-ui-react'
 import "./BreadCrumb.css";
 
 
