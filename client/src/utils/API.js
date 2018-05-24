@@ -39,6 +39,7 @@ export default {
   },
   scrape: function (query) {
     console.log("in API client scrape");
+    console.log(query);
     return axios.post("/api/scrape", query);
   }
 };
