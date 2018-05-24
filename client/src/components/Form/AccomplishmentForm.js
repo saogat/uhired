@@ -47,14 +47,18 @@ class AccomplishmentForm extends Component {
        // Preventing the default behavior of the form submit (which is to refresh the page)
       event.preventDefault();
       console.log("Submit clicked");
-      if (this.state.description) {
+      if (this.state.accomplishment) {
         API.addAccomplishment({
-          accomplishment: this.state.accomplishment,
+          userId: window.sessionStorage.getItem("user_id"),
+          technologyId: this.state.technologySelected,
+          accomplishment:
+          {
+          description: this.state.accomplishment,
           url: this.state.url,
-          name: this.state.technologySelected,
-        })
+        }})
           .then(res => this.loadResources(res))
-          .catch(err => alert(err))
+          .catch(err => alert(err));
+          this.props.close();
       }
     };
     render() {
