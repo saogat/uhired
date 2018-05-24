@@ -43,8 +43,8 @@ class PortfolioPage extends Component {
       </Table.Row>
       <Table.Row>
         <Table.HeaderCell width={6}>Resources</Table.HeaderCell>
-        <Table.HeaderCell width={6}>Notes</Table.HeaderCell>
-        <Table.HeaderCell width={4}>Actions</Table.HeaderCell>
+        <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
+        <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
   
