@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import JobsContainer from "../../components/Grid/JobsContainer.js";
-import { Table, Form, Button, Icon, Container } from "semantic-ui-react";
+import { Table, Form, Button} from "semantic-ui-react";
 import FooterDiv from "../../components/Footer/Footer.js";
 import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
 import API from "../../utils/API";
@@ -35,52 +35,48 @@ class JobPage extends Component {
   
 
   jobsTable = () => (
-    <Table celled style={{ width: "90%", align: "center", margin: "auto" }}>
+    <Table
+      celled
+      className="ui unstackable table"
+      style={{
+        width: "80%",
+        align: "center",
+        margin: "auto",
+        marginTop: "15px"
+      }}
+    >
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
-          <Table.HeaderCell width={6}>Job Results</Table.HeaderCell>
-          <Table.HeaderCell width={1}>Remove</Table.HeaderCell>
+          <Table.HeaderCell width={2}>Portfolio</Table.HeaderCell>
+          <Table.HeaderCell width={6}>URL</Table.HeaderCell>
           <Table.HeaderCell width={6}>Description</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
 
       <Table.Body>
-        <Table.Row>
-          <Table.Cell>
-            <Button className="blue">Add to Portfolio</Button>
-          </Table.Cell>
-          <Table.Cell>Job 1</Table.Cell>
-          <Table.Cell>
-            <Button icon="remove" style={{ color: "blue" }} />
-          </Table.Cell>
-          <Table.Cell>Job 1</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>
-            <Button className="blue">Add to Portfolio</Button>
-          </Table.Cell>
-          <Table.Cell>Job 2</Table.Cell>
-          <Table.Cell>
-            <Button icon="remove" style={{ color: "blue" }} />
-          </Table.Cell>
-          <Table.Cell>......</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>
-            <Button className="blue">Add to Portfolio</Button>
-          </Table.Cell>
-          <Table.Cell>Job 3</Table.Cell>
-          <Table.Cell>
-            <Button icon="remove" style={{ color: "blue" }} />
-          </Table.Cell>
-          <Table.Cell>....</Table.Cell>
-        </Table.Row>
+        {this.state.resources.length ? (
+          this.state.resources.map(resource => (
+            <Table.Row key={resource._id}>
+              <Table.Cell>
+                <Button
+                  className="blue"
+                  id={resource._id}
+                  onClick={this.handleAddPortfolio}
+                >
+                  Add to Portfolio
+                </Button>
+              </Table.Cell>
+              <Table.Cell>{resource.url}</Table.Cell>
+              <Table.Cell>{resource.description}</Table.Cell>
+            </Table.Row>
+          ))
+        ) : (
+          <Table.Row />
+        )}
       </Table.Body>
-
       <Table.Footer>
         <Table.Row>
-          <Table.HeaderCell colSpan="4" />
+          <Table.HeaderCell colSpan="3" />
         </Table.Row>
       </Table.Footer>
     </Table>
@@ -98,7 +94,8 @@ class JobPage extends Component {
             className="large blue"
             type="submit"
             disabled={!this.state.technologySelected}
-            onClick={this.handleJobScrape}>
+            onClick={this.handleJobScrape}
+           >
             Search
           </Button>
         </Form>

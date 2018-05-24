@@ -4,12 +4,9 @@ var cheerio = require("cheerio");
 
 module.exports = {
   scrape: function(req, res) {
-    console.log("In scrapController");
-    console.log(req.body.id);
     db.Technology.findById(req.body.id).then(
       dbModel => {
         let queryTechnology = dbModel.name;
-    console.log(queryTechnology);
     axios
       .get("https://www.indeed.com/jobs?q=" + queryTechnology + "&l=Atlanta%2C+GA")
       .then(function(response) {
@@ -48,7 +45,7 @@ module.exports = {
               .attr("href");
 
           // Create a new Job using the `result` object built from scraping
-          console.log( "RESULT!!!", result );
+          console.log( "RESULT!", result );
           db.Job.create(result)
             .then(function(dbJob) {
               console.log(dbJob._id);
