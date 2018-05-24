@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import JoinContainer from"../../components/Grid/JoinContainer.js";
-import { Button, Checkbox, Form } from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react';
 import API from "../../utils/API";
 
 class JoinForm extends Component {
