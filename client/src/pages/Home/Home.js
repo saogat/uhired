@@ -1,9 +1,5 @@
 import React, {Component} from 'react'
-<<<<<<< HEAD
-import { Container, Sticky } from 'semantic-ui-react'
-=======
 import { Container, Image, Sticky } from 'semantic-ui-react'
->>>>>>> master
 import MainBreadCrumb from "../../components/BreadCrumb/BreadCrumb.js";
 import "./home.css";
 import ModalLogin from "../../components/Modal/LoginModal.js";

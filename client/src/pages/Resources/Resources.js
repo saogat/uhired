@@ -68,16 +68,6 @@ handleAddPortfolio = (event, props) => {
       .catch(err => console.log(err));
 };
 
-<<<<<<< HEAD
-handleTechnologySelection = (event) => {
-  console.log ("In handleTechnologySelection")
-  event.preventDefault();
-  this.loadResources({name: "CSS"});
-  console.log(this.state.technologySelected[0]);
-};
-
-=======
->>>>>>> master
  resourcesTable = () => (
   <Table celled className="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
   <Table.Header>

@@ -18,7 +18,6 @@ class JobPage extends Component {
         <TechnologyDropDown />);
   };
 
-<<<<<<< HEAD
 
   handleJobScrape = event => {
     event.preventDefault();
@@ -55,75 +54,15 @@ class JobPage extends Component {
     
       </div>
     );
-=======
   setTechnologySelected = (data) => {
     this.setState({
       technologySelected: data
     });
->>>>>>> master
   }
 }
 
-<<<<<<< HEAD
-export default JobPage;
-
-const optionsa = [
-  { key: "resources", text: "Resources", value: "Resources" },
-  { key: "jobs", text: "Jobs", value: "jobs" }
-];
-
-const InputtoShare = () => (
-  <Input
-    style={{ marginLeft: "20px" }}
-    type="text"
-    placeholder="Search..."
-    action
-  >
-    <input />
-    <Select compact options={optionsa} defaultValue="Resources" />
-    <Button style={{ marginLeft: "20px" }} className="large blue" type="submit">
-      Share
-    </Button>
-  </Input>
-);
-
-const options = [
-  { key: "angular", text: "Angular", value: "angular" },
-  { key: "css", text: "CSS", value: "css" },
-  { key: "graphicdesign", text: "Graphic Design", value: "graphicdesign" },
-  { key: "ember", text: "Ember", value: "ember" },
-  { key: "html", text: "HTML", value: "html" },
-  { key: "express", text: "Express", value: "express" },
-  { key: "javascript", text: "Javascript", value: "javascript" },
-  { key: "bootstrap", text: "Bootstrap", value: "bootstrap" },
-  { key: "nodejs", text: "NodeJS", value: "nodejs" },
-  { key: "mongodb", text: "MongoDB", value: "mongodb" },
-  { key: "python", text: "Python", value: "python" },
-  { key: "rails", text: "Rails", value: "rails" },
-  { key: "react", text: "React", value: "react" },
-  { key: "mysql", text: "MySQL", value: "mysql" },
-  { key: "ruby", text: "Ruby", value: "ruby" },
-  { key: "ui", text: "UI Design", value: "ui" },
-  { key: "github", text: "GitHub", value: "github" },
-  { key: "firebase", text: "Firebase", value: "firebase" }
-];
-
-const ResourceSelection = () => (
-  <Dropdown
-    style={{ marginLeft: "30px", marginBottom: "30px" }}
-    placeholder="Skills"
-    multiple
-    selection
-    options={options}
-  />
-);
-
-const JobsTable = () => (
-  <Table celled style={{ width: "90%", align: "center", margin: "auto" }}>
-=======
   jobsTable = () => (
     <Table celled style={{width: "90%", align: "center", margin: "auto"}}>
->>>>>>> master
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
@@ -173,8 +112,6 @@ const JobsTable = () => (
     </Table.Footer>
   </Table>
 );
-<<<<<<< HEAD
-=======
 
   render() {
     return (
@@ -199,4 +136,3 @@ const JobsTable = () => (
   }
 
   export default JobPage
->>>>>>> master

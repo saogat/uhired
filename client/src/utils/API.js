@@ -10,12 +10,7 @@ export default {
     var result = axios.post("/api/users", user);
     return result;
   },
-<<<<<<< HEAD
-  technology: function (technology) {
-    console.log(technology);
-=======
   saveTechnology: function (technology) {
->>>>>>> master
     var result = axios.post("/api/technologies", technology);
     return result;
   },

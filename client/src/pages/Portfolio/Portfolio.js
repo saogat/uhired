@@ -48,31 +48,7 @@ class PortfolioPage extends Component {
 
         <UserCard style={{float: "left"}} />
         <Accomplishments />
-<<<<<<< HEAD
-        <h2
-          style={{
-            marginLeft: "260px",
-            padding: "0px",
-            marginTop: "10px",
-            marginBottom: "5px"
-          }}
-        >
-          Jobs
-        </h2>
         <PortfolioJobs />
-        <h2
-          style={{
-            marginLeft: "260px",
-            padding: "0px",
-            marginTop: "10px",
-            marginBottom: "5px"
-          }}
-        >
-          Resources
-        </h2>
-=======
-        <PortfolioJobs />
->>>>>>> master
         <PortfolioResources />
         <FooterDiv />
       </div>
@@ -114,20 +90,8 @@ const UserCard = () => (
 );
 
 const PortfolioJobs = () => (
-<<<<<<< HEAD
-  <Table
-    celled
-    style={{
-      width: "80%",
-      align: "center",
-      marginLeft: "250px",
-      marginTop: "10px"
-    }}
-  >
-=======
 
   <Table celled style={{ width: "85%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
->>>>>>> master
     <Table.Header>
     <Table.Row> <Table.HeaderCell colSpan='4'>
        <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Jobs</h2></Table.HeaderCell>
@@ -142,14 +106,8 @@ const PortfolioJobs = () => (
 
     <Table.Body>
       <Table.Row>
-<<<<<<< HEAD
-        <Table.Cell>
-          <Button className="blue">Remove</Button>
-          <AddJobNoteModal />
-=======
         <Table.Cell><Button className="blue compact">Remove</Button>
         <AddJobNoteModal />
->>>>>>> master
         </Table.Cell>
         <Table.Cell>Job 1</Table.Cell>
         <Table.Cell>This job sounds cool...</Table.Cell>
@@ -159,14 +117,8 @@ const PortfolioJobs = () => (
         </Table.Cell>
       </Table.Row>
       <Table.Row>
-<<<<<<< HEAD
-        <Table.Cell>
-          <Button className="blue">Remove</Button>
-          <AddJobNoteModal />
-=======
         <Table.Cell><Button className="blue compact">Remove</Button>
         <AddJobNoteModal />
->>>>>>> master
         </Table.Cell>
         <Table.Cell>Job 2</Table.Cell>
         <Table.Cell>Great prospect</Table.Cell>
@@ -186,20 +138,8 @@ const PortfolioJobs = () => (
 );
 
 const PortfolioResources = () => (
-<<<<<<< HEAD
-  <Table
-    celled
-    style={{
-      width: "80%",
-      align: "center",
-      marginLeft: "250px",
-      marginTop: "10px"
-    }}
-  >
-=======
 
   <Table celled style={{ width: "85%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
->>>>>>> master
     <Table.Header>
     <Table.Row> <Table.HeaderCell colSpan='5'>
        <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Resources</h2></Table.HeaderCell>
@@ -217,14 +157,8 @@ const PortfolioResources = () => (
 
     <Table.Body>
       <Table.Row>
-<<<<<<< HEAD
-        <Table.Cell>
-          <Button className="blue">Remove</Button>
-          <AddResourceNoteModal />
-=======
         <Table.Cell><Button className="blue compact">Remove</Button>
         <AddResourceNoteModal />
->>>>>>> master
         </Table.Cell>
         <Table.Cell>React Article</Table.Cell>
         <Table.Cell>Fantastic Info</Table.Cell>
@@ -237,14 +171,8 @@ const PortfolioResources = () => (
         </Table.Cell>
       </Table.Row>
       <Table.Row>
-<<<<<<< HEAD
-        <Table.Cell>
-          <Button className="blue">Remove</Button>
-          <AddResourceNoteModal />
-=======
         <Table.Cell><Button className="blue compact">Remove</Button>
         <AddResourceNoteModal />
->>>>>>> master
         </Table.Cell>
         <Table.Cell>Javascript Tutorial</Table.Cell>
         <Table.Cell>Well done!</Table.Cell>
@@ -267,21 +195,9 @@ const PortfolioResources = () => (
 );
 
 const Accomplishments = () => (
-<<<<<<< HEAD
-  <Table
-    celled
-    style={{
-      width: "80%",
-      align: "center",
-      marginLeft: "250px",
-      marginTop: "18px"
-    }}
-  >
-=======
 
 
   <Table celled style={{ width: "85%", align: "center", marginLeft: "15%", marginTop: "18px" }}>
->>>>>>> master
     <Table.Header>
     <Table.Row> <Table.HeaderCell colSpan='4'>
        <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}>Accomplishments</h2></Table.HeaderCell>
