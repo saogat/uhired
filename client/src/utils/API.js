@@ -35,24 +35,33 @@ export default {
   getResources: function(technology) {
     var result = axios.get("/api/technologies/resources/" + technology.id);
     return result;
-    },
-  getPortfolioResources: function (query) {
-      console.log("In getPortfolioResources");
-      var result = axios.get("/api/resources/portfolio/" + query.id + "/" + query.userId);
-      return result;
-      },
-  resource: function (resource) {
+  },
+  getPortfolioResources: function(query) {
+    console.log("In getPortfolioResources");
+    var result = axios.get(
+      "/api/resources/portfolio/" + query.id + "/" + query.userId
+    );
+    return result;
+  },
+  resource: function(resource) {
     console.log(resource);
     var result = axios.post("/api/resources", resource);
     console.log(result);
     return result;
   },
-  addAccomplishment: function (accomplishment) {
+  //===================================================
+  // Accomplishment Handler Functions
+
+  addAccomplishment: function(accomplishment) {
     var result = axios.post("api/accomplishments", accomplishment);
     console.log(result);
     return result;
   },
-  scrape: function (query) {
+
+  //===================================================
+  // Scrape Functions
+
+  scrape: function(query) {
     console.log("in API client scrape");
     console.log(query);
     return axios.post("/api/scrape", query);
@@ -60,10 +69,10 @@ export default {
 
   //===================================================
   // Job Handler Functions
-  
+
   getJobs: function(technology) {
     var result = axios.get("/api/technologies/jobs/" + technology.id);
     return result;
-  },
+  }
 
 };

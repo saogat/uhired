@@ -7,24 +7,12 @@ import API from "../../utils/API";
 
 class JobPage extends Component {
   state = {
-    resources: [],
+    jobs: [],
     technologySelected: ""
   };
 
   resourceSelection = () => {
     return <TechnologyDropDown />;
-  };
-
-  handleJobScrape = event => {
-    event.preventDefault();
-    var query = {id: this.state.technologySelected};
-    API.scrape(query)
-      .then(res => this.loadJobs(res))
-      .catch(err => console.log(err));
-  };
-
-  loadJobs = jobs => {
-    console.log(jobs);
   };
 
   setTechnologySelected = data => {
@@ -33,13 +21,35 @@ class JobPage extends Component {
     });
   };
 
-  // loadResources = technology => {
-  //   API.getResources(technology)
-  //     .then(res => {
-  //       this.setState({ resources: res.data });
-  //     })
-  //     .catch(err => console.log(err));
-  // };
+  //===================================================
+  // Scrape Functions
+
+  handleJobScrape = event => {
+    event.preventDefault();
+    var query = { id: this.state.technologySelected };
+    API.scrape(query)
+      .then(res => this.loadJobs(res))
+      .catch(err => console.log(err));
+  };
+
+  //===================================================
+  // DataBase Retrival Functions
+
+  handleTechnologySelection = event => {
+    event.preventDefault();
+    this.loadJobs({ id: this.state.technologySelected });
+  };
+
+  loadJobs = technology => {
+    API.getJobs(technology)
+      .then(res => {
+        this.setState({ jobs: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
+  //===================================================
+  // Jobs Table
 
   jobsTable = () => (
     <Table
@@ -61,20 +71,20 @@ class JobPage extends Component {
       </Table.Header>
 
       <Table.Body>
-        {this.state.resources.length ? (
-          this.state.resources.map(resource => (
-            <Table.Row key={resource._id}>
+        {this.state.jobs.length ? (
+          this.state.jobs.map(jobs => (
+            <Table.Row key={jobs._id}>
               <Table.Cell>
                 <Button
                   className="blue"
-                  id={resource._id}
+                  id={jobs._id}
                   onClick={this.handleAddPortfolio}
                 >
                   Add to Portfolio
                 </Button>
               </Table.Cell>
-              <Table.Cell>{resource.url}</Table.Cell>
-              <Table.Cell>{resource.description}</Table.Cell>
+              <Table.Cell>{jobs.link}</Table.Cell>
+              <Table.Cell>{jobs.description}</Table.Cell>
             </Table.Row>
           ))
         ) : (
@@ -94,7 +104,18 @@ class JobPage extends Component {
       <div>
         <JobsContainer /> <hr />
         <Form style={{ marginLeft: "30px" }}>
-          <TechnologyDropDown setTechnologySelected={data => this.setTechnologySelected(data)}/>
+          <TechnologyDropDown
+            setTechnologySelected={data => this.setTechnologySelected(data)}
+          />
+          <Button
+            style={{ marginLeft: "20px", marginTop: "10px" }}
+            className="large blue"
+            type="submit"
+            disabled={!this.state.technologySelected}
+            onClick={this.handleTechnologySelection}
+          >
+            Search
+          </Button>
           <Button
             style={{ marginLeft: "20px", marginTop: "10px" }}
             className="large blue"
@@ -102,7 +123,7 @@ class JobPage extends Component {
             disabled={!this.state.technologySelected}
             onClick={this.handleJobScrape}
           >
-            Search
+            Add
           </Button>
         </Form>{" "}
         <hr />
