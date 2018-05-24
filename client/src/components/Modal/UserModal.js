@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Image, Modal } from 'semantic-ui-react';
 import ShareForm from "../../components/Form/ShareForm.js";
+import "./Modal.css";
 
 class UserShare extends Component {
      
@@ -10,7 +11,7 @@ class UserShare extends Component {
 
         <Modal
           className="small" 
-          trigger={<Button icon='users' color="blue"/>}
+          trigger={<Button color="blue" size="compact">Share</Button>}
 
         >
          <Modal.Header>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Image, Modal } from 'semantic-ui-react';
 import AddResourceForm from "../../components/Form/AddResourceForm.js";
+import "./Modal.css";
 
 class AddResourceModal extends Component {
 
@@ -20,7 +21,7 @@ class AddResourceModal extends Component {
       
 
         <Modal
-          className="small" 
+        className="small vertical align center" 
           trigger={<Button onClick={this.handleOpen} className = "large blue">Add Resource</Button>}
            open={this.state.modalOpen}
           onClose={this.handleClose}>

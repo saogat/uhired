@@ -21,3 +21,5 @@ app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 
 });
+
+process.on('SIGINT', () => { console.log("Bye bye!"); process.exit(); });

@@ -17,40 +17,34 @@ class PortfolioPage extends Component {
     technologySelected: ""
   };
 
-  resourceSelection = () => {
-    return (
-        <TechnologyDropDown />);
-  };
-
   loadResources = (query) => {
     API.getPortfolioResources(query)
       .then(res => {this.setState({ resources: res.data})})
       .catch(err => console.log(err));
   };
   
-setTechnologySelected = (data) => {
-  this.setState({
-    technologySelected: data
+  setTechnologySelected = (data) => {
+    this.setState({
+      technologySelected: data
   });
-}
+  }
 
-handleTechnologySelection = (event) => {
-  event.preventDefault();
-  var userId = window.sessionStorage.getItem("user_id");
-  console.log("portfolio - userId");
-  console.log(userId);
-  console.log("portfolio - technology");
-  console.log(this.state.technologySelected);
-  this.loadResources("id=" + this.state.technologySelected + "&" + "userId=" + userId);
-};
+  handleTechnologySelection = (event) => {
+    event.preventDefault();
+    var userId = window.sessionStorage.getItem("user_id");
+    this.loadResources({id: this.state.technologySelected, userId: userId});
+  };
 
   resourcesTable = () => (
-    <Table celled className="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
+    <Table celled className="ui unstackable table"  style={{width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
     <Table.Header>
+    <Table.Row> <Table.HeaderCell colSpan='3'>
+       <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Resources</h2></Table.HeaderCell>
+      </Table.Row>
       <Table.Row>
-       <Table.HeaderCell width={2}>Portfolio</Table.HeaderCell>
-        <Table.HeaderCell width={6}>URL</Table.HeaderCell>
-        <Table.HeaderCell width={6}>Description</Table.HeaderCell>
+        <Table.HeaderCell width={6}>Resources</Table.HeaderCell>
+        <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
+        <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
   
@@ -59,22 +53,29 @@ handleTechnologySelection = (event) => {
         this.state.resources.map(resource => (
               <Table.Row key={resource._id}>
                 <Table.Cell>
-                  <Button 
-                    className="blue"
-                    id = {resource._id}
-                    onClick={this.handleRemovePortfolio}>Delete</Button>
-                </Table.Cell>
-                <Table.Cell>
                     {resource.url}
                 </Table.Cell>
                 <Table.Cell>
                     {resource.description}
+                </Table.Cell>
+                <Table.Cell>
+                  <Button 
+                    className="blue"
+                    id = {resource._id}
+                    onClick={this.handleRemovePortfolio}>Delete</Button>
+                    <AddResourceNoteModal /><UserModal />
                 </Table.Cell>
               </Table.Row>
         ))) : (
       <Table.Row />
      )}
      </Table.Body>
+
+    <Table.Footer>
+      <Table.Row>
+        <Table.HeaderCell colSpan="3" />
+      </Table.Row>
+    </Table.Footer>
   </Table>
   );
 
@@ -103,12 +104,11 @@ handleTechnologySelection = (event) => {
     </Card>
   )
 
-
   render() {
     return (
       <div> <Sticky>
-        <Container className="ui fluid inverted vertical masthead left aligned segment massive">
-       <MainBreadCrumb/>
+        <Container className="ui fluid inverted vertical masthead left aligned segment massive" >
+       <MainBreadCrumb />
         </Container></Sticky>
         <Form style={{marginLeft: "30px"}}>
         <TechnologyDropDown setTechnologySelected={(data) => this.setTechnologySelected(data)}/>
@@ -127,8 +127,6 @@ handleTechnologySelection = (event) => {
         <this.userCard style={{float: "left"}} />
         <Accomplishments />
         <PortfolioJobs />
-
-        <h2 style={{marginLeft: "260px", padding: "0px", marginTop: "10px", marginBottom: "5px"}}>Resources</h2>
         <this.resourcesTable />
         <FooterDiv/>
       </div>
@@ -140,47 +138,32 @@ export default PortfolioPage;
 
 const PortfolioJobs = () => (
 
-  <Table celled style={{ width: "85%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
     <Table.Header>
-    <Table.Row> <Table.HeaderCell colSpan='4'>
+    <Table.Row> <Table.HeaderCell colSpan='3'>
        <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Jobs</h2></Table.HeaderCell>
       </Table.Row>
       <Table.Row>
-        <Table.HeaderCell width={4}>Actions</Table.HeaderCell>
         <Table.HeaderCell width={6}>Richard's Job Prospects</Table.HeaderCell>
         <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
-        <Table.HeaderCell width={1}>Share</Table.HeaderCell>
+        <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
     <Table.Body>
       <Table.Row>
-        <Table.Cell><Button className="blue compact">Remove</Button>
-        <AddJobNoteModal />
-        </Table.Cell>
-        <Table.Cell>Job 1</Table.Cell>
+        <Table.Cell>Job Description</Table.Cell>
         <Table.Cell>This job sounds cool...</Table.Cell>
-        <Table.Cell>
-          {" "}
-          <UserModal />
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
         <Table.Cell><Button className="blue compact">Remove</Button>
-        <AddJobNoteModal />
-        </Table.Cell>
-        <Table.Cell>Job 2</Table.Cell>
-        <Table.Cell>Great prospect</Table.Cell>
-        <Table.Cell>
-          {" "}
-          <UserModal />
+        <AddJobNoteModal /> 
+        <UserModal/>
         </Table.Cell>
       </Table.Row>
     </Table.Body>
 
     <Table.Footer>
       <Table.Row>
-        <Table.HeaderCell colSpan="4" />
+        <Table.HeaderCell colSpan="3" />
       </Table.Row>
     </Table.Footer>
   </Table>
@@ -189,7 +172,7 @@ const PortfolioJobs = () => (
 const Accomplishments = () => (
 
 
-  <Table celled style={{ width: "85%", align: "center", marginLeft: "15%", marginTop: "18px" }}>
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "18px" }}>
     <Table.Header>
     <Table.Row> <Table.HeaderCell colSpan='4'>
        <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}>Accomplishments</h2></Table.HeaderCell>
@@ -205,16 +188,6 @@ const Accomplishments = () => (
       <Table.Row>
         <Table.Cell>React App</Table.Cell>
         <Table.Cell>React, Semantic UI</Table.Cell>
-        <Table.Cell>Link</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>React App</Table.Cell>
-        <Table.Cell>Javascript</Table.Cell>
-        <Table.Cell>Link</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Database App</Table.Cell>
-        <Table.Cell>SQL</Table.Cell>
         <Table.Cell>Link</Table.Cell>
       </Table.Row>
     </Table.Body>
