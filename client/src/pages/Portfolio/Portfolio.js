@@ -155,12 +155,6 @@ const PortfolioJobs = () => (
           <UserModal />
         </Table.Cell>
       </Table.Row>
-      <Table.Row>
-        <Table.Cell><Button className="blue compact">Remove</Button>
-        <AddJobNoteModal />
-        </Table.Cell>
-        <Table.Cell> <UserModal/></Table.Cell>
-      </Table.Row>
     </Table.Body>
 
 

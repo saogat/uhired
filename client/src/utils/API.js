@@ -38,7 +38,8 @@ export default {
     return result;
   },
   addAccomplishment: function (accomplishment) {
-    var result = axios.get("api/accomplishments", accomplishment)
+    var result = axios.post("api/accomplishments", accomplishment);
+    console.log(result);
     return result;
   },
   scrape: function (query) {
