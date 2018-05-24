@@ -53,17 +53,17 @@ class PortfolioPage extends Component {
         this.state.resources.map(resource => (
               <Table.Row key={resource._id}>
                 <Table.Cell>
+                    {resource.url}
+                </Table.Cell>
+                <Table.Cell>
+                    {resource.description}
+                </Table.Cell>
+                <Table.Cell>
                   <Button 
                     className="blue"
                     id = {resource._id}
                     onClick={this.handleRemovePortfolio}>Delete</Button>
                     <AddResourceNoteModal /><UserModal />
-                </Table.Cell>
-                <Table.Cell>
-                    {resource.url}
-                </Table.Cell>
-                <Table.Cell>
-                    {resource.description}
                 </Table.Cell>
               </Table.Row>
         ))) : (
