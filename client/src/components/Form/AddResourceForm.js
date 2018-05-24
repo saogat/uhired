@@ -23,6 +23,12 @@ class AddResourceForm extends Component {
         [name]: value
       });
     };
+    
+    setTechnologySelected = (data) => {
+      this.setState({
+        technologySelected: data
+      });
+    }
   
     loadResources = res => {
       console.log(res);
@@ -70,7 +76,7 @@ class AddResourceForm extends Component {
           name="url"/>
       </Form.Field>
       <Form.Field>
-        <TechnologyDropDown />
+        <TechnologyDropDown  setTechnologySelected={(data) => this.setTechnologySelected(data)} />
         </Form.Field>
       <Button 
         type='submit' className="medium blue"

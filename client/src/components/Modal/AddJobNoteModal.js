@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Image, Modal } from 'semantic-ui-react';
 import AddJobNoteForm from "../../components/Form/AddJobNoteForm.js";
+import "./Modal.css";
 
 class AddJobNoteModal extends Component {
      

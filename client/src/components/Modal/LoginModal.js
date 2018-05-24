@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Image, Modal } from 'semantic-ui-react';
 import LoginForm from "../../components/Form/LoginForm.js";
+import "./Modal.css";
 
 class ModalLogin extends Component {
    

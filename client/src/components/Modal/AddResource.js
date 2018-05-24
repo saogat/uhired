@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Image, Modal } from 'semantic-ui-react';
 import AddResourceForm from "../../components/Form/AddResourceForm.js";
+import "./Modal.css";
 
 class AddResourceModal extends Component {
 

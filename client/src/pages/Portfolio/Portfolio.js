@@ -97,8 +97,8 @@ class PortfolioPage extends Component {
   render() {
     return (
       <div> <Sticky>
-        <Container className="ui fluid inverted vertical masthead left aligned segment massive">
-       <MainBreadCrumb/>
+        <Container className="ui fluid inverted vertical masthead left aligned segment massive" >
+       <MainBreadCrumb />
         </Container></Sticky>
         <Form style={{marginLeft: "30px"}}>
         <TechnologyDropDown setTechnologySelected={(data) => this.setTechnologySelected(data)}/>
@@ -130,7 +130,7 @@ export default PortfolioPage;
 
 const PortfolioJobs = () => (
 
-  <Table celled style={{ width: "85%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
     <Table.Header>
     <Table.Row> <Table.HeaderCell colSpan='4'>
        <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Jobs</h2></Table.HeaderCell>
@@ -159,14 +159,10 @@ const PortfolioJobs = () => (
         <Table.Cell><Button className="blue compact">Remove</Button>
         <AddJobNoteModal />
         </Table.Cell>
-        <Table.Cell>Job 2</Table.Cell>
-        <Table.Cell>Great prospect</Table.Cell>
-        <Table.Cell>
-          {" "}
-          <UserModal />
-        </Table.Cell>
+        <Table.Cell> <UserModal/></Table.Cell>
       </Table.Row>
     </Table.Body>
+
 
     <Table.Footer>
       <Table.Row>
@@ -179,7 +175,7 @@ const PortfolioJobs = () => (
 const Accomplishments = () => (
 
 
-  <Table celled style={{ width: "85%", align: "center", marginLeft: "15%", marginTop: "18px" }}>
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "18px" }}>
     <Table.Header>
     <Table.Row> <Table.HeaderCell colSpan='4'>
        <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}>Accomplishments</h2></Table.HeaderCell>

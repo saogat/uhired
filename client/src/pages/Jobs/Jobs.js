@@ -87,8 +87,7 @@ class JobPage extends Component {
       <div>
         <JobsContainer /> <hr />
         <Form style={{ marginLeft: "30px" }}>
-          <TechnologyDropDown
-            setTechnologySelected={data => this.setTechnologySelected(data)}/>
+          <TechnologyDropDown setTechnologySelected={data => this.setTechnologySelected(data)}/>
           <Button
             style={{ marginLeft: "20px", marginTop: "10px" }}
             className="large blue"

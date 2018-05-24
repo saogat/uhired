@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Image, Modal } from 'semantic-ui-react';
 import ShareForm from "../../components/Form/ShareForm.js";
+import "./Modal.css";
 
 class UserShare extends Component {
      
