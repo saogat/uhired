@@ -129,28 +129,13 @@ const resources = [
 
 resources.forEach(each => {
   const [tech, ...resourcesArray] = each;
-  console.log(" ");
-  console.log("Each:");
-  console.log(each);
-  console.log(" ");
   db.Technology.create({name: tech})
   .then(dbTechnology => {
-      console.log(" ");
-      console.log("technology creation: ");
-      console.log(dbTechnology);
       resourcesArray.forEach(resource => {
         db.Resource.create(resource)
         .then(dbResource => {
-            console.log(" ");
-            console.log("resource creation: ");
-            console.log(dbResource);
-            console.log(dbTechnology);
             db.Technology.findByIdAndUpdate(dbTechnology._id,{$push: {resources: dbResource._id }})
             .then(dbTech => {
-                console.log(" ");
-                console.log("pushing to technology: ");
-                console.log(dbTech._id);
-                console.log(resource);
             })
             .catch(err => {
               console.error(err);

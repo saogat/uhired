@@ -17,4 +17,10 @@ router
 router.route("/share")
   .post(resourcesController.share);
 
+router.route("/portfolio")
+  .post(resourcesController.portfolio);
+
+router.route("/portfolio:query")
+  .get(resourcesController.findPortfolio);
+
 module.exports = router;

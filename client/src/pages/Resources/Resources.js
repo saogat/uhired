@@ -56,17 +56,14 @@ handleFormSubmit = event => {
 };
 
 handleAddPortfolio = (event, props) => {
-  console.log ("In handleAddPortfolio")
   event.preventDefault();
     const resources = this.state.resources.filter(resource => resource.id !== props.id);
     this.setState({ resources });
-    console.log("handleAddPortfolio props" + props.id)
     var userId = window.sessionStorage.getItem("user_id");
-    console.log ("userID" + userId)
     API.addResourceToPortfolio({
       userId: userId,
       resourceId: props.id})
-      .then()
+      .then(res => console.log(res))
       .catch(err => console.log(err));
 };
 
