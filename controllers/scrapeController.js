@@ -6,7 +6,12 @@ module.exports = {
   scrape: function(req, res) {
     db.Technology.findById(req.body.id).then(
       dbModel => {
-        let queryTechnology = dbModel.name;
+        var queryTechnology = dbModel.name;
+        console.log(queryTechnology);
+
+        if (queryTechnology == "Express") {
+          var queryTechnology = "NPM";
+        }
     axios
       .get("https://www.indeed.com/jobs?q=" + queryTechnology + "&l=Atlanta%2C+GA")
       .then(function(response) {
@@ -45,7 +50,16 @@ module.exports = {
               .attr("href");
 
           // Create a new Job using the `result` object built from scraping
-          console.log( "RESULT!", result );
+          // console.log(result);
+
+
+
+
+
+
+
+
+          
           db.Job.create(result)
             .then(function(dbJob) {
               console.log(dbJob._id);
