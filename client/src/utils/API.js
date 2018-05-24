@@ -28,7 +28,7 @@ export default {
     },
   getPortfolioResources: function (query) {
       console.log("In getPortfolioResources");
-      var result = axios.get("/api/resources/portfolio/" + query);
+      var result = axios.get("/api/resources/portfolio/" + query.id + "/" + query.userId);
       return result;
       },
   resource: function (resource) {

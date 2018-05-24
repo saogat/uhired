@@ -17,9 +17,7 @@ class JobPage extends Component {
 
   handleJobScrape = event => {
     event.preventDefault();
-
     var query = {id: this.state.technologySelected};
-
     API.scrape(query)
       .then(res => this.loadJobs(res))
       .catch(err => console.log(err));
@@ -96,7 +94,6 @@ class JobPage extends Component {
             className="large blue"
             type="submit"
             disabled={!this.state.technologySelected}
-            onClick={this.handleTechnologySelection}
             onClick={this.handleJobScrape}
            >
             Search

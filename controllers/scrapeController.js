@@ -4,7 +4,6 @@ var cheerio = require("cheerio");
 
 module.exports = {
   scrape: function(req, res) {
-    ;
     db.Technology.findById(req.body.id).then(
       dbModel => {
         let queryTechnology = dbModel.name;
@@ -49,13 +48,12 @@ module.exports = {
           console.log( "RESULT!", result );
           db.Job.create(result)
             .then(function(dbJob) {
-              db.Technology.findByIdAndUpdate(req.body.id,{$push: {jobs: dbJob._id }})
+              console.log(dbJob._id);
+              db.Technology
+              .findByIdAndUpdate(req.body.id, {$push: { jobs: dbJob._id }})
+              .then()
+              .catch(err => res.status(422).json(err));
             })
-            .catch(function(err) {
-              // If an error occurred, send it to the client
-              console.log( err )
-              return res.json(err);
-            });
         });
         // If we were able to successfully scrape and save an Job, send a message to the client
         res.send("Scrape Complete");

@@ -116,9 +116,10 @@ handleAddPortfolio = (event, props) => {
               style = {{marginLeft: "20px", marginTop: "10px"}} 
               className = "large blue" 
               type='submit'
-              // disabled={!(this.state.technologySelected)}
+              disabled={!(this.state.technologySelected)}
               onClick={this.handleTechnologySelection}>
-              Search</Button>
+              Search
+        </Button>
         <AddResourceModal />
       </Form> 
       <hr />
@@ -126,7 +127,8 @@ handleAddPortfolio = (event, props) => {
       <this.resourcesTable />
       <FooterDiv />
       </div>
-    )};
-  }
+    );
+   };
+  };
   
 export default ResourcePage
