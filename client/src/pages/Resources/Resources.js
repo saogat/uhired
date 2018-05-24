@@ -10,17 +10,12 @@ class ResourcePage extends Component {
 
 state = {
   resources: [],
-  technologies: [], 
-  options: [],
   technologySelected: ""
 };
 
 loadResources = (technology) => {
-  console.log(technology);
   API.getResources(technology)
-    .then(res => {
-      console.log(res.data);
-      this.setState({ resources: res.data})})
+    .then(res => {this.setState({ resources: res.data})})
     .catch(err => console.log(err));
 };
 
@@ -37,11 +32,15 @@ handleInputChange = event => {
   });
 };
 
-handleDropdown = (event, data) => {
-  // const { name, value } = event.target;
+setTechnologySelected = (data) => {
   this.setState({
-    technologySelected: data.value
+    technologySelected: data
   });
+}
+
+handleTechnologySelection = (event) => {
+  event.preventDefault();
+  this.loadResources({id: this.state.technologySelected});
 };
 
 handleFormSubmit = event => {
@@ -53,28 +52,6 @@ handleFormSubmit = event => {
       .then(res => this.loadResource())
       .catch(err => console.log(err));
   }
-};
-
-componentDidMount() {
-  this.loadTechnologies();
-}
-
-loadTechnologies = () => {
-    console.log("I'm in loadTechnologies" )
-    API.getTechnologies()
-      .then( 
-        res => {
-            console.log("Loading technology");
-            console.log(res);
-            this.setState({technologies: res.data});
-            let temp = this.state.technologies.map(e => {
-                return { key: e.name,
-                        text: e.name,
-                        value: e.name}
-            });
-            this.setState({options: temp})
-          })
-      .catch(err => console.log(err));
 };
 
 handleAddPortfolio = (event, props) => {
@@ -92,15 +69,8 @@ handleAddPortfolio = (event, props) => {
       .catch(err => console.log(err));
 };
 
-handleTechnologySelection = (event) => {
-  console.log ("In handleTechnologySelection")
-  event.preventDefault();
-  this.loadResources({name: this.state.technologySelected[0]});
-  console.log(this.state.technologySelected[0]);
-};
-
  resourcesTable = () => (
-  <Table celled class="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
+  <Table celled className="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
   <Table.Header>
     <Table.Row>
      <Table.HeaderCell width={2}>Portfolio</Table.HeaderCell>
@@ -137,16 +107,14 @@ handleTechnologySelection = (event) => {
       </Table.Row>
     </Table.Footer>
 </Table>
-
 );
 
   render() {
     return (
       <div>
       <ResourceContainer /> 
-      {/* <span > */}
-      <Form style={{marginLeft: "30px"}}>
-        <TechnologyDropDown />
+      <Form style={{marginLeft: "20px"}}> 
+        <TechnologyDropDown setTechnologySelected={(data) => this.setTechnologySelected(data)}/>
         <Button 
               style = {{marginLeft: "20px", marginTop: "10px"}} 
               className = "large blue" 

@@ -6,7 +6,7 @@ router.route("/")
   .get(technologiesController.findAll)
   .post(technologiesController.create);
 
-router.route("/resources/:name")
+router.route("/resources/:id")
   .get(technologiesController.getResources);
  
 
