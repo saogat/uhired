@@ -1,17 +1,13 @@
 const router = require("express").Router();
 const usersRoutes = require("./users");
 const scrapeRoutes = require("./scrape.js");
+const resourcesRoutes = require("./resources");
+const technologiesRoutes = require("./technologies");
 
 
-// Tehnology routes
 router.use("/users", usersRoutes);
 router.use("/scrape", scrapeRoutes);
-const resourcesRoutes = require("./resources");
-const technologies = require("./technologies");
-
-// Tehnology routes
-router.use("/users", usersRoutes);
 router.use("/resources", resourcesRoutes);
-router.use("/technologies", technologies);
+router.use("/technologies", technologiesRoutes);
 
 module.exports = router;

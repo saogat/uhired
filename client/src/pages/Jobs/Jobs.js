@@ -17,7 +17,7 @@ class JobPage extends Component {
 
   handleJobScrape = event => {
     event.preventDefault();
-    var query = "HTML";
+    var query = this.state.technologySelected;
     API.scrape(query)
       .then(res => this.loadJobs(res))
       .catch(err => console.log(err));
@@ -27,34 +27,12 @@ class JobPage extends Component {
     console.log(jobs);
   };
 
-  render() {
-    return (
-      <div>
-        <JobsContainer /> <hr />
-        <Form style={{ marginLeft: "30px" }}>
-          <this.resourceSelection />
-          <Button
-            style={{ marginLeft: "20px", marginTop: "10px" }}
-            className="large blue"
-            type="submit"
-            disabled={!this.state.technologySelected}
-            onClick={this.handleTechnologySelection}
-          >
-            Search
-          </Button>
-        </Form>{" "}
-        <hr />
-        <h1 style={{ paddingLeft: "5%" }}>Jobs</h1>
-        <JobsTable />
-        <FooterDiv />
-      </div>
-    );
-    setTechnologySelected = data => {
+  setTechnologySelected = data => {
       this.setState({
         technologySelected: data
       });
     };
-  }
+  
 
   jobsTable = () => (
     <Table celled style={{ width: "90%", align: "center", margin: "auto" }}>
@@ -114,25 +92,23 @@ class JobPage extends Component {
         <JobsContainer /> <hr />
         <Form style={{ marginLeft: "30px" }}>
           <TechnologyDropDown
-            setTechnologySelected={data => this.setTechnologySelected(data)}
-          />
+            setTechnologySelected={data => this.setTechnologySelected(data)}/>
           <Button
             style={{ marginLeft: "20px", marginTop: "10px" }}
             className="large blue"
             type="submit"
             disabled={!this.state.technologySelected}
-            onClick={this.handleTechnologySelection}
-          >
+            onClick={this.handleTechnologySelection}>
             Search
           </Button>
-        </Form>{" "}
+        </Form>
         <hr />
         <h1 style={{ paddingLeft: "5%" }}>Jobs</h1>
         <this.jobsTable />
         <FooterDiv />
       </div>
     );
-  }
-}
+  };
+};
 
 export default JobPage;
