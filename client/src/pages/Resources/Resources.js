@@ -88,6 +88,10 @@ class ResourcePage extends Component {
       }}
     >
       <Table.Header>
+      <Table.Row>
+      <Table.HeaderCell colSpan='3'>
+       <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Resources</h2></Table.HeaderCell>
+       </Table.Row>
         <Table.Row>
           <Table.HeaderCell width={2}>Portfolio</Table.HeaderCell>
           <Table.HeaderCell width={6}>URL</Table.HeaderCell>
@@ -144,7 +148,6 @@ class ResourcePage extends Component {
           <AddResourceModal />
         </Form>
         <hr />
-        <h1 style={{ paddingLeft: "10%" }}>Resources</h1>
         <this.resourcesTable />
         <FooterDiv />
       </div>

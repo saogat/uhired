@@ -60,10 +60,11 @@ class PortfolioPage extends Component {
                 </Table.Cell>
                 <Table.Cell>
                   <Button 
-                    className="blue"
-                    id = {resource._id}
+                    className="blue compact"
+                    id={resource._id}
                     onClick={this.handleRemovePortfolio}>Delete</Button>
-                    <AddResourceNoteModal /><UserModal />
+                    <AddResourceNoteModal id={resource._id} />
+                    <UserModal />
                 </Table.Cell>
               </Table.Row>
         ))) : (
@@ -154,7 +155,7 @@ const PortfolioJobs = () => (
       <Table.Row>
         <Table.Cell>Job Description</Table.Cell>
         <Table.Cell>This job sounds cool...</Table.Cell>
-        <Table.Cell><Button className="blue compact">Remove</Button>
+        <Table.Cell><Button className="blue compact">Delete</Button>
         <AddJobNoteModal /> 
         <UserModal/>
         </Table.Cell>

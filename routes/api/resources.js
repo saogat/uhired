@@ -23,4 +23,7 @@ router.route("/portfolio")
 router.route("/portfolio/:id/:userId")
   .get(resourcesController.findPortfolio);
 
+  router.route("/note")
+  .post(resourcesController.note);
+
 module.exports = router;

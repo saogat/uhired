@@ -63,6 +63,10 @@ class JobPage extends Component {
       }}
     >
       <Table.Header>
+      <Table.Row>
+      <Table.HeaderCell colSpan='3'>
+       <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Jobs</h2></Table.HeaderCell>
+        </Table.Row>
         <Table.Row>
           <Table.HeaderCell width={2}>Portfolio</Table.HeaderCell>
           <Table.HeaderCell width={6}>Jobs</Table.HeaderCell>
@@ -102,7 +106,7 @@ class JobPage extends Component {
   render() {
     return (
       <div>
-        <JobsContainer /> <hr />
+        <JobsContainer /> 
         <Form style={{ marginLeft: "30px" }}>
           <TechnologyDropDown
             setTechnologySelected={data => this.setTechnologySelected(data)}
@@ -127,7 +131,6 @@ class JobPage extends Component {
           </Button>
         </Form>{" "}
         <hr />
-        <h1 style={{ paddingLeft: "5%" }}>Jobs</h1>
         <this.jobsTable />
         <FooterDiv />
       </div>
