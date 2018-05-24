@@ -27,8 +27,14 @@ class JobPage extends Component {
   handleJobScrape = event => {
     event.preventDefault();
     var query = { id: this.state.technologySelected };
+    console.log(query);
     API.scrape(query)
-      .then(res => this.loadJobs(res))
+      .then(
+        res => alert("Jobs imported")
+        
+        // this.setState({ jobs: res.data })
+      
+      )
       .catch(err => console.log(err));
   };
 

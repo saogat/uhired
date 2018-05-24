@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Image, Container, Sticky } from 'semantic-ui-react'
+import { Grid, Container, Sticky } from 'semantic-ui-react'
 import MainBreadCrumb from "../BreadCrumb/BreadCrumb.js";
 import FooterDiv from "../../components/Footer/Footer.js";
 import "./AboutUs.css";
@@ -17,7 +17,7 @@ const AboutGrid = () => (
   <Grid className= "centered" columns={6} divided>
     <Grid.Row>
       <Grid.Column>
-      <img class="ui medium circular image" src="./Images/CodyG.jpg"/>        <p></p>
+      <img class="ui medium circular image" src="./Images/CodyG.jpg" alt=""/>        <p></p>
       </Grid.Column>
       <Grid.Column>
       <h2 style={{fontFamily: "cursive"}}>Cody Goss</h2>
