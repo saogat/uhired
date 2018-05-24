@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
-import { Container, Image, Transition, Sticky } from 'semantic-ui-react'
+import { Container, Image, Sticky } from 'semantic-ui-react'
 import MainBreadCrumb from "../../components/BreadCrumb/BreadCrumb.js";
-import MainImage from "../../components/Image/Image.js";
 import "./home.css";
 import ModalLogin from "../../components/Modal/LoginModal.js";
 import ModalJoin from "../../components/Modal/JoinModal.js";
-import List from "../../components/List/List.js";
 import PortfolioPage from "../Portfolio/Portfolio.js";
 import ResourcesPage from "../Resources/Resources.js";
 import FooterDiv from "../../components/Footer/Footer.js";

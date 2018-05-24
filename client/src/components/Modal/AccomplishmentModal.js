@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Header, Image, Modal } from 'semantic-ui-react';
+import { Button, Image, Modal } from 'semantic-ui-react';
 import AccomplishmentForm from "../../components/Form/AccomplishmentForm.js";
 import "./Modal.css";
 
@@ -12,12 +12,12 @@ class ModalAccomplishment extends Component {
 
         <Modal style={{marginTop: '0px !important', marginLeft: 'auto', marginRight: 'auto'}}
           className="small vertical align center" 
-          trigger={<Button className = "large blue">Add Accomplishment</Button>}
+          trigger={<Button className = "large blue">Add Project</Button>}
 
         >
          <Modal.Header>
           <Image wrapped size='tiny' src='https://st2.depositphotos.com/3265223/11274/v/950/depositphotos_112741124-stock-illustration-handshake-line-icon-deal-partnership.jpg' />
-           Add Accomplishment
+           Add Project
            </Modal.Header>
           {/* <Header icon='browser' content='Cookies policy' /> */}
           <Modal.Content>
