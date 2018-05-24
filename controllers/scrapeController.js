@@ -4,9 +4,14 @@ var cheerio = require("cheerio");
 
 module.exports = {
   scrape: function(req, res) {
-
+    console.log("In scrapController");
+    console.log(req.body.id);
+    db.Technology.findById(req.body.id).then(
+      dbModel => {
+        let queryTechnology = dbModel.name;
+    console.log(queryTechnology);
     axios
-      .get("https://www.indeed.com/jobs?q=" + req.body.name + "&l=Atlanta%2C+GA")
+      .get("https://www.indeed.com/jobs?q=" + queryTechnology + "&l=Atlanta%2C+GA")
       .then(function(response) {
         var $ = cheerio.load(response.data);
 
@@ -46,16 +51,16 @@ module.exports = {
           console.log( "RESULT!!!", result );
           db.Job.create(result)
             .then(function(dbJob) {
-              db.Technology.findByIdAndUpdate(req.body.id,{$push: {jobs: dbJob._id }})
+              console.log(dbJob._id);
+              db.Technology
+              .findByIdAndUpdate(req.body.id, {$push: { jobs: dbJob._id }})
+              .then()
+              .catch(err => res.status(422).json(err));
             })
-            .catch(function(err) {
-              // If an error occurred, send it to the client
-              console.log( err )
-              return res.json(err);
-            });
         });
         // If we were able to successfully scrape and save an Job, send a message to the client
         res.send("Scrape Complete");
       });
+    });
   }
 };

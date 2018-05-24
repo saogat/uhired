@@ -17,32 +17,23 @@ class PortfolioPage extends Component {
     technologySelected: ""
   };
 
-  resourceSelection = () => {
-    return (
-        <TechnologyDropDown />);
-  };
-
   loadResources = (query) => {
     API.getPortfolioResources(query)
       .then(res => {this.setState({ resources: res.data})})
       .catch(err => console.log(err));
   };
   
-setTechnologySelected = (data) => {
-  this.setState({
-    technologySelected: data
+  setTechnologySelected = (data) => {
+    this.setState({
+      technologySelected: data
   });
-}
+  }
 
-handleTechnologySelection = (event) => {
-  event.preventDefault();
-  var userId = window.sessionStorage.getItem("user_id");
-  console.log("portfolio - userId");
-  console.log(userId);
-  console.log("portfolio - technology");
-  console.log(this.state.technologySelected);
-  this.loadResources("id=" + this.state.technologySelected + "&" + "userId=" + userId);
-};
+  handleTechnologySelection = (event) => {
+    event.preventDefault();
+    var userId = window.sessionStorage.getItem("user_id");
+    this.loadResources({id: this.state.technologySelected, userId: userId});
+  };
 
   resourcesTable = () => (
     <Table celled className="ui unstackable table"  style={{width: "80%", align: "center", margin: "auto", marginTop: "15px"}}>
@@ -102,7 +93,6 @@ handleTechnologySelection = (event) => {
       </Card.Content>
     </Card>
   )
-
 
   render() {
     return (
