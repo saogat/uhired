@@ -5,43 +5,39 @@ import API from "../../utils/API";
 class TechnologyDropDown extends Component {
     state = {
         technologies: [], 
-        options: [],
-        technologySelected: ""
+        options: []
       };
       
-
-
     componentDidMount() {
         this.loadTechnologies();
       }
       
       loadTechnologies = () => {
-          console.log("I'm in loadTechnologies" )
           API.getTechnologies()
             .then( 
               res => {
-                  console.log("Loading technology");
-                  console.log(res);
                   this.setState({technologies: res.data});
                   let temp = this.state.technologies.map(e => {
                       return { key: e.name,
                               text: e.name,
-                              value: e.name}
+                              value: e._id}
                   });
                   this.setState({options: temp})
                 })
             .catch(err => console.log(err));
       };
 
-      render() {
-    return (
+      handleDropdown = (event, data) => {
+           this.props.setTechnologySelected(data.value);
+    	 };
+
+    render() {
+      return (
         <Dropdown 
-            style={{marginLeft: "30px", marginBottom: "30px", marginTop: "30px"}} 
+            style={{marginLeft: "0px", marginBottom: "30px", marginTop: "30px"}} 
             placeholder='Technology' 
             selection options={this.state.options}  
-            onSelection={this.handleDropdown}
-            name='technologySelected'
-            // value={this.state.technologySelected}
+            onChange={this.handleDropdown}
            />);
   }
 }
