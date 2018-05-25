@@ -1,35 +1,27 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const routes = require("./routes");
+import bodyParser from 'body-parser';
+import express from 'express';
+import path from 'path';
+import mongoose from "mongoose";
+
 const app = express();
 const PORT = process.env.PORT || 3001;
+const router = express.Router();
+const staticFiles = express.static(path.join(__dirname, '../../client/build'));
 
-// Configure body parser for AJAX requests
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-// Serve up static assets
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
 
-// Add routes, both API and view
-app.use(routes);
+app.use(staticFiles);
+app.use(router);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// any routes not picked up by the server api will be handled by the react router
+app.use('/*', staticFiles)
 
-// Connect to the Mongo DB
+app.set('port', (process.env.PORT || 3001))
+app.listen(app.get('port'), () => {
+    console.log(`Listening on ${app.get('port')}`)
+})
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/uhired");
-
-
-// Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-
-});
+process.env.MONGODB_URI || "mongodb://localhost/uhired");
 
 process.on('SIGINT', () => { console.log("Bye bye!"); process.exit(); });
