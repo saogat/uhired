@@ -17,7 +17,7 @@ const AboutGrid = () => (
   <Grid className= "centered" columns={6} divided>
     <Grid.Row>
       <Grid.Column>
-      <img class="ui medium circular image" src="./Images/CodyG.jpg" alt=""/>        <p></p>
+      <img class="ui medium circular image" src="https://s3.amazonaws.com/uhired/CodyG.jpg" alt="Cogy G"/>        
       </Grid.Column>
       <Grid.Column>
       <h2 style={{fontFamily: "cursive"}}>Cody Goss</h2>
@@ -38,7 +38,7 @@ const AboutGrid = () => (
       </div>
       </Grid.Column>
       <Grid.Column>
-      <img class="ui medium circular image" src="./Images/KristenS.jpg"/>
+      <img class="ui medium circular image" src="https://s3.amazonaws.com/uhired/KristenS.jpg" alt="Kristen S"/>
         <p></p>
       </Grid.Column>
     
@@ -46,7 +46,7 @@ const AboutGrid = () => (
 
     <Grid.Row>
       <Grid.Column>
-      <img class="ui medium circular image" src="./Images/saogat.jpg"/>
+      <img class="ui medium circular image" src="https://s3.amazonaws.com/uhired/saogat.jpg" alt="Saogat R"/>
         <p></p>
       </Grid.Column>
       <Grid.Column>
@@ -68,7 +68,7 @@ const AboutGrid = () => (
       </div>
       </Grid.Column> 
       <Grid.Column>
-        <img class="ui medium circular image" src="./Images/RaniR.jpg" width="150"  height="150"/>
+        <img class="ui medium circular image" src="https://s3.amazonaws.com/uhired/RaniR.jpg" width="150"  height="150" alt="Rani R"/>
         <p></p> 
       </Grid.Column>
     </Grid.Row>

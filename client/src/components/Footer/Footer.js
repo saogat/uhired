@@ -13,12 +13,7 @@ const FooterDiv = () => (
           <p style={{ fontFamily: "cursive", color: "skyBlue", fontSize: "55px", fontWeight: "bold", marginLeft: "25%", marginTop: "15px" }}>uHired</p>
         </Grid.Column>
         <Grid.Column>
-          <p style={{ fontSize: "18px", fontWeight: "bold" }}>CONTACT US:</p>
-          <p style={{ fontSize: "14px" }}> 123 A Street<br />
-            Atlanta, GA  30300<br />
-            Support@uHired.com<br />
-            404.555.5555</p>
-            <Button color='facebook'>
+          <Button color='facebook'>
           <Icon name='facebook' />
          </Button>
           <Button color='twitter'>
