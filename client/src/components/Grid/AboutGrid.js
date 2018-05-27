@@ -6,7 +6,6 @@ import "./AboutUs.css";
 
 const AboutGrid = () => (
     <div>
-
     <Sticky><Container className= "ui fluid inverted vertical masthead padded left aligned segment massive">
     <MainBreadCrumb/>
     </Container></Sticky>
@@ -40,9 +39,7 @@ const AboutGrid = () => (
         <Grid.Column>
         <img className="ui medium circular image" src="https://s3.amazonaws.com/uhired/KristenS.jpg" alt="Kristen S"/>
         </Grid.Column>
-  
     </Grid.Row>
-
     <Grid.Row>
       <Grid.Column>
       <img className="ui medium circular image" src="https://s3.amazonaws.com/uhired/saogat.jpg" alt="Saogat R"/>
@@ -59,7 +56,7 @@ const AboutGrid = () => (
       </Grid.Column>
       <Grid.Column>
       <h2 style={{fontFamily: "cursive"}}>Rani Rab</h2>
-      <div class="ui bulleted list">
+      <div className="ui bulleted list">
         <div className="item">UI Designer</div>
         <div className="item">Full-Stack Web Developer</div>
         <div className="item">World Traveler</div>
@@ -68,14 +65,12 @@ const AboutGrid = () => (
       </Grid.Column> 
       <Grid.Column>
         <img className="ui medium circular image" src="https://s3.amazonaws.com/uhired/RaniR.jpg" width="150"  height="150" alt="Rani R"/>
-        
       </Grid.Column>
     </Grid.Row>
   </Grid>
   </Container>
   <div>
-                <FooterDiv /></div>
+      <FooterDiv /></div>
   </div>
 )
-
 export default AboutGrid

@@ -66,17 +66,18 @@ class PortfolioPage extends Component {
   // resources table
   resourcesTable = () => (
     <Table celled className="ui unstackable table"  style={{width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
-    <Table.Header>
-    <Table.Row> <Table.HeaderCell colSpan='3'>
-       <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Resources</h2></Table.HeaderCell>
-      </Table.Row>
-      <Table.Row>
-        <Table.HeaderCell width={6}>Resources</Table.HeaderCell>
-        <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
-        <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
-      </Table.Row>
-    </Table.Header>
-  
+        <Table.Header>
+            <Table.Row> 
+              <Table.HeaderCell colSpan='3'>
+                  <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Resources</h2>
+              </Table.HeaderCell>
+            </Table.Row>
+            <Table.Row>
+                <Table.HeaderCell width={6}>Resources</Table.HeaderCell>
+                <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
+                <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
+            </Table.Row>
+        </Table.Header>
     <Table.Body>
     {this.state.resources.length ? (
         this.state.resources.map(resource => (
@@ -96,95 +97,76 @@ class PortfolioPage extends Component {
                     <UserModal />
                 </Table.Cell>
               </Table.Row>
-        ))) : (
-      <Table.Row />
-     )}
+        ))) : ( <Table.Row />)}
      </Table.Body>
-
     <Table.Footer>
       <Table.Row>
         <Table.HeaderCell colSpan="3" />
       </Table.Row>
     </Table.Footer>
-  </Table>
-  );
+  </Table>);
 
 // jobs table
 jobsTable = () => (
-
-  // <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
-  //   <Table.Header>
-  //   <Table.Row> <Table.HeaderCell colSpan='3'>
-  //      <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Jobs</h2></Table.HeaderCell>
-  //     </Table.Row>
-  //     <Table.Row>
-  //       <Table.HeaderCell width={6}>Richard's Job Prospects</Table.HeaderCell>
-  //       <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
-  //       <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
-  //     </Table.Row>
-  //   </Table.Header>
-
 <Table celled className="ui unstackable table"  style={{width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
-<Table.Header>
-<Table.Row> <Table.HeaderCell colSpan='3'>
-   <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Jobs</h2></Table.HeaderCell>
-  </Table.Row>
-  <Table.Row>
-    <Table.HeaderCell width={6}>Job</Table.HeaderCell>
-    <Table.HeaderCell width={5}>Description</Table.HeaderCell>
-    <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
-  </Table.Row>
-</Table.Header>
-
-<Table.Body>
-{this.state.jobs.length ? (
-    this.state.jobs.map(job => (
-          <Table.Row key={job._id}>
-            <Table.Cell>
-                {job.link}
-            </Table.Cell>
-            <Table.Cell>
-                {job.description}
-            </Table.Cell>
-            <Table.Cell>
-              <Button 
-                className="blue compact"
-                id={job._id}
-                onClick={this.handleRemovePortfolio}>Delete</Button>
-                <AddResourceNoteModal id={job._id} />
-                <UserModal />
-            </Table.Cell>
-          </Table.Row>
-    ))) : (
-  <Table.Row />
- )}
+    <Table.Header>
+          <Table.Row> 
+            <Table.HeaderCell colSpan='3'>
+                  <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Jobs</h2>
+            </Table.HeaderCell>
+        </Table.Row>
+        <Table.Row>
+            <Table.HeaderCell width={6}>Job</Table.HeaderCell>
+            <Table.HeaderCell width={5}>Description</Table.HeaderCell>
+              <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
+        </Table.Row>
+    </Table.Header>
+  <Table.Body>
+      {this.state.jobs.length ? (
+          this.state.jobs.map(job => (
+              <Table.Row key={job._id}>
+                    <Table.Cell>
+                          {job.link}
+                    </Table.Cell>
+                    <Table.Cell>
+                          {job.description}
+                    </Table.Cell>
+                    <Table.Cell>
+                        <Button 
+                            className="blue compact"
+                            id={job._id}
+                            onClick={this.handleRemovePortfolio}>Delete
+                        </Button>
+                        <AddResourceNoteModal id={job._id} />
+                        <UserModal />
+                    </Table.Cell>
+              </Table.Row>))) : (<Table.Row />)}
  </Table.Body>
-
 <Table.Footer>
   <Table.Row>
     <Table.HeaderCell colSpan="3" />
   </Table.Row>
 </Table.Footer>
-</Table>
-);
+</Table>);
 
 // accomplishments table
 accomplishmentsTable = () => (
 
   <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "18px" }}>
     <Table.Header>
-    <Table.Row> <Table.HeaderCell colSpan='3'>
-       <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}>Accomplishments</h2></Table.HeaderCell>
-      </Table.Row>
-      <Table.Row>
-        <Table.HeaderCell width={6}>Resources</Table.HeaderCell>
-        <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
-        <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
-      </Table.Row>
+        <Table.Row> 
+            <Table.HeaderCell colSpan='3'>
+                <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}>Accomplishments</h2>
+            </Table.HeaderCell>
+        </Table.Row>
+        <Table.Row>
+            <Table.HeaderCell width={6}>Resources</Table.HeaderCell>
+            <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
+            <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
+        </Table.Row>
     </Table.Header>
-
     <Table.Body>
-    {this.state.accomplishments.length ? (
+      {this.state.accomplishments.length ? (
         this.state.accomplishments.map(accomplishment => (
               <Table.Row key={accomplishment._id}>
                 <Table.Cell>
@@ -202,11 +184,8 @@ accomplishmentsTable = () => (
                     <UserModal />
                 </Table.Cell>
               </Table.Row>
-        ))) : (
-      <Table.Row />
-     )}
-     </Table.Body>
-
+        ))) : (<Table.Row />)}
+    </Table.Body>
     <Table.Footer>
       <Table.Row>
         <Table.HeaderCell colSpan='3'>
