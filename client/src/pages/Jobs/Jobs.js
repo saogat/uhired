@@ -6,14 +6,17 @@ import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDr
 import API from "../../utils/API";
 
 class JobPage extends Component {
+
+//===================================================
+//Initialize state
+
   state = {
     jobs: [],
     technologySelected: ""
   };
 
-  resourceSelection = () => {
-    return <TechnologyDropDown />;
-  };
+//===================================================
+// Set technology selected
 
   setTechnologySelected = data => {
     this.setState({
@@ -21,8 +24,8 @@ class JobPage extends Component {
     });
   };
 
-  //===================================================
-  // Scrape Functions
+//===================================================
+// Scrape Functions
 
   handleJobScrape = event => {
     event.preventDefault();
@@ -38,8 +41,10 @@ class JobPage extends Component {
       .catch(err => console.log(err));
   };
 
-  //===================================================
-  // DataBase Retrival Functions
+//===================================================
+// DataBase Retrival Functions
+
+  // getJobs
 
   handleTechnologySelection = event => {
     event.preventDefault();
@@ -54,8 +59,28 @@ class JobPage extends Component {
       .catch(err => console.log(err));
   };
 
-  //===================================================
-  // Jobs Table
+//===================================================
+// Button click - save to portfolio
+  // addJobToPortfolio
+
+   handleAddPortfolio = (event, props) => {
+    event.preventDefault();
+    const newJobs = this.state.jobs.filter(
+              job => job._id != props.id
+            );
+    this.setState({ jobs: newJobs });
+    let userId = window.sessionStorage.getItem("user_id");
+    API.addJobsToPortfolio({
+      userId: userId,
+      jobId: props.id
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
+
+
+//===================================================
+// Display jobs Table
 
   jobsTable = () => (
     <Table
@@ -108,6 +133,9 @@ class JobPage extends Component {
       </Table.Footer>
     </Table>
   );
+
+//===================================================
+// Render JobPage component
 
   render() {
     return (

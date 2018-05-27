@@ -76,8 +76,7 @@ module.exports = {
             .findById(req.params.id)
             .populate("resources")
             .then(technology => {
-              // let techResourceIds = technology.resources.map(techResource => techResource._id);
-              let result = (userResources.filter(userResource => {
+               let result = (userResources.filter(userResource => {
                     let comparison = technology.resources.find(technologyResource => userResource._id.equals(technologyResource._id));
                     return comparison;
                   }));
