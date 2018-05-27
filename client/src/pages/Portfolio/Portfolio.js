@@ -12,29 +12,58 @@ import API from "../../utils/API"
 
 class PortfolioPage extends Component {
 
+  //===================================================
+  //Initialize state
+
   state = {
     resources: [],
+    jobs: [],
+    accomplishments: [],
     technologySelected: ""
   };
-
-  loadResources = (query) => {
-    API.getPortfolioResources(query)
-      .then(res => {this.setState({ resources: res.data})})
-      .catch(err => console.log(err));
-  };
   
+   //===================================================
+  // Set technology selected
+
   setTechnologySelected = (data) => {
     this.setState({
       technologySelected: data
   });
   }
 
+//===================================================
+  // Database Functions
+
+  // getResources
   handleTechnologySelection = (event) => {
     event.preventDefault();
     var userId = window.sessionStorage.getItem("user_id");
     this.loadResources({id: this.state.technologySelected, userId: userId});
+    this.loadJobs({id: this.state.technologySelected, userId: userId});
   };
 
+  // getResources
+  loadResources = (query) => {
+    API.getPortfolioResources(query)
+      .then(res => {this.setState({ resources: res.data})})
+      .catch(err => console.log(err));
+  };
+
+  // getJobs
+  loadJobs = (query) => {
+    API.getPortfolioJobs(query)
+      .then(res => {this.setState({ jobs: res.data})})
+      .catch(err => console.log(err));
+  };
+
+  // getAccomplishments
+  loadAccomplishments = (query) => {
+    API.getPortfolioAccomplishments(query)
+      .then(res => {this.setState({ accomplishments: res.data})})
+      .catch(err => console.log(err));
+  };
+
+  // resources table
   resourcesTable = () => (
     <Table celled className="ui unstackable table"  style={{width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
     <Table.Header>
@@ -79,6 +108,114 @@ class PortfolioPage extends Component {
     </Table.Footer>
   </Table>
   );
+
+// jobs table
+jobsTable = () => (
+
+  // <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
+  //   <Table.Header>
+  //   <Table.Row> <Table.HeaderCell colSpan='3'>
+  //      <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Jobs</h2></Table.HeaderCell>
+  //     </Table.Row>
+  //     <Table.Row>
+  //       <Table.HeaderCell width={6}>Richard's Job Prospects</Table.HeaderCell>
+  //       <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
+  //       <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
+  //     </Table.Row>
+  //   </Table.Header>
+
+<Table celled className="ui unstackable table"  style={{width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
+<Table.Header>
+<Table.Row> <Table.HeaderCell colSpan='3'>
+   <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Jobs</h2></Table.HeaderCell>
+  </Table.Row>
+  <Table.Row>
+    <Table.HeaderCell width={6}>Job</Table.HeaderCell>
+    <Table.HeaderCell width={5}>Description</Table.HeaderCell>
+    <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
+  </Table.Row>
+</Table.Header>
+
+<Table.Body>
+{this.state.jobs.length ? (
+    this.state.jobs.map(job => (
+          <Table.Row key={job._id}>
+            <Table.Cell>
+                {job.link}
+            </Table.Cell>
+            <Table.Cell>
+                {job.description}
+            </Table.Cell>
+            <Table.Cell>
+              <Button 
+                className="blue compact"
+                id={job._id}
+                onClick={this.handleRemovePortfolio}>Delete</Button>
+                <AddResourceNoteModal id={job._id} />
+                <UserModal />
+            </Table.Cell>
+          </Table.Row>
+    ))) : (
+  <Table.Row />
+ )}
+ </Table.Body>
+
+<Table.Footer>
+  <Table.Row>
+    <Table.HeaderCell colSpan="3" />
+  </Table.Row>
+</Table.Footer>
+</Table>
+);
+
+// accomplishments table
+accomplishmentsTable = () => (
+
+  <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "18px" }}>
+    <Table.Header>
+    <Table.Row> <Table.HeaderCell colSpan='3'>
+       <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}>Accomplishments</h2></Table.HeaderCell>
+      </Table.Row>
+      <Table.Row>
+        <Table.HeaderCell width={6}>Resources</Table.HeaderCell>
+        <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
+        <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
+      </Table.Row>
+    </Table.Header>
+
+    <Table.Body>
+    {this.state.accomplishments.length ? (
+        this.state.accomplishments.map(accomplishment => (
+              <Table.Row key={accomplishment._id}>
+                <Table.Cell>
+                    {accomplishment.url}
+                </Table.Cell>
+                <Table.Cell>
+                    {accomplishment.description}
+                </Table.Cell>
+                <Table.Cell>
+                  <Button 
+                    className="blue compact"
+                    id={accomplishment._id}
+                    onClick={this.handleRemoveAccomplishment}>Delete</Button>
+                    <AddResourceNoteModal id={accomplishment._id} />
+                    <UserModal />
+                </Table.Cell>
+              </Table.Row>
+        ))) : (
+      <Table.Row />
+     )}
+     </Table.Body>
+
+    <Table.Footer>
+      <Table.Row>
+        <Table.HeaderCell colSpan='3'>
+        </Table.HeaderCell>
+      </Table.Row>
+    </Table.Footer>
+  </Table>
+);
+
 
   userCard = () => (
     <Card style={{width: "175px", float: "left", marginLeft: "30px", marginRight: "45px" }} >
@@ -130,78 +267,13 @@ class PortfolioPage extends Component {
         <h2 style={{marginLeft: "70px", padding: "0px", marginTop: "10px", marginBottom: "5px" }}>Portfolio</h2>
 
         <this.userCard style={{float: "left"}} />
-        <Accomplishments />
-        <PortfolioJobs />
+        <this.accomplishmentsTable />
+        <this.jobsTable />
         <this.resourcesTable />
-        <FooterDiv/>
+        {/* <FooterDiv/> */}
       </div>
     );
   }
 }
 
 export default PortfolioPage;
-
-const PortfolioJobs = () => (
-
-  <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "10px" }}>
-    <Table.Header>
-    <Table.Row> <Table.HeaderCell colSpan='3'>
-       <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}> Jobs</h2></Table.HeaderCell>
-      </Table.Row>
-      <Table.Row>
-        <Table.HeaderCell width={6}>Richard's Job Prospects</Table.HeaderCell>
-        <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
-        <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
-      </Table.Row>
-    </Table.Header>
-
-    <Table.Body>
-      <Table.Row>
-        <Table.Cell>Job Description</Table.Cell>
-        <Table.Cell>This job sounds cool...</Table.Cell>
-        <Table.Cell><Button className="blue compact">Delete</Button>
-        <AddJobNoteModal /> 
-        <UserModal/>
-        </Table.Cell>
-      </Table.Row>
-    </Table.Body>
-
-    <Table.Footer>
-      <Table.Row>
-        <Table.HeaderCell colSpan="3" />
-      </Table.Row>
-    </Table.Footer>
-  </Table>
-);
-
-const Accomplishments = () => (
-
-
-  <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "18px" }}>
-    <Table.Header>
-    <Table.Row> <Table.HeaderCell colSpan='4'>
-       <h2 style={{padding: "0px", marginTop: "0px", marginBottom: "0px"}}>Accomplishments</h2></Table.HeaderCell>
-      </Table.Row>
-      <Table.Row>
-        <Table.HeaderCell width={5}>Richard's Projects</Table.HeaderCell>
-        <Table.HeaderCell width={5}>Skills</Table.HeaderCell>
-        <Table.HeaderCell width={5}>Link</Table.HeaderCell>
-      </Table.Row>
-    </Table.Header>
-
-    <Table.Body>
-      <Table.Row>
-        <Table.Cell>React App</Table.Cell>
-        <Table.Cell>React, Semantic UI</Table.Cell>
-        <Table.Cell>Link</Table.Cell>
-      </Table.Row>
-    </Table.Body>
-
-    <Table.Footer>
-      <Table.Row>
-        <Table.HeaderCell colSpan='3'>
-        </Table.HeaderCell>
-      </Table.Row>
-    </Table.Footer>
-  </Table>
-);

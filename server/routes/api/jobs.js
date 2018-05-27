@@ -1,28 +1,27 @@
 const router = require("express").Router();
-const loginController = require("../../controllers/resourcesController");
 const jobsController = require("../../controllers/jobsController");
 
 // Matches with /api/jobs
-router.route("/")
-  .get(jobsController.findAll)
-  .post(jobsController.create);
+// router.route("/")
+//   .get(jobsController.findAll)
+//   .post(jobsController.create);
 
-// Matches with /api/jobs/:id
-router
-  .route("/:id")
-  .get(jobsController.findById)
-  .put(jobsController.update)
-  .delete(jobsController.remove);
+// // Matches with /api/jobs/:id
+// router
+//   .route("/:id")
+//   .get(jobsController.findById)
+//   .put(jobsController.update)
+//   .delete(jobsController.remove);
 
 // Matches with /api/jobs/share
-router.route("/share")
-  .post(jobsController.share);
+// router.route("/share").post(jobsController.share);
 
-// Matches with "/api/jobs/:id" 
-// called by Api.addJobsToPortfolio
-router.route("/portfolio").post(jobsController.portfolio);
+// Matches with "/api/jobs/portfolio" 
+// called by Api.addJobToPortfolio
+router.route("/portfolio").post(jobsController.addToPortfolio);
 
-// called by Api.
+// Matches with "/api/jobs/portfolio/:id:/userId" 
+// called by Api.getPortfolioJobs
 router.route("/portfolio/:id/:userId").get(jobsController.findPortfolio);
 
 module.exports = router;
