@@ -10,10 +10,10 @@ const FooterDiv = () => (
     <Grid columns={3}>
       <Grid.Row className="ui black inverted center aligned" >
         <Grid.Column>
-          <p style={{ fontFamily: "cursive", color: "skyBlue", fontSize: "55px", fontWeight: "bold", marginLeft: "25%", marginTop: "15px" }}>uHired</p>
+          <p style={{ fontFamily: "cursive", color: "skyBlue", fontSize: "45px", fontWeight: "bold", marginLeft: "25%", marginTop: "15px" }}>uHired</p>
         </Grid.Column>
         <Grid.Column>
-          <Button color='facebook'>
+          <Button color='facebook' style={{marginTop: "40px"}}>
           <Icon name='facebook' />
          </Button>
           <Button color='twitter'>
@@ -25,13 +25,9 @@ const FooterDiv = () => (
           <Button color='linkedin'>
           <Icon name='linkedin' />
          </Button>
-        {/* <Icon color='blue' name='facebook official' size="big"/>
-          <Icon color='white' name='twitter' size="big"/>
-          <Icon color='blue' name='github' size="big"/>
-          <Icon color='white' name='linkedin square' size="big"/> */}
       </Grid.Column>
       <Grid.Column>
-        <Image src="http://pngimg.com/uploads/globe/globe_PNG33.png" size='small' style={{ paddingLeft: "60px", paddingTop: "10px" }} />
+        <Image src="http://pngimg.com/uploads/globe/globe_PNG33.png" size="small" style={{ paddingLeft: "60px", paddingTop: "10px" }} />
       </Grid.Column>
     </Grid.Row>
   </Grid>
