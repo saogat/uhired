@@ -16,8 +16,6 @@ class ResourcePage extends Component {
     technologySelected: ""
   };
 
-  
-
   //===================================================
   // Input changes
 
@@ -48,7 +46,6 @@ class ResourcePage extends Component {
       .catch(err => console.log(err));
   };
 
-
   // getResources
 
   handleTechnologySelection = event => {
@@ -68,8 +65,8 @@ class ResourcePage extends Component {
   };
 
   //===================================================
-   // Button click - save new resource
-   // saveResource
+  // Button click - save new resource
+  // saveResource
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -103,7 +100,7 @@ class ResourcePage extends Component {
   };
 
   //===================================================
-   // Display table
+  // Display resources table
 
   resourcesTable = () => (
     <Table
@@ -158,7 +155,7 @@ class ResourcePage extends Component {
   );
 
   //===================================================
-   // Render component
+  // Render ResourcePage component
 
   render() {
     return (

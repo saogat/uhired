@@ -67,6 +67,11 @@ export default {
     return result;
   },
 
+  //POST
+  addJobToPortfolio: function(query) {
+    var result = axios.post("/api/jobs/portfolio", query);
+    return result;
+  },
 
   //===================================================
   // Accomplishment Handler Functions
