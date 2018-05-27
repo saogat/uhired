@@ -9,7 +9,6 @@ class JobPage extends Component {
 
 //===================================================
 //Initialize state
-
   state = {
     jobs: [],
     technologySelected: ""
@@ -17,7 +16,6 @@ class JobPage extends Component {
 
 //===================================================
 // Set technology selected
-
   setTechnologySelected = data => {
     this.setState({
       technologySelected: data
@@ -26,7 +24,6 @@ class JobPage extends Component {
 
 //===================================================
 // Scrape Functions
-
   handleJobScrape = event => {
     event.preventDefault();
     var query = { id: this.state.technologySelected };
@@ -45,7 +42,6 @@ class JobPage extends Component {
 // DataBase Retrival Functions
 
   // getJobs
-
   handleTechnologySelection = event => {
     event.preventDefault();
     this.loadJobs({ id: this.state.technologySelected });
@@ -61,8 +57,8 @@ class JobPage extends Component {
 
 //===================================================
 // Button click - save to portfolio
-  // addJobToPortfolio
 
+  // addJobToPortfolio
    handleAddPortfolio = (event, props) => {
     event.preventDefault();
     const newJobs = this.state.jobs.filter(
@@ -70,18 +66,16 @@ class JobPage extends Component {
             );
     this.setState({ jobs: newJobs });
     let userId = window.sessionStorage.getItem("user_id");
-    API.addJobsToPortfolio({
+    API.addJobToPortfolio({
       userId: userId,
-      jobId: props.id
+      id: props.id
     })
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
 
-
 //===================================================
 // Display jobs Table
-
   jobsTable = () => (
     <Table
       celled
@@ -136,7 +130,6 @@ class JobPage extends Component {
 
 //===================================================
 // Render JobPage component
-
   render() {
     return (
       <div>

@@ -4,15 +4,11 @@ import ShareForm from "../../components/Form/ShareForm.js";
 import "./Modal.css";
 
 class UserShare extends Component {
-     
     render() {
       return (
-      
-
         <Modal
           className="small" 
-          trigger={<Button color="blue" size="compact">Share</Button>}
-
+          trigger={<Button color="blue" size="tiny">Share</Button>}
         >
          <Modal.Header>
           <Image wrapped size='tiny' src='https://st2.depositphotos.com/3265223/11274/v/950/depositphotos_112741124-stock-illustration-handshake-line-icon-deal-partnership.jpg' />
@@ -26,5 +22,4 @@ class UserShare extends Component {
       )
     }
   }
-
 export default UserShare
