@@ -7,16 +7,19 @@ import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDr
 import API from "../../utils/API";
 
 class ResourcePage extends Component {
+  
+  //===================================================
+  //Initialize state
+
   state = {
     resources: [],
     technologySelected: ""
   };
 
-  deleteResource = id => {
-    API.deleteResource(id)
-      .then(res => this.loadResource())
-      .catch(err => console.log(err));
-  };
+  
+
+  //===================================================
+  // Input changes
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -25,6 +28,9 @@ class ResourcePage extends Component {
     });
   };
 
+  //===================================================
+  // Set technology selected
+
   setTechnologySelected = data => {
     this.setState({
       technologySelected: data
@@ -32,12 +38,26 @@ class ResourcePage extends Component {
   };
 
   //===================================================
-  // DataBase Retrival Functions
+  // Database Functions
+
+  // deleteResources
+
+  deleteResource = id => {
+    API.deleteResource(id)
+      .then(res => this.loadResource())
+      .catch(err => console.log(err));
+  };
+
+
+  // getResources
 
   handleTechnologySelection = event => {
     event.preventDefault();
-    this.loadResources({ id: this.state.technologySelected });
-  };
+    let userId = window.sessionStorage.getItem("user_id");
+    this.loadResources({
+        id: this.state.technologySelected,
+        userId: userId });
+    };
 
   loadResources = technology => {
     API.getResources(technology)
@@ -48,6 +68,8 @@ class ResourcePage extends Component {
   };
 
   //===================================================
+   // Button click - save new resource
+   // saveResource
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -56,18 +78,22 @@ class ResourcePage extends Component {
         name: this.state.name,
         description: this.state.description
       })
-        .then(res => this.loadResource())
+        .then(res => this.loadResources({ id: this.state.technologySelected }))
         .catch(err => console.log(err));
     }
   };
 
+  //===================================================
+   // Button click - save to portfolio
+   // addResourceToPortfolio
+
   handleAddPortfolio = (event, props) => {
     event.preventDefault();
-    const resources = this.state.resources.filter(
-      resource => resource.id !== props.id
-    );
-    this.setState({ resources });
-    var userId = window.sessionStorage.getItem("user_id");
+    const newResources = this.state.resources.filter(
+              resource => resource._id != props.id
+            );
+    this.setState({ resources: newResources });
+    let userId = window.sessionStorage.getItem("user_id");
     API.addResourceToPortfolio({
       userId: userId,
       resourceId: props.id
@@ -75,6 +101,9 @@ class ResourcePage extends Component {
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
+
+  //===================================================
+   // Display table
 
   resourcesTable = () => (
     <Table
@@ -109,7 +138,7 @@ class ResourcePage extends Component {
                   id={resource._id}
                   onClick={this.handleAddPortfolio}
                 >
-                  Add to Portfolio
+                   Add to Portfolio
                 </Button>
               </Table.Cell>
               <Table.Cell>{resource.url}</Table.Cell>
@@ -127,6 +156,9 @@ class ResourcePage extends Component {
       </Table.Footer>
     </Table>
   );
+
+  //===================================================
+   // Render component
 
   render() {
     return (

@@ -61,6 +61,10 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+  //===================================================
+  // Functions to Populate the Portfolio Resources Table  
+
   findPortfolio: function (req, res) {
     db.User
       .findById(req.params.userId)
@@ -72,10 +76,10 @@ module.exports = {
             .findById(req.params.id)
             .populate("resources")
             .then(technology => {
-              let techResourceIds = technology.resources.map(techResource => techResource._id);
+              // let techResourceIds = technology.resources.map(techResource => techResource._id);
               let result = (userResources.filter(userResource => {
-                    let comparison = techResourceIds.find(id => userResource._id.equals(id));
-                    return !comparison;
+                    let comparison = technology.resources.find(technologyResource => userResource._id.equals(technologyResource._id));
+                    return comparison;
                   }));
               res.json(result);
             })
@@ -89,6 +93,9 @@ module.exports = {
         res.status(422).json(err)
       });
   },
+
+  //===================================================
+  // Functions to Populate the Portfolio Resources Notes  
 
   note: function (req, res) {
     db.Note
