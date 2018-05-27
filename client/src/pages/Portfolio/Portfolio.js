@@ -246,24 +246,26 @@ accomplishmentsTable = () => (
   // Render Portfolio component
   render() {
     return (
-      <div> 
-        <Sticky>
-        <Container className="ui fluid inverted vertical masthead left aligned segment massive" >
+      <div>
+      <Sticky style={{width: "100%",   position: "absolute", zIndex: "1000"}}>
+        <Container  className="ui fluid inverted vertical masthead left aligned segment massive" >
         <MainBreadCrumb />
-        </Container></Sticky>
-        <Form style={{marginLeft: "30px"}}>
-          <TechnologyDropDown setTechnologySelected={(data) => this.setTechnologySelected(data)}/>
-          <Button 
-              style = {{marginLeft: "20px", marginTop: "10px"}} 
-              className = "large blue" 
-              type='submit'
-              disabled={!(this.state.technologySelected)}
-              onClick={this.handleTechnologySelection}>
-              Search
-          </Button>
-          <AccomplishmentModal />
-        </Form> 
-        <hr />
+        </Container>
+      </Sticky>
+      <Container  style={{bottomBorder: "2px"}} className="ui fluid vertical left aligned segment massive" >
+      <Form style={{marginTop: "70px", marginLeft: "30px"}}>
+        <TechnologyDropDown setTechnologySelected={(data) => this.setTechnologySelected(data)}/>
+        <Button 
+            style = {{marginLeft: "20px", marginTop: "10px"}} 
+            className = "large blue" 
+            type='submit'
+            // disabled={!(this.state.technologySelected)}
+            onClick={this.handleTechnologySelection}>
+            Search
+        </Button>
+      <AccomplishmentModal />
+      </Form> 
+      </Container>
         <h2 style={{marginLeft: "70px", padding: "0px", marginTop: "10px", marginBottom: "5px" }}>Portfolio</h2>
         <this.userCard style={{float: "left"}} />
         <this.accomplishmentsTable />

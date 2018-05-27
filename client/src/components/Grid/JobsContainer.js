@@ -6,9 +6,10 @@ import "./Container.css";
 
 const JobsContainer = () => (
   <div>
-  <Sticky><Container className= "ui fluid fixed inverted vertical masthead left aligned segment massive">
-     <MainBreadCrumb/>
-     </Container></Sticky>
+        <Sticky style={{width: "100%",   position: "absolute", zIndex: "1000"}}>
+        <Container className= "ui fluid fixed inverted vertical masthead left aligned segment massive">
+        <MainBreadCrumb/>
+        </Container></Sticky>
   </div>
 
 )
