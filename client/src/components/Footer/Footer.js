@@ -19,7 +19,7 @@ const FooterDiv = () => (
           <Button color='twitter'>
           <Icon name='twitter' />
          </Button>
-          <Button color='github'>
+          <Button color='grey'>
           <Icon name='github' />
          </Button>
           <Button color='linkedin'>
