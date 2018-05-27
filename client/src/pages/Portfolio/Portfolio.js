@@ -216,7 +216,7 @@ accomplishmentsTable = () => (
   </Table>
 );
 
-
+// User card
   userCard = () => (
     <Card style={{width: "175px", float: "left", marginLeft: "30px", marginRight: "45px" }} >
       <Image style={{ width: '175px', height: "160px" }} src='https://static1.squarespace.com/static/57645625f5e231759e260acf/t/58fa2266f5e231a86437fce0/1492787823235/Richard' />
@@ -242,26 +242,29 @@ accomplishmentsTable = () => (
     </Card>
   )
 
+  //===================================================
+  // Render Portfolio component
   render() {
     return (
-      <div> <Sticky>
+      <div> 
+        <Sticky>
         <Container className="ui fluid inverted vertical masthead left aligned segment massive" >
-       <MainBreadCrumb />
+        <MainBreadCrumb />
         </Container></Sticky>
         <Form style={{marginLeft: "30px"}}>
-        <TechnologyDropDown setTechnologySelected={(data) => this.setTechnologySelected(data)}/>
-        <Button 
+          <TechnologyDropDown setTechnologySelected={(data) => this.setTechnologySelected(data)}/>
+          <Button 
               style = {{marginLeft: "20px", marginTop: "10px"}} 
               className = "large blue" 
               type='submit'
-              // disabled={!(this.state.technologySelected)}
+              disabled={!(this.state.technologySelected)}
               onClick={this.handleTechnologySelection}>
-              Search</Button>
-              <AccomplishmentModal />
-      </Form> 
+              Search
+          </Button>
+          <AccomplishmentModal />
+        </Form> 
         <hr />
         <h2 style={{marginLeft: "70px", padding: "0px", marginTop: "10px", marginBottom: "5px" }}>Portfolio</h2>
-
         <this.userCard style={{float: "left"}} />
         <this.accomplishmentsTable />
         <this.jobsTable />
