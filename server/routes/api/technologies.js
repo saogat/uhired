@@ -8,7 +8,7 @@ router
   .post(technologiesController.create);
 
 // Get the RESOURCES
-router.route("/resources/:id").get(technologiesController.getResources);
+router.route("/resources/:id/:userId").get(technologiesController.getResources);
 
 // Get the JOBS
 router.route("/jobs/:id").get(technologiesController.getJobs);

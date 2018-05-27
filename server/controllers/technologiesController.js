@@ -32,12 +32,43 @@ module.exports = {
   //===================================================
   // Functions to Populate the Resources Table
 
-  getResources: function(req, res) {
-    console.log(req.params.id);
-    db.Technology.findById(req.params.id)
+  // getResources: function(req, res) {
+  //   console.log(req.params.id);
+  //   db.Technology.findById(req.params.id)
+  //     .populate("resources")
+  //     .then(dbModel => res.json(dbModel.resources))
+  //     .catch(err => res.status(422).json(err));
+  // },
+
+  getResources: function (req, res) {
+    db.User
+      .findById(req.params.userId)
       .populate("resources")
-      .then(dbModel => res.json(dbModel.resources))
-      .catch(err => res.status(422).json(err));
+      .then(
+        user => {
+          let userResources = user.resources;
+          db.Technology
+            .findById(req.params.id)
+            .populate("resources")
+            .then(technology => {
+              // let techResourceIds = technology.resources.map(techResource => techResource._id);
+
+              //return all technology resources not in user's portfolio
+              let result = (technology.resources.filter(technologyResource => {
+                    let comparison = userResources.find(userResource => userResource._id.equals(technologyResource._id));
+                    return !comparison;
+                  }));
+              res.json(result);
+            })
+            .catch(err => {
+              console.log( "Technology error:", err );
+              res.status(422).json(err)
+            });
+        })
+      .catch(err => {
+        console.log( "User error:", err );
+        res.status(422).json(err)
+      });
   },
 
   //===================================================
