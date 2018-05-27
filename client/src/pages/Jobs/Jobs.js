@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import JobsContainer from "../../components/Grid/JobsContainer.js";
-import { Table, Form, Button } from "semantic-ui-react";
+import { Table, Form, Container, Button } from "semantic-ui-react";
 import FooterDiv from "../../components/Footer/Footer.js";
 import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
 import API from "../../utils/API";
@@ -134,7 +134,8 @@ class JobPage extends Component {
     return (
       <div>
         <JobsContainer /> 
-        <Form style={{ marginLeft: "30px" }}>
+        <Container  style={{bottomBorder: "2px"}} className="ui fluid vertical left aligned segment massive" >
+        <Form style={{ marginTop: "70px", marginLeft: "30px"}}>
           <TechnologyDropDown
             setTechnologySelected={data => this.setTechnologySelected(data)}
           />
@@ -157,7 +158,8 @@ class JobPage extends Component {
             Add
           </Button>
         </Form>{" "}
-        <hr />
+        </Container>
+      
         <this.jobsTable />
         <FooterDiv />
       </div>

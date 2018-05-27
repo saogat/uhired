@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ResourceContainer from "../../components/Grid/ResourceContainer.js";
-import { Form, Table, Button } from "semantic-ui-react";
+import { Form, Container, Table, Button } from "semantic-ui-react";
 import AddResourceModal from "../../components/Modal/AddResource.js";
 import FooterDiv from "../../components/Footer/Footer.js";
 import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
@@ -161,7 +161,8 @@ class ResourcePage extends Component {
     return (
       <div>
         <ResourceContainer />
-        <Form style={{ marginLeft: "20px" }}>
+        <Container  style={{bottomBorder: "2px"}} className="ui fluid vertical left aligned segment massive" >
+        <Form style={{ marginTop: "70px", marginLeft: "30px"}}>
           <TechnologyDropDown
             setTechnologySelected={data => this.setTechnologySelected(data)}
           />
@@ -170,13 +171,12 @@ class ResourcePage extends Component {
             className="large blue"
             type="submit"
             disabled={!this.state.technologySelected}
-            onClick={this.handleTechnologySelection}
-          >
+            onClick={this.handleTechnologySelection}>
             Search
           </Button>
           <AddResourceModal />
         </Form>
-        <hr />
+        </Container>
         <this.resourcesTable />
         <FooterDiv />
       </div>
