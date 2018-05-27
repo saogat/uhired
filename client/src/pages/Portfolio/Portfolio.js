@@ -271,7 +271,7 @@ accomplishmentsTable = () => (
         <this.accomplishmentsTable />
         <this.jobsTable />
         <this.resourcesTable />
-        {/* <FooterDiv/> */}
+        <FooterDiv/>
       </div>
     );
   }
