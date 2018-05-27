@@ -14,62 +14,61 @@ const AboutGrid = () => (
     <h1 style={{fontFamily: "cursive"}}>Meet the Team</h1>
     </Container>
     <Container className="ui fluid vertical masthead center aligned segment massive">
-  <Grid className= "centered" columns={6} divided>
+    <Grid className= "centered" columns={6} divided>
     <Grid.Row>
       <Grid.Column>
-      <img class="ui medium circular image" src="https://s3.amazonaws.com/uhired/CodyG.jpg" alt="Cogy G"/>        
+      <img className="ui medium circular image" src="https://s3.amazonaws.com/uhired/CodyG.jpg" alt="Cogy G"/>        
       </Grid.Column>
       <Grid.Column>
       <h2 style={{fontFamily: "cursive"}}>Cody Goss</h2>
-      <div class="ui bulleted list">
-        <div class="item">Full-Stack MERN Developer Enthusiast</div>
-        <div class="item">Rock Climber</div>
-        <div class="item">Biologist</div>
-        <div class="item">Tea Sommelier</div>
+      <div className="ui bulleted list">
+        <div className="item">Full-Stack MERN Developer Enthusiast</div>
+        <div className="item">Rock Climber</div>
+        <div className="item">Biologist</div>
+        <div className="item">Tea Sommelier</div>
       </div>
       </Grid.Column>
       <Grid.Column>
       <h2 style={{fontFamily: "cursive"}}>Kristen Speckhals</h2>
-      <div class="ui bulleted list">
-        <div class="item">UI Design Lead</div>
-        <div class="item">Full-Stack Web Developer</div>
-        <div class="item">Legal Enthusiast</div>
-        <div class="item">Linguist</div>
-      </div>
-      </Grid.Column>
-      <Grid.Column>
-      <img class="ui medium circular image" src="https://s3.amazonaws.com/uhired/KristenS.jpg" alt="Kristen S"/>
-        <p></p>
-      </Grid.Column>
-    
+      <div className="ui bulleted list">
+        <div className="item">UI Design Lead</div>
+        <div className="item">Full-Stack Web Developer</div>
+        <div className="item">Legal Enthusiast</div>
+        <div className="item">Linguist</div>
+        </div>
+        </Grid.Column>
+        <Grid.Column>
+        <img className="ui medium circular image" src="https://s3.amazonaws.com/uhired/KristenS.jpg" alt="Kristen S"/>
+        </Grid.Column>
+  
     </Grid.Row>
 
     <Grid.Row>
       <Grid.Column>
-      <img class="ui medium circular image" src="https://s3.amazonaws.com/uhired/saogat.jpg" alt="Saogat R"/>
+      <img className="ui medium circular image" src="https://s3.amazonaws.com/uhired/saogat.jpg" alt="Saogat R"/>
         <p></p>
       </Grid.Column>
       <Grid.Column>
       <h2 style={{fontFamily: "cursive"}}>Saogat Rab</h2>
-      <div class="ui bulleted list">
-        <div class="item">Project Lead</div>
-        <div class="item">Software Architect and Full-Stack Web Developer</div>
-        <div class="item">Passionate Fisherman</div>
-        <div class="item">Photographer</div>
+      <div className="ui bulleted list">
+        <div className="item">Project Lead</div>
+        <div className="item">Software Architect and Full-Stack Web Developer</div>
+        <div className="item">Passionate Fisherman</div>
+        <div className="item">Photographer</div>
       </div>
       </Grid.Column>
       <Grid.Column>
       <h2 style={{fontFamily: "cursive"}}>Rani Rab</h2>
       <div class="ui bulleted list">
-        <div class="item">UI Designer</div>
-        <div class="item">Full-Stack Web Developer</div>
-        <div class="item">World Traveler</div>
-        <div class="item">Linguist</div>
+        <div className="item">UI Designer</div>
+        <div className="item">Full-Stack Web Developer</div>
+        <div className="item">World Traveler</div>
+        <div className="item">Linguist</div>
       </div>
       </Grid.Column> 
       <Grid.Column>
-        <img class="ui medium circular image" src="https://s3.amazonaws.com/uhired/RaniR.jpg" width="150"  height="150" alt="Rani R"/>
-        <p></p> 
+        <img className="ui medium circular image" src="https://s3.amazonaws.com/uhired/RaniR.jpg" width="150"  height="150" alt="Rani R"/>
+        
       </Grid.Column>
     </Grid.Row>
   </Grid>
