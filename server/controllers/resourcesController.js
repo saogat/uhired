@@ -50,7 +50,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  portfolio: function (req, res) {
+
+
+  //===================================================
+  // Function to save the Portfolio resource  
+
+  addToPortfolio: function (req, res) {
     console.log(req.body);
     db.User
       .findByIdAndUpdate(req.body.userId, {
@@ -63,7 +68,7 @@ module.exports = {
   },
 
   //===================================================
-  // Functions to Populate the Portfolio Resources Table  
+  // Function to Populate the Portfolio Resources Table  
 
   findPortfolio: function (req, res) {
     db.User

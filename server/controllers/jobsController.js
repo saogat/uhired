@@ -5,7 +5,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 
 // Require all models
-const db = require("./models"); // Routes
+const db = require("../models"); // Routes
 
 module.exports = {
   // A GET route for scraping the echoJS website
@@ -118,5 +118,54 @@ module.exports = {
         // If an error occurred, send it to the client
         res.json(err);
       });
-  }
+  },
+
+
+  //===================================================
+  // Function to save the Portfolio job  
+
+  addToPortfolio: function (req, res) {
+    console.log(req.body);
+    db.User
+      .findByIdAndUpdate(req.body.userId, {
+        $push: {
+          jobs: req.body.id
+        }
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+//===================================================
+  // Function to Populate the Portfolio Jobs Table  
+
+  findPortfolio: function (req, res) {
+    console.log("In jobsController.findPortfolio");
+    db.User
+      .findById(req.params.userId)
+      .populate("jobs")
+      .then(
+        user => {
+          let userJobs = user.jobs;
+          db.Technology
+            .findById(req.params.id)
+            .populate("jobs")
+            .then(technology => {
+               let result = (userJobs.filter(userJob => {
+                    let comparison = technology.jobs.find(technologyJob => userJob._id.equals(technologyJob._id));
+                    return comparison;
+                  }));
+              res.json(result);
+            })
+            .catch(err => {
+              console.log( "Porfolio Job error:", err );
+              res.status(422).json(err)
+            });
+        })
+      .catch(err => {
+        console.log( "User error:", err );
+        res.status(422).json(err)
+      });
+  },
+
 }
