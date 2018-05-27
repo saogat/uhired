@@ -67,7 +67,7 @@ class AccomplishmentForm extends Component {
 
       <Form>   
       <Form.Field>
-      <label>Project Title</label>
+      <label>Project</label>
       <input 
           placeholder='Project App' 
           value={this.state.accomplishment}
@@ -77,7 +77,7 @@ class AccomplishmentForm extends Component {
       <Form.Field>
       <label>Link to project</label>
       <input 
-          placeholder='//http:github.com'  
+          placeholder='//http:'  
           value={this.state.url}
           onChange={this.handleInputChange}
           name="url"/>
@@ -89,7 +89,7 @@ class AccomplishmentForm extends Component {
         type='submit'      
         // disabled={!(this.state.accomplishment)}
         onClick={this.handleFormSubmit}>
-        Add Project
+        Add
       </Button>
      
       </Form>

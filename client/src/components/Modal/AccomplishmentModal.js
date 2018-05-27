@@ -20,12 +20,12 @@ class ModalAccomplishment extends Component {
       return (
         <Modal 
           className="small vertical align center" 
-          trigger={<Button onClick={this.handleOpen} className = "large blue">Add Project</Button>}
+          trigger={<Button onClick={this.handleOpen} className = "large blue">Add Accomplishment</Button>}
           open={this.state.modalOpen}
           onClose={this.handleClose}>
          <Modal.Header>
           <Image wrapped size='tiny' src='https://st2.depositphotos.com/3265223/11274/v/950/depositphotos_112741124-stock-illustration-handshake-line-icon-deal-partnership.jpg' />
-           Add Accomplishment
+              Add Accomplishment
            </Modal.Header>
           {/* <Header icon='browser' content='Cookies policy' /> */}
           <Modal.Content>

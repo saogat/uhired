@@ -5,7 +5,6 @@ import "./AboutUs.css";
 
 const AboutGrid = () => (
     <div>
-
     <Sticky style={{width: "100%",   position: "absolute", zIndex: "100"}} >
       <Container style={{width: "100%"}} className= "ui fluid inverted vertical masthead padded left aligned segment massive">
       <MainBreadCrumb/>
@@ -43,9 +42,7 @@ const AboutGrid = () => (
         <Grid.Column>
         <img className="ui medium circular image" src="https://s3.amazonaws.com/uhired/KristenS.jpg" alt="Kristen S"/>
         </Grid.Column>
-  
     </Grid.Row>
-
     <Grid.Row style={{marginTop: "50px", bottomBorder: "2px"}}>
       <Grid.Column>
       <img className="ui medium circular image" src="https://s3.amazonaws.com/uhired/saogat.jpg" alt="Saogat R"/>
@@ -62,7 +59,7 @@ const AboutGrid = () => (
       </Grid.Column>
       <Grid.Column style={{marginRight: "5%"}}>
       <h2 style={{fontFamily: "cursive"}}>Rani Rab</h2>
-      <div class="ui bulleted list">
+      <div className="ui bulleted list">
         <div className="item">UI Designer</div>
         <div className="item">Full-Stack Web Developer</div>
         <div className="item">World Traveler</div>
@@ -71,16 +68,11 @@ const AboutGrid = () => (
       </Grid.Column> 
       <Grid.Column >
         <img className="ui medium circular image" src="https://s3.amazonaws.com/uhired/RaniR.jpg" width="150"  height="150" alt="Rani R"/>
-        
       </Grid.Column>
     </Grid.Row>
-  
   </Grid>
   <Container  style={{bottomBorder: "2px"}} className="ui fluid vertical center aligned segment massive">
     </Container> <div/>
-
-
   </div>
 )
-
 export default AboutGrid
