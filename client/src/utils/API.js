@@ -94,7 +94,5 @@ export default {
   //POST
   addJobToPortfolio: function(query) {
     return axios.post("/api/jobs/portfolio", query);
-  },
-
-
+  }
 };
