@@ -40,6 +40,7 @@ class PortfolioPage extends Component {
     var userId = window.sessionStorage.getItem("user_id");
     this.loadResources({id: this.state.technologySelected, userId: userId});
     this.loadJobs({id: this.state.technologySelected, userId: userId});
+    this.loadAccomplishments({id: this.state.technologySelected, userId: userId});
   };
 
   // getResources
@@ -104,7 +105,8 @@ class PortfolioPage extends Component {
         <Table.HeaderCell colSpan="3" />
       </Table.Row>
     </Table.Footer>
-  </Table>);
+  </Table>
+  );
 
 // jobs table
 jobsTable = () => (
@@ -147,11 +149,11 @@ jobsTable = () => (
     <Table.HeaderCell colSpan="3" />
   </Table.Row>
 </Table.Footer>
-</Table>);
+</Table>
+);
 
 // accomplishments table
 accomplishmentsTable = () => (
-
   <Table celled style={{ width: "80%", align: "center", marginLeft: "15%", marginTop: "18px" }}>
     <Table.Header>
         <Table.Row> 
@@ -196,7 +198,7 @@ accomplishmentsTable = () => (
 );
 
 // User card
-  userCard = () => (
+userCard = () => (
     <Card style={{width: "175px", float: "left", marginLeft: "30px", marginRight: "45px" }} >
       <Image style={{ width: '175px', height: "160px" }} src='https://static1.squarespace.com/static/57645625f5e231759e260acf/t/58fa2266f5e231a86437fce0/1492787823235/Richard' />
       <Card.Content>
