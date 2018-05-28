@@ -163,9 +163,7 @@ class ResourcePage extends Component {
         <ResourceContainer />
         <Container  style={{bottomBorder: "2px"}} className="ui fluid vertical left aligned segment massive" >
         <Form style={{ marginTop: "70px", marginLeft: "30px"}}>
-          <TechnologyDropDown
-            setTechnologySelected={data => this.setTechnologySelected(data)}
-          />
+          <TechnologyDropDown setTechnologySelected={data => this.setTechnologySelected(data)}/>
           <Button
             style={{ marginLeft: "20px", marginTop: "10px" }}
             className="large blue"

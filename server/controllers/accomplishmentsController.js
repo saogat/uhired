@@ -52,5 +52,35 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  //===================================================
+  // Function to Populate the Portfolio Resources Table  
+
+  findPortfolio: function (req, res) {
+    db.User
+      .findById(req.params.userId)
+      .populate("accomplishments")
+      .then(
+        user => {
+          let userResources = user.accomplishments;
+          db.Technology
+            .findById(req.params.id)
+            .populate("resources")
+            .then(technology => {
+               let result = (userResources.filter(userResource => {
+                    let comparison = technology.resources.find(technologyResource => userResource._id.equals(technologyResource._id));
+                    return comparison;
+                  }));
+              res.json(result);
+            })
+            .catch(err => {
+              console.log( "Accomplishment error:", err );
+              res.status(422).json(err)
+            });
+        })
+      .catch(err => {
+        console.log( "Accomplishment error:", err );
+        res.status(422).json(err)
+      });
+  },
 };

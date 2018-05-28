@@ -27,21 +27,6 @@ class AccomplishmentForm extends Component {
           technologySelected: data
         });
       }
-      
-      handleTechnologySelection = (event) => {
-        event.preventDefault();
-        this.loadResources({id: this.state.technologySelected});
-      };
-  
-    loadResources = res => {
-      console.log(res);
-      if(res.status === 200)
-      {
-        window.sessionStorage.setItem("resource", JSON.stringify(res.data.token));
-        this.props.close();
-      } 
-      else {alert(res)}
-    };
   
     handleFormSubmit = event => {
        // Preventing the default behavior of the form submit (which is to refresh the page)
@@ -53,10 +38,10 @@ class AccomplishmentForm extends Component {
           technologyId: this.state.technologySelected,
           accomplishment:
           {
-          description: this.state.accomplishment,
-          url: this.state.url,
-        }})
-          .then(res => this.loadResources(res))
+            description: this.state.accomplishment,
+            url: this.state.url,
+          }})
+          .then()
           .catch(err => alert(err));
           this.props.close();
       }
