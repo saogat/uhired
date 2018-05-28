@@ -17,7 +17,6 @@ class ModalAccomplishment extends Component {
     
     handleClose = () => {
         this.setState({ modalOpen: false });
-        console.log("Project Added")
         this.props.loadAccomplishments();
     }
      

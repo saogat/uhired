@@ -6,8 +6,10 @@ router.route("/")
   .get(accomplishmentsController.findAll)
   .post(accomplishmentsController.create);
 
-// router.route("/resources/:id")
-//   .get(accomplishmentsController.getResources);
+// Matches with "/api/accomplishments/porfolio" 
+// called by Api.getPortfolioAccomplishments
+router.route("/portfolio/:id/:userId").get(accomplishmentsController.findPortfolio);
+
  
 
 // // Matches with "/api/accomplishments/:id"

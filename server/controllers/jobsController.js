@@ -140,7 +140,6 @@ module.exports = {
   // Function to Populate the Portfolio Jobs Table  
 
   findPortfolio: function (req, res) {
-    console.log("In jobsController.findPortfolio");
     db.User
       .findById(req.params.userId)
       .populate("jobs")

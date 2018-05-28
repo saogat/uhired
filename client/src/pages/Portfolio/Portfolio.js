@@ -57,10 +57,18 @@ class PortfolioPage extends Component {
       .catch(err => console.log(err));
   };
 
+  addAccomplishment(data){
+    // this.setState({ accomplishments: (this.state.accomplishments.push(data))});
+  }
+
   // getAccomplishments
   loadAccomplishments = (query) => {
     API.getPortfolioAccomplishments(query)
-      .then(res => {this.setState({ accomplishments: res.data})})
+      .then(res => 
+        { console.log("in get portfolioAccomplishments");
+          this.setState({ accomplishments: res.data});
+          console.log(this.state.accomplishments);
+        })
       .catch(err => console.log(err));
   };
 
@@ -162,7 +170,7 @@ accomplishmentsTable = () => (
             </Table.HeaderCell>
         </Table.Row>
         <Table.Row>
-            <Table.HeaderCell width={6}>Resources</Table.HeaderCell>
+            <Table.HeaderCell width={6}>Projects</Table.HeaderCell>
             <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
             <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
         </Table.Row>
@@ -240,11 +248,11 @@ userCard = () => (
             style = {{marginLeft: "20px", marginTop: "10px"}} 
             className = "large blue" 
             type='submit'
-            // disabled={!(this.state.technologySelected)}
+            disabled={!(this.state.technologySelected)}
             onClick={this.handleTechnologySelection}>
             Search
         </Button>
-      <AccomplishmentModal />
+        <AccomplishmentModal loadAccomplishments={data => this.addAccomplishment(data)} />
       </Form> 
       </Container>
         <h2 style={{marginLeft: "70px", padding: "0px", marginTop: "10px", marginBottom: "5px" }}>Portfolio</h2>

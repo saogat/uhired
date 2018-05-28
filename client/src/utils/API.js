@@ -66,6 +66,13 @@ export default {
     return result;
   },
 
+  //GET
+  getPortfolioAccomplishments: function(query){
+    console.log("In getPortfolioAccomplishments");
+    var result = axios.get("/api/accomplishments/portfolio/" + query.id + "/" + query.userId);
+    return result;
+  },
+
   //===================================================
   // Scrape Functions
 
