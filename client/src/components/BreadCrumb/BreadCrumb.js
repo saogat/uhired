@@ -1,8 +1,10 @@
 import React from 'react'
+import { Button } from 'semantic-ui-react'
 import "./BreadCrumb.css";
 
 
 const MainBreadCrumb = () => (
+
   <div className="test">
     <div style = {{marginLeft: "25px"}} className="ui breadcrumb fixed huge left aligned navlist">
       <a style={{fontFamily: "cursive", color: "skyBlue", fontSize: "35px", fontWeight: "bold", marginRight: "15px"}} className="active section" href="/">uHired</a>
@@ -15,7 +17,13 @@ const MainBreadCrumb = () => (
     <div className="divider" style={{color: "white", paddingRight: "3px"}}>|</div>
       <a style = {{color: "white"}} className="section" href="/Portfolio">Portfolio</a>
     </div>
-  </div>
+  
+    <Button className="ui inverted blue large" style = {{float: "right", marginRight: "25px"}}  >Log Out</Button>
+    </div>
+
+
+   
+   
 );
 
 export default MainBreadCrumb;
