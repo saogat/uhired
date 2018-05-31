@@ -8,13 +8,11 @@ import PortfolioPage from "../Portfolio/Portfolio.js";
 // import ResourcesPage from "../Resources/Resources.js";
 import FooterDiv from "../../components/Footer/Footer.js";
 
-const isAuthenticated = window.sessionStorage.getItem("user_id");
-
 class HomePage extends Component {
   state = {isAuthenticated: false};
 
-  handleLogin = () => this.setState({isAuthenticated: true});
-  handleJoin = () =>  this.setState({isAuthenticated: true});
+  handleLogin = () => this.setState({isAuthenticated: window.sessionStorage.getItem("user_id")});
+  handleJoin = () =>  this.setState({isAuthenticated: window.sessionStorage.getItem("user_id")});
 
   render() {
     return (
