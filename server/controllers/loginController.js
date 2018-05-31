@@ -40,9 +40,11 @@ module.exports = {
     .findOne({email: req.body.email, password: req.body.password})
     // .populate("portfolio")
     .then(dbModel => 
-      { console.log(dbModel); 
+      { 
         if(dbModel) res.status(200).json({user: dbModel, token: generateAndReturnToken(req, res)})
         else res.status(401).json("Wrong login")})
-    .catch(err => res.status(422).json(err));
+    .catch(err => {
+      console.log(err);
+      res.status(422).json(err)});
   }
 };

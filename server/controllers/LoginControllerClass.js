@@ -53,11 +53,7 @@ class LoginController {
           user: dbModel,
           token: this.generateAndReturnToken(req, res)
         };
-        // res.json(result);
-        // console.log("LoginControllerClass result: ");
-        // console.log(result);
         res.json(result);
-        // return result;
       })
       // else res.status(401).json("Wrong login")})
       .catch(err =>{ 

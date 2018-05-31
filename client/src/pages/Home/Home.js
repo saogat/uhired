@@ -8,22 +8,21 @@ import PortfolioPage from "../Portfolio/Portfolio.js";
 // import ResourcesPage from "../Resources/Resources.js";
 import FooterDiv from "../../components/Footer/Footer.js";
 
+const isAuthenticated = window.sessionStorage.getItem("user_id");
 
 class HomePage extends Component {
-  state = {portfolio: {}};
+  state = {isAuthenticated: false};
 
-  handleLogin = () => 
-      {
-      console.log("in handle login");
-      this.setState({portfolio: {tech: 'HTML'}});
-      console.log(this.state.portfolio);
-      };
-  handleJoin = () => this.setState({portfolio: {tech: 'HTML'}});
+  handleLogin = () => this.setState({isAuthenticated: true});
+  handleJoin = () =>  this.setState({isAuthenticated: true});
 
   render() {
     return (
       <div>
-          {Object.keys(this.state.portfolio).length ? (
+          {
+            this.state.isAuthenticated ? (
+          
+            // Object.keys(this.state.portfolio).length ? (
                     <PortfolioPage />
             ) : ( 
               <div>
