@@ -28,8 +28,6 @@ handleInputChange = event => {
 loadPortfolio = res => {
   if(res.status === 200)
     {
-      console.log ("res.data.user");
-      console.log(res);
       window.sessionStorage.setItem("user", res.data.token);
       window.sessionStorage.setItem("user_id", res.data.user._id);
       this.props.close();
