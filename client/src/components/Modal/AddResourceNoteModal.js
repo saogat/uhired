@@ -34,8 +34,7 @@ class AddResourceNoteModal extends Component {
           />
           Add Note about Resource
         </Modal.Header>
-        {/* <Header icon='browser' content='Cookies policy' /> */}
-        <Modal.Content>
+          <Modal.Content>
           <AddResourceNoteForm close={this.handleClose} id={this.props.id} />
         </Modal.Content>
       </Modal>

@@ -28,7 +28,7 @@ router.route("/portfolio").post(resourcesController.addToPortfolio);
 router.route("/portfolio/:id/:userId").get(resourcesController.findPortfolio);
 
 // Matches with "/api/resources/porfolio" 
-// not yet called by Api.save
+// called by Api.addResourceNote
 router.route("/note").post(resourcesController.note);
 
 module.exports = router;

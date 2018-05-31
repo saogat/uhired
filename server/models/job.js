@@ -22,7 +22,7 @@ const jobSchema = new Schema({
     type: String,
     required: true
   },
-  note: [{
+  notes: [{
     type: Schema.Types.ObjectId,
     ref: "Note"
     }],

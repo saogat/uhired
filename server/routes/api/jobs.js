@@ -24,4 +24,8 @@ router.route("/portfolio").post(jobsController.addToPortfolio);
 // called by Api.getPortfolioJobs
 router.route("/portfolio/:id/:userId").get(jobsController.findPortfolio);
 
+// Matches with "/api/resources/porfolio" 
+// called by Api.addJobNote
+router.route("/note").post(jobsController.note);
+
 module.exports = router;

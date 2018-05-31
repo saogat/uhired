@@ -29,9 +29,8 @@ class AddJobNoteModal extends Component {
           <Image wrapped size='tiny' src='https://st2.depositphotos.com/3265223/11274/v/950/depositphotos_112741124-stock-illustration-handshake-line-icon-deal-partnership.jpg' />
            Add Note About Job
            </Modal.Header>
-          {/* <Header icon='browser' content='Cookies policy' /> */}
-          <Modal.Content>
-          <AddJobNoteForm close={this.handleClose}/>
+           <Modal.Content>
+          <AddJobNoteForm close={this.handleClose}  id={this.props.id}/>
           </Modal.Content>
         </Modal>
       )

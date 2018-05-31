@@ -85,7 +85,7 @@ module.exports = {
         _id: req.params.id
       })
       // ..and populate all of the notes associated with it
-      .populate("note")
+      .populate("notes")
       .then(function (dbJob) {
         // If we were able to successfully find an Job with the given id, send it back to the client
         res.json(dbJob);
@@ -96,29 +96,30 @@ module.exports = {
       });
   },
 
-  // Route for saving/updating an Job's associated Note
+ //===================================================
+  // Functions to Populate the Portfolio Job Notes  
+
   note: function (req, res) {
-    // Create a new note and pass the req.body to the entry
-    db.Note.create(req.body)
-      .then(function (dbNote) {
-        // If a Note was created successfully, find one Job with an `_id` equal to `req.params.id`. Update the Job to be associated with the new Note
-        // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
-        // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-        return db.Job.findOneAndUpdate({
-          _id: req.params.id
-        }, {
-          note: dbNote._id
-        });
-      })
-      .then(function (dbJob) {
-        // If we were able to successfully update an Job, send it back to the client
-        res.json(dbJob);
-      })
-      .catch(function (err) {
-        // If an error occurred, send it to the client
-        res.json(err);
+    db.Note
+      .create(req.body.note)
+      .then(dbNote => {
+          db.Job
+            .findByIdAndUpdate(req.body.jobId, {
+                $push: {
+                  notes: dbNote._id
+                }
+             })
+          .then(dbModel => {
+            res.json(dbModel)})
+          .catch(
+            err => {
+              console.log(err);
+              res.status(422).json(err)})})
+      .catch(err => {
+        console.log(err);
+        res.status(422).json(err)
       });
-  },
+    },
 
 
   //===================================================
