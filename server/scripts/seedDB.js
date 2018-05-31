@@ -11,7 +11,7 @@ mongoose.connect(
 const resources = [
    ['HTML', 
   {
-    url: "hhttps://learn.shayhowe.com/html-css/positioning-content/",
+    url: "https://learn.shayhowe.com/html-css/positioning-content/",
     description:
          "HTML and CSS",
     date: new Date(Date.now())
@@ -30,7 +30,7 @@ const resources = [
     date: new Date(Date.now())
   },
   {
-    url: "hhttps://learn.shayhowe.com/html-css/positioning-content/",
+    url: "https://learn.shayhowe.com/html-css/positioning-content/",
     description:
          "HTML and CSS",
     date: new Date(Date.now())
@@ -102,7 +102,7 @@ const resources = [
     date: new Date(Date.now())
   },
   {
-    url: "hhttp://www.sql-join.com/",
+    url: "http://www.sql-join.com/",
     description:
          "SQL joins",
     date: new Date(Date.now())

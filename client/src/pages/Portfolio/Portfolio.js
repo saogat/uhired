@@ -105,7 +105,7 @@ class PortfolioPage extends Component {
         this.state.resources.map(resource => (
               <Table.Row key={resource._id}>
                 <Table.Cell>
-                    {resource.url}
+                    <a href={resource.url}  target="_blank">{resource.url} </a>
                 </Table.Cell>
                 <Table.Cell>
                     {resource.description}
@@ -149,7 +149,7 @@ jobsTable = () => (
           this.state.jobs.map(job => (
               <Table.Row key={job._id}>
                     <Table.Cell>
-                          {job.link}
+                    <a href={job.link}  target="_blank" >{job.link} </a>
                     </Table.Cell>
                     <Table.Cell>
                           {job.description}
@@ -193,7 +193,7 @@ accomplishmentsTable = () => (
         this.state.accomplishments.map(accomplishment => (
               <Table.Row key={accomplishment._id}>
                 <Table.Cell>
-                    {accomplishment.url}
+                    <a href={accomplishment.url}  target="_blank" >{accomplishment.url} </a>
                 </Table.Cell>
                 <Table.Cell>
                     {accomplishment.description}
