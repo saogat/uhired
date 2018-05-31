@@ -83,7 +83,7 @@ class PortfolioPage extends Component {
             </Table.Row>
             <Table.Row>
                 <Table.HeaderCell width={6}>Resources</Table.HeaderCell>
-                <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
+                <Table.HeaderCell width={5}>Description</Table.HeaderCell>
                 <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
             </Table.Row>
         </Table.Header>
@@ -147,7 +147,7 @@ jobsTable = () => (
                             id={job._id}
                             onClick={this.handleRemovePortfolio}>Delete
                         </Button>
-                        <AddResourceNoteModal id={job._id} />
+                        <AddJobNoteModal id={job._id} />
                         <UserModal />
                     </Table.Cell>
               </Table.Row>))) : (<Table.Row />)}
@@ -171,7 +171,7 @@ accomplishmentsTable = () => (
         </Table.Row>
         <Table.Row>
             <Table.HeaderCell width={6}>Projects</Table.HeaderCell>
-            <Table.HeaderCell width={5}>Notes</Table.HeaderCell>
+            <Table.HeaderCell width={5}>Description</Table.HeaderCell>
             <Table.HeaderCell width={5}>Actions</Table.HeaderCell>
         </Table.Row>
     </Table.Header>

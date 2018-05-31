@@ -20,7 +20,6 @@ class AddJobNoteForm extends Component {
   loadJobs = res => {
     console.log(res);
     if (res.status === 200) {
-      window.sessionStorage.setItem("job", JSON.stringify(res.data.token));
       this.props.close();
     } else {
       alert(res);
@@ -31,9 +30,10 @@ class AddJobNoteForm extends Component {
   handleAddJobNote = (event, props) => {
     event.preventDefault();
     console.log("in handle add job note");
-
+    console.log(this.props.id);
     var userId = window.sessionStorage.getItem("user_id");
     if (this.state.notes) {
+      console.log("handleAddJobsNote " + this.props.id);
       API.addJobNote({
         note: {
           body: this.state.notes,

@@ -20,8 +20,7 @@ class AddResourceNoteForm extends Component {
   loadResources = res => {
     console.log(res);
     if (res.status === 200) {
-      window.sessionStorage.setItem("resource", JSON.stringify(res.data.token));
-      this.props.close();
+        this.props.close();
     } else {
       alert(res);
     }
@@ -30,7 +29,7 @@ class AddResourceNoteForm extends Component {
   handleAddResourceNote = (event, props) => {
     event.preventDefault();
     console.log("in handle add resource note");
-
+    console.log(this.props.id);
     var userId = window.sessionStorage.getItem("user_id");
     if (this.state.notes) {
       API.addResourceNote({

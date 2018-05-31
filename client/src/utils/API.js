@@ -37,16 +37,13 @@ export default {
 
   //POST
   saveResource: function(resource) {
-    console.log(resource);
     var result = axios.post("/api/resources", resource);
-    console.log(result);
     return result;
   },
 
   // Portfolio
   //GET
   getPortfolioResources: function(query) {
-    console.log("In getPortfolioResources");
     var result = axios.get("/api/resources/portfolio/" + query.id + "/" + query.userId);
     return result;
   },
@@ -56,25 +53,28 @@ export default {
     return axios.post("/api/resources/portfolio", query);
   },
 
+  // Notes
+  //POST
+  addResourceNote: function(query) {
+    return axios.post("/api/resources/note", query);
+  },
   //===================================================
   // Accomplishment Functions
 
   //POST
   addAccomplishment: function(accomplishment) {
     var result = axios.post("api/accomplishments", accomplishment);
-    console.log(result);
     return result;
   },
 
   //GET
   getPortfolioAccomplishments: function(query){
-    console.log("In getPortfolioAccomplishments");
     var result = axios.get("/api/accomplishments/portfolio/" + query.id + "/" + query.userId);
     return result;
   },
 
   //===================================================
-  // Scrape Functions
+  // Job Scrape Functions
 
   //POST
   scrape: function(query) {
@@ -89,11 +89,9 @@ export default {
     return axios.get("/api/technologies/jobs/" + technology.id);
   },
 
+  //Portfolio
   //GET
   getPortfolioJobs: function(query) {
-    console.log("In getPortfolioJobs");
-    console.log("tech id " + query.id);
-    console.log("UserId: " + query.userId);
     var result = axios.get("/api/jobs/portfolio/" + query.id + "/" + query.userId);
     return result;
   },
@@ -101,5 +99,12 @@ export default {
   //POST
   addJobToPortfolio: function(query) {
     return axios.post("/api/jobs/portfolio", query);
+  },
+
+  // Notes
+  //POST
+  addJobNote: function(query) {
+    return axios.post("/api/jobs/note", query);
   }
+
 };
