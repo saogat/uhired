@@ -13,8 +13,14 @@ class ResourcePage extends Component {
 
   state = {
     resources: [],
-    technologySelected: ""
+    technologySelected: "",
+    isAuthenticated: window.sessionStorage.getItem("user_id")
   };
+
+  
+  componentDidMount() {
+    this.setState({isAuthenticated: window.sessionStorage.getItem("user_id")});
+  }
 
   //===================================================
   // Input changes
