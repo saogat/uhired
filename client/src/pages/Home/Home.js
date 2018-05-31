@@ -8,28 +8,22 @@ import PortfolioPage from "../Portfolio/Portfolio.js";
 // import ResourcesPage from "../Resources/Resources.js";
 import FooterDiv from "../../components/Footer/Footer.js";
 
+const isAuthenticated = window.sessionStorage.getItem("user_id");
 
 class HomePage extends Component {
-  state = {portfolio: {}};
+  state = {isAuthenticated: false};
 
-  handleLogin = () => 
-      {
-      console.log("in handle login");
-      this.setState({portfolio: {tech: 'HTML'}});
-      console.log(this.state.portfolio);
-      };
-  handleJoin = () => this.setState({portfolio: {tech: 'HTML'}});
+  handleLogin = () => this.setState({isAuthenticated: true});
+  handleJoin = () =>  this.setState({isAuthenticated: true});
 
   render() {
     return (
       <div>
-          {Object.keys(this.state.portfolio).length ? (
-              // <div>
-              //   <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
-                    // <ResourcesPage />
+          {
+            this.state.isAuthenticated ? (
+          
+            // Object.keys(this.state.portfolio).length ? (
                     <PortfolioPage />
-              //   {/* </Container>
-              // </div> */}
             ) : ( 
               <div>
                  <div className="bg">   </div>  <Sticky style={{width: "100%",   position: "absolute", zIndex: "100"}} >

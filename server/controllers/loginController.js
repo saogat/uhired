@@ -2,7 +2,6 @@ const db = require("../models");
 var jwt  = require('jsonwebtoken');
 var secret = process.env.JWT_SECRET || ")QA(7WY4Du]Rp~m,a.6=(b!(yx7A3vFUb.|-,i'M"; // super secret
 
-
 // generate a GUID
 function generateGUID() {
   return new Date().getTime(); // we can do better with crypto
@@ -41,10 +40,11 @@ module.exports = {
     .findOne({email: req.body.email, password: req.body.password})
     // .populate("portfolio")
     .then(dbModel => 
-      { console.log(dbModel); 
+      { 
         if(dbModel) res.status(200).json({user: dbModel, token: generateAndReturnToken(req, res)})
         else res.status(401).json("Wrong login")})
-    .catch(err => res.status(422).json(err));
+    .catch(err => {
+      console.log(err);
+      res.status(422).json(err)});
   }
-
 };

@@ -1,4 +1,7 @@
 const db = require("../models");
+import Login from "./LoginControllerClass";
+
+const aLogin = new Login();
 
 // Defining methods for the booksController
 module.exports = {
@@ -18,8 +21,10 @@ module.exports = {
   create: function(req, res) {
     db.User
       .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .then( (aModel) => {
+        aLogin.login(req,res);
+      })
+      .catch(err => res.status(422).json(err))
   },
   update: function(req, res) {
     db.User
