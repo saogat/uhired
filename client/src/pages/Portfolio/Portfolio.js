@@ -9,6 +9,7 @@ import AddJobNoteModal from "../../components/Modal/AddJobNoteModal.js";
 import FooterDiv from "../../components/Footer/Footer.js";
 import TechnologyDropDown from "../../components/TechnologyDropDown/TechnologyDropDown.js";
 import API from "../../utils/API"
+import PortfolioContainer from "../../components/Grid/PortfolioContainer.js";
 
 class PortfolioPage extends Component {
 
@@ -19,19 +20,30 @@ class PortfolioPage extends Component {
     resources: [],
     jobs: [],
     accomplishments: [],
-    technologySelected: ""
+    technologySelected: "",
+    isAuthenticated: window.sessionStorage.getItem("user")
   };
-  
-   //===================================================
+
+  componentDidMount() {
+        let isLogged = window.sessionStorage.getItem("user");
+        this.setState({
+            isAuthenticated: isLogged
+          });
+          console.log("componentDidMount");
+          console.log(this.state.isAuthenticated);
+          console.log( isLogged);
+   }
+
+  //===================================================
   // Set technology selected
 
   setTechnologySelected = (data) => {
-    this.setState({
-      technologySelected: data
-  });
+        this.setState({
+            technologySelected: data
+        });
   }
 
-//===================================================
+  //===================================================
   // Database Functions
 
   // getResources
@@ -59,6 +71,7 @@ class PortfolioPage extends Component {
 
   addAccomplishment(data){
     // this.setState({ accomplishments: (this.state.accomplishments.push(data))});
+    alert("Accomplishements added");
   }
 
   // getAccomplishments
@@ -236,12 +249,13 @@ userCard = () => (
   render() {
     return (
       <div>
+        {/* <PortfolioContainer /> */}
       <Sticky style={{width: "100%",   position: "absolute", zIndex: "1000"}}>
-        <Container  className="ui fluid inverted vertical masthead left aligned segment massive" >
-        <MainBreadCrumb />
+        <Container className="ui fluid inverted vertical masthead left aligned segment massive" >
+        <MainBreadCrumb notLoggedIn={!(this.state.isAuthenticated)}/>
         </Container>
       </Sticky>
-      <Container  style={{bottomBorder: "2px"}} className="ui fluid vertical left aligned segment massive" >
+      <Container style={{bottomBorder: "2px"}} className="ui fluid vertical left aligned segment massive" >
       <Form style={{marginTop: "70px", marginLeft: "30px"}}>
         <TechnologyDropDown setTechnologySelected={(data) => this.setTechnologySelected(data)}/>
         <Button 

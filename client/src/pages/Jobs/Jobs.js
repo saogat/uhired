@@ -11,8 +11,21 @@ class JobPage extends Component {
 //Initialize state
   state = {
     jobs: [],
-    technologySelected: ""
+    technologySelected: "",
+    isAuthenticated: false
   };
+
+  // componentDidMount() {
+  //   this.setState({isAuthenticated: window.sessionStorage.getItem("user_id") !== null});
+  //  }
+
+   componentDidMount() {
+    this.setState({
+        isAuthenticated: window.sessionStorage.getItem("user_id") !== null
+      });
+      console.log("componentDidMount");
+      console.log(this.state.isAuthenticated);
+}
 
 //===================================================
 // Set technology selected
