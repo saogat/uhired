@@ -24,12 +24,7 @@ class HomePage extends Component {
     return (
       <div>
           {Object.keys(this.state.portfolio).length ? (
-              // <div>
-              //   <Container className= "ui fluid inverted vertical masthead center aligned segment massive">
-                    // <ResourcesPage />
                     <PortfolioPage />
-              //   {/* </Container>
-              // </div> */}
             ) : ( 
               <div>
                  <div className="bg">   </div>  <Sticky style={{width: "100%",   position: "absolute", zIndex: "100"}} >

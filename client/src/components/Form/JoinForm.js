@@ -25,8 +25,15 @@ handleInputChange = event => {
   });
 };
 
-loadPortfolio = () => {
-  this.props.close();
+loadPortfolio = res => {
+  if(res.status === 200)
+    {
+      console.log ("res.data.user");
+      console.log(res);
+      window.sessionStorage.setItem("user", res.data.token);
+      window.sessionStorage.setItem("user_id", res.data.user._id);
+      this.props.close();
+    } 
 };
 
 handleFormSubmit = event => {
@@ -47,7 +54,7 @@ handleFormSubmit = event => {
       email: this.state.email,
       password: this.state.password
     })
-      .then(res => this.loadPortfolio())
+      .then(res => this.loadPortfolio(res))
       .catch(err => console.log(err));
   }
   this.setState({
